@@ -6,6 +6,7 @@ import router from './router'
 import VueI18n from 'vue-i18n'
 
 import messages from './i18n/i18n'
+import './style/iconfont.css'
 
 Vue.config.productionTip = false
 
