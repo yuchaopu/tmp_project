@@ -72,7 +72,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
                 ignore: ['.*']
             },
             {
-                from: path.resolve(__dirname, '../src/flexible.min.js'),
+                from: path.resolve(__dirname, '../src/flexible/flexible.js'),
+                to: config.build.assetsSubDirectory
+            },
+            {
+                from: path.resolve(__dirname, '../src/flexible/flexible_css.js'),
                 to: config.build.assetsSubDirectory
             }
         ])
