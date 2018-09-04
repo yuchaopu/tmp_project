@@ -1,12 +1,18 @@
 module.exports = {
     en: {
         message: {
-            title: 'Demo Page'
+            title: 'Demo Page',
+            btn: {
+                regist: 'Free Regist'
+            }
         }
     },
     zh: {
         message: {
-            title: '演示页面'
+            title: '演示页面',
+            btn: {
+                regist: '免费注册'
+            }
         }
     }
 }
