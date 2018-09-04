@@ -78,6 +78,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             {
                 from: path.resolve(__dirname, '../src/flexible/flexible_css.js'),
                 to: config.build.assetsSubDirectory
+            },
+            {
+                from: path.resolve(__dirname, '../src/assets/fonts/iconfont.js'),
+                to: config.build.assetsSubDirectory
             }
         ])
     ]
