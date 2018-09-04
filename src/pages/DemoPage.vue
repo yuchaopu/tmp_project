@@ -1,6 +1,6 @@
 <template>
     <div class="demo-page">
-        <div class="demo-page-title">Demo Page</div>
+        <div class="demo-page-title">{{ $t('message.title') }}</div>
     </div>
 </template>
 
@@ -18,4 +18,3 @@ export default {
     }
 }
 </style>
-
