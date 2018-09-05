@@ -78,36 +78,36 @@
             </div>
         </div>
         <div class="advantage">
-            <h2>我们的优势</h2>
+            <h2>{{$t('message.introduce.title')}}</h2>
             <div class="advantage-item">
                 <icon-svg class="advantage-icon icon-gongkaitouming_icon" icon-class="gongkaitouming_icon" />
-                <h3>公开透明</h3>
-                <p>实时的资产与交易数据查询验证机制，可为用户提供24小时实时全交易记录，以达到高度公开透明。 </p>
+                <h3>{{$t('message.introduce.first.title')}}</h3>
+                <p>{{$t('message.introduce.first.content')}} </p>
             </div>
             <div class="advantage-item">
                 <icon-svg class="advantage-icon icon-gaoxingnengzhichi_icon" icon-class="gaoxingnengzhichi_icon" />
-                <h3>高性能支持</h3>
-                <p>面向大型金融机构服务的系统架构设计，采用先进的内存算法、快速读写、分布式信息传输框架，能够实时处理大规模交易。 </p>
+                <h3>{{$t('message.introduce.second.title')}}</h3>
+                <p>{{$t('message.introduce.second.content')}} </p>
             </div>
             <div class="advantage-item">
                 <icon-svg class="advantage-icon icon-anquanwuqin_icon" icon-class="anquanwuqin_icon" />
-                <h3>安全稳定</h3>
-                <p>多级防⽕墙，多重签名，冷热隔离钱包，多维度降低用户资产风险。 </p>
+                <h3>{{$t('message.introduce.third.title')}}</h3>
+                <p>{{$t('message.introduce.third.content')}} </p>
             </div>
             <div class="advantage-item">
                 <icon-svg class="advantage-icon icon-liudongxingzhichi_icon" icon-class="liudongxingzhichi_icon" />
-                <h3>流动性支持</h3>
-                <p>丰富的行业资源和优质的战略合作伙伴，活跃的社区参与度，为交易提供更好的流动性。 </p>
+                <h3>{{$t('message.introduce.fourth.title')}}</h3>
+                <p>{{$t('message.introduce.fourth.content')}} </p>
             </div>
             <div class="advantage-item">
                 <icon-svg class="advantage-icon icon-tuanduiliangdian_icon" icon-class="tuanduiliangdian_icon" />
-                <h3>团队亮点</h3>
-                <p>结合传统金融行业的大规模交易技术、互联网企业的高效运营体系和数字资产系统的研发经验，致力于打造和完善为全球用户服务的新型数字资产交易平台。 </p>
+                <h3>{{$t('message.introduce.fifth.title')}}</h3>
+                <p>{{$t('message.introduce.fifth.content')}} </p>
             </div>
         </div>
         <div class="middle-regist">
             <p class="slogan">
-                免费注册<br>即可马上交易
+                {{ $t('message.btn.regist') }}<br>{{ $t('message.text1') }}
             </p>
             <v-quickRegist>
             </v-quickRegist>
