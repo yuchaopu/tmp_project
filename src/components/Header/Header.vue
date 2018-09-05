@@ -40,19 +40,16 @@
                         </transition>
                     </li>
                     <li>
-                        币币交易
+                        {{$t('message.btn.whitePaper')}}
                     </li>
                     <li>
-                        白皮书
+                        {{$t('message.btn.announcements')}}
                     </li>
                     <li>
-                        公告中心
+                        {{$t('message.btn.login')}}
                     </li>
                     <li>
-                        登录
-                    </li>
-                    <li>
-                        免费注册
+                        {{$t('message.btn.regist')}}
                     </li>
                 </ul>
             </div>
