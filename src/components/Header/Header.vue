@@ -9,8 +9,8 @@
             </div>
             
             <div class="header-right">
-                <div class="regist">
-                    <router-link to="/demopage">{{ $t('message.btn.regist') }}</router-link>
+                <div v-if="showRegist" class="regist">
+                    <router-link to="/regist">{{ $t('message.btn.regist') }}</router-link>
                 </div>
                 <!-- <i class="icon icon-nav" @click="changeNav"></i> -->
                 <div @click="changeNav" class="icon-nav">
@@ -60,6 +60,12 @@
 
 <script>
 export default {
+    props: {
+        showRegist: {
+            type: Boolean,
+            default: true
+        }
+    },
     data() {
         return {
             navShow: false,
