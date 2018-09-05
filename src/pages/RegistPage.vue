@@ -15,13 +15,15 @@
                     class="regist-page-content-form-input regist-page-gap-top_20"
                     icon="password_icon"
                     type="password"
-                    :placeholder="$t('message.placeholder.registPassd')"/>
+                    :placeholder="$t('message.placeholder.registPassd')"
+                    :verify="passdVerify"/>
                 <b-input
                     v-model="registData.passdConf"
                     class="regist-page-content-form-input regist-page-gap-top_20"
                     icon="password_icon"
                     type="password"
-                    :placeholder="$t('message.placeholder.registPassdConf')"/>
+                    :placeholder="$t('message.placeholder.registPassdConf')"
+                    :verify="passdConfVerify"/>
                 <b-input
                     v-model="registData.recommend"
                     class="regist-page-content-form-input regist-page-gap-top_20"
@@ -67,8 +69,32 @@ export default {
     },
     methods: {
         emailVerify(data) {
-            if (/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(data)) {
-                return true;
+            if (!data) {
+                return this.$t('message.verify.notEmpty', {
+                    key: this.$t('message.placeholder.registMail')
+                });
+            }
+            if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(data)) {
+                return this.$t('message.verify.registEmail');
+            }
+            return false;
+        },
+        passdVerify(data) {
+            if (!data) {
+                return this.$t('message.verify.notEmpty', {
+                    key: this.$t('message.placeholder.registPassd')
+                });
+            }
+        },
+        passdConfVerify(data) {
+            if (!data) {
+                return this.$t('message.verify.notEmpty', {
+                    key: this.$t('message.placeholder.registPassdConf')
+                });
+            }
+
+            if (data !== this.registData.passd) {
+                return this.$t('message.verify.passdNotUnify');
             }
             return false;
         }
