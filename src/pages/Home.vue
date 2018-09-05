@@ -6,6 +6,9 @@
             <span>(8-24)</span>
         </div>
         <v-header></v-header>
+        <div class="banner">
+
+        </div>
     </div>
     
 </template>
@@ -19,7 +22,8 @@
     }
 </script>
 <style lang="scss" scoped>
-    @import '../style/base.scss';
+    @import '../style/base';
+    @import '../style/commom';
     .toptips{
         height: px2rem(30px);
         background: #004FA4;
@@ -41,6 +45,10 @@
         span {
             margin: 0 px2rem(16px);
         }
+    }
+    .banner{
+        background-color: $base-color; 
+        height: px2rem(642px);
     }
 </style>
 

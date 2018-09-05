@@ -15,7 +15,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './style/base.scss';
+@import './style/base';
+@import './style/commom';
 #app {
     .toptips{
         height: px2rem(30px);

@@ -26,6 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../style/base';
+@import '../style/commom';
 .demo-page {
     &-title {
         font-size: px2rem(28px);

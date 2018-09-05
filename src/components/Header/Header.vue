@@ -16,7 +16,28 @@
             </div>
         </div>
         <nav>
-            
+            <div class="nav-wrapper">
+                <ul>
+                    <li>
+                        简体中文
+                    </li>
+                    <li>
+                        币币交易
+                    </li>
+                    <li>
+                        白皮书
+                    </li>
+                    <li>
+                        公告中心
+                    </li>
+                    <li>
+                        登录
+                    </li>
+                    <li>
+                        免费注册
+                    </li>
+                </ul>
+            </div>
         </nav> 
         
     </div>
@@ -30,6 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../style/base';
+@import '../../style/commom';
 #header{
     height: px2rem(50px);
     background-color: $base-color;
@@ -67,6 +89,21 @@ export default {
                 display: inline-block;
                 background: url(../../assets/images/icon-nav@2x.png) center center/px2rem(16px) px2rem(16px) no-repeat;
             }
+        }
+    }
+    .nav-wrapper{
+        background-color: #fff;
+        box-shadow: 0 px2rem(4px) px2rem(11px) 0 rgba(0,0,0,0.43);
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: px2rem(50px);
+        li{
+            height: px2rem(50px);
+            line-height: px2rem(50px);
+            border-bottom: 1px solid #E1E2E6;
+            text-indent: px2rem(15px);
+            font-size: px2rem(14px);
         }
     }
         
