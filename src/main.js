@@ -21,12 +21,22 @@ function getCookie(name,defaultValue) {
     }
 }
 
-const locale = getCookie('locale');
-
+// 自动设置语言
+const navLang = navigator.language
+let localLang;
+if (navLang === 'zh-CN') {
+    localLang = 'zh'
+} else if (navLang === 'en-US') {
+    localLang = 'en';
+}
+const lang = window.localStorage.lang || localLang || 'en'
+localStorage.setItem('lang', lang);
+Vue.config.lang = lang;
 const i18n = new VueI18n({
-    locale: locale ? locale : 'en',
+    locale: Vue.config.lang,
     messages
 })
+
 Vue.component('icon-svg', IconSvg);
 /* eslint-disable no-new */
 new Vue({
