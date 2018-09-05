@@ -16,6 +16,10 @@ export default {
         active: {
             type: String,
             default: () => ''
+        },
+        disabled: {
+            type: Boolean,
+            default: false
         }
     },
     mounted() {
@@ -29,10 +33,14 @@ export default {
     methods: {
         attatchTouch() {
             this.$el.ontouchstart = () => {
-                this.$el.className += this.activeClass;
+                if (!this.disabled) {
+                    this.$el.className += this.activeClass;
+                }
             }
             this.$el.ontouchend = () => {
-                this.$el.className = this.$el.className.split(this.activeClass)[0];
+                if (!this.disabled) {
+                    this.$el.className = this.$el.className.split(this.activeClass)[0];
+                }
             }
         },
         buttonClick(e) {
@@ -43,5 +51,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import '../../style/base';
+@import '../../style/commom';
+.b-btn {
+    @include rounded-corners-2;
+}
 </style>
