@@ -7,17 +7,26 @@
         </div>
         <v-header></v-header>
         <div class="banner">
+            <p class="slogan">
+                BitMax<br>We Know Exchange
+            </p>
+            <v-quickRegist>
+            </v-quickRegist>
+            <div class="swiper">
 
+            </div>
         </div>
     </div>
     
 </template>
 <script>
     import header from '@/components/Header/Header';
+    import quickRegist from '@/components/QuickRegist/QuickRegist';
     export default {
         name: 'Home',
         components: {
-            'v-header': header
+            'v-header': header,
+            'v-quickRegist': quickRegist
         }
     }
 </script>
@@ -49,6 +58,14 @@
     .banner{
         background-color: $base-color; 
         height: px2rem(642px);
+        border-radius: 0 0 200px 200px/0 0 50px 50px;
+        position: relative;
+        .slogan{
+            @include ta_c;
+            font-size: px2rem(32px);
+            color: #fff;
+            padding: px2rem(80px) 0;
+        }
     }
 </style>
 

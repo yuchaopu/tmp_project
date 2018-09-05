@@ -27,9 +27,15 @@
     white-space: nowrap;
 }
 @mixin rounded-corners-2 {     // @mixin 定义
-     -moz-border-radius: 2px;
-     -webkit-border-radius: 2px;
-     border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+@mixin ta_c {     // @mixin 定义
+    text-align: center;
+}
+@mixin va-middle {     // @mixin 定义
+    vertical-align: middle;
 }
 /* 基础色*/
 $base-color:#0E6FD6; 

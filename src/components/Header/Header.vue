@@ -12,7 +12,10 @@
                 <div class="regist">
                     <router-link to="/demopage">{{ $t('message.btn.regist') }}</router-link>
                 </div>
-                <i class="icon icon-nav" @click="changeNav"></i>
+                <!-- <i class="icon icon-nav" @click="changeNav"></i> -->
+                <div @click="changeNav" class="icon-nav">
+                    <icon-svg class="icon-hanbaobao" icon-class="hanbaobao" />
+                </div>
             </div>
         </div>
         <transition name="slide-toggle"
@@ -138,7 +141,11 @@ export default {
                 height: px2rem(16px);
                 margin: px2rem(17px) px2rem(16px) 0 px2rem(20px);
                 display: inline-block;
-                background: url(../../assets/images/icon-nav@2x.png) center center/px2rem(16px) px2rem(16px) no-repeat;
+                .icon-hanbaobao{
+                    width: px2rem(16px);
+                    height: px2rem(16px);
+                    color: #fff;
+                }
             }
         }
     }
@@ -164,7 +171,6 @@ export default {
                 overflow: hidden;
             }
         }
-    }
-        
+    }  
 }
 </style>
