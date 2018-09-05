@@ -27,7 +27,7 @@
                 <ul>
                     <li>
                         <div class="cur-lan" @click="changeSubNav">
-                            简体中文
+                            {{text}}
                             <icon-svg class="icon-xiala" icon-class="xiala" :class="{'open': subNavShow}" />
                         </div>
                         <transition name="lan-toggle"
@@ -35,8 +35,8 @@
                                     v-on:after-enter="afterEnter"
                                     v-on:leave="leave"
                                     v-on:after-leave="afterLeave">
-                            <div class="sel-lan" v-show="subNavShow">
-                                English
+                            <div class="sel-lan" v-show="subNavShow" @click="changeLang()">
+                                {{text1}}
                             </div>
                         </transition>
                     </li>
@@ -71,12 +71,26 @@ export default {
         return {
             navShow: false,
             subNavShow: false,
-            fixed: false
+            fixed: false,
+            lang: window.localStorage.getItem('lang') || 'en'
         };
+    },
+    computed:{
+        text: function(){
+            return this.lang === 'en' ? 'English': '简体中文';
+        },
+        text1: function() {
+            return this.lang === 'en' ? '简体中文': 'English';
+        }
     },
     methods: {
         changeNav() {
             this.navShow = !this.navShow;
+        },
+        changeLang() {
+            const val = this.lang === 'en' ? 'zh' : 'en';
+            window.localStorage.setItem('lang', val);
+            location.reload();
         },
         hideNav() {
             this.navShow = false;
