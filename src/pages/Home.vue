@@ -141,17 +141,20 @@
                 <img src="../assets/images/investors-9@2x.png" alt="">
             </div>
         </div>
+        <v-footer class="header"></v-footer>
     </div>
     
 </template>
 <script>
     import header from '@/components/Header/Header';
+    import footer from '@/components/Footer/Footer';
     import quickRegist from '@/components/QuickRegist/QuickRegist';
     export default {
         name: 'Home',
         components: {
             'v-header': header,
-            'v-quickRegist': quickRegist
+            'v-quickRegist': quickRegist,
+            'v-footer': footer,
         }
     }
 </script>
