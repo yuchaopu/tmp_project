@@ -1,7 +1,7 @@
 <template>
     <div id="QuickRegist">
-        <input type="text" placeholder="输入邮箱地址" v-model="registMail">
-        <button @click = "regist()">免费注册<icon-svg class="icon-tiaozhuan" icon-class="tiaozhuan" /></button>
+        <input type="text" :placeholder="$t('message.placeholder.mail')" v-model="registMail">
+        <button @click = "regist()">{{$t('message.btn.regist')}}<icon-svg class="icon-tiaozhuan" icon-class="tiaozhuan" /></button>
     </div>
 </template>
 
