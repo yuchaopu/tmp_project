@@ -1,5 +1,5 @@
 <template>
-    <div id="header">
+    <div id="header" :class="{'fixed': fixed}">
         <div class="header-main">
             <div class="logo">
                 <router-link to="/">
@@ -70,7 +70,8 @@ export default {
     data() {
         return {
             navShow: false,
-            subNavShow: false
+            subNavShow: false,
+            fixed: false
         };
     },
     methods: {
@@ -102,7 +103,23 @@ export default {
         },
         afterLeave (el) {
             el.style.height = null
-        }
+        },
+        scroll (){
+            var scrollTop = this.getScrollTop(),
+                elem = document.getElementsByClassName('toptips')[0];
+            if(scrollTop > window.getComputedStyle(elem).height.split('px')[0]){
+                this.fixed = true;
+            } else {
+                this.fixed = false;
+            }
+        },
+        getScrollTop () {
+            return window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop
+        },
+    },
+    mounted() {
+        window.addEventListener("scroll", this.scroll, false),
+        this.scroll()
     }
 }
 </script>
@@ -113,7 +130,15 @@ export default {
 #header{
     height: px2rem(50px);
     background-color: $base-color;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    &.fixed{
+        position: fixed;
+        box-shadow: 0 px2rem(3px) px2rem(9px) 0 rgba($color: #000000, $alpha: 0.25);
+    }
     .header-main{
         display: flex;
         justify-content: space-between;
@@ -186,6 +211,7 @@ export default {
             .sel-lan{
                 color: $grey-color;
                 background-color: rgba($color: #E1E2E6, $alpha: 0.5);
+                border-top: 1px solid #E1E2E6;
                 transition: height .2s ease-in-out;
                 overflow: hidden;
             }

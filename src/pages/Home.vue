@@ -13,7 +13,7 @@
             <v-quickRegist>
             </v-quickRegist>
             <div class="swiper-wrapper">
-                <div class="swiper-content">
+                <div class="swiper-content" :class="{'move': swiperIndex == 2}">
                     <div class="swiper-tab">
                         <div class="swiper-item">
                             <h2>挖矿赚钱</h2>
@@ -29,10 +29,25 @@
 
                         </div>
                     </div>
+                    <div class="swiper-tab">
+                        <div class="swiper-item">
+                            <h2>挖矿赚钱222</h2>
+                            <p>据官方数据统计，平台开放注册24小时开放222</p>
+                        </div>
+                        <div class="swiper-item">
+
+                        </div>
+                        <div class="swiper-item">
+
+                        </div>
+                        <div class="swiper-item">
+
+                        </div>
+                    </div>
                 </div>
                 <div class="control-line">
-                    <span class="line active"></span>
-                    <span class="line"></span>
+                    <span class="line" :class="{'active': swiperIndex == 1}" @click="swiperChange(1)"></span>
+                    <span class="line" :class="{'active': swiperIndex == 2}" @click="swiperChange(2)"></span>
                 </div>
             </div>
         </div>
@@ -151,16 +166,29 @@
     import quickRegist from '@/components/QuickRegist/QuickRegist';
     export default {
         name: 'Home',
+        data (){
+            return {
+                swiperIndex: 1
+            };
+        },
         components: {
             'v-header': header,
             'v-quickRegist': quickRegist,
             'v-footer': footer,
+        },
+        methods: {
+            swiperChange (index){
+                this.swiperIndex = index;
+                console.log(this.swiperIndex)
+            },
         }
     }
 </script>
 <style lang="scss" scoped>
     @import '../style/base';
     @import '../style/commom';
+#homePage{
+    position: relative;
     .toptips{
         height: px2rem(30px);
         background: #004FA4;
@@ -169,6 +197,8 @@
         color: #fff;
         line-height: px2rem(30px);
         @include font-dpr(12px);
+        position: relative;
+        z-index: 2;
         .icon-gonggao_icon {
             width: px2rem(16px);
             height: px2rem(14px);
@@ -183,32 +213,51 @@
             margin: 0 px2rem(16px);
         }
     }
-    .header{
-        z-index: 2;
+    #header.header{
+        top: px2rem(30px);
+        // z-index: 3;
+        &.fixed{
+            top: 0;
+        }
     }
     .banner{
         background-color: $base-color; 
         height: px2rem(642px);
         border-radius: 0 0 200px 200px/0 0 50px 50px;
         position: relative;
+        margin-top: px2rem(-30px);
         .slogan{
             @include ta_c;
             font-size: px2rem(32px);
             // @include font-dpr(32px);
             color: #fff;
-            padding: px2rem(80px) 0;
+            padding: px2rem(110px) 0 px2rem(80px);
         }
         .swiper-wrapper{
             width: 100%;
-            height: px2rem(230px);;
+            height: px2rem(230px);
             position: absolute;
             left: 0;
             bottom: px2rem(-70px);
+            overflow: hidden;
             .swiper-content{
+                position: relative;
+                height: px2rem(210px);
+                transition: all 0.5s ease;
+                &.move{
+                    transform: translate(-100%, 0);
+                }
                 .swiper-tab{
+                    width: px2rem(375px);
                     display: flex;
                     justify-content: center;
                     flex-wrap: wrap;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    &:last-child{
+                        left: 100%;
+                    }
                     .swiper-item{
                         width: px2rem(165px);
                         height: px2rem(94px);
@@ -222,6 +271,7 @@
                             font-weight: normal;
                             color: $black-color;
                             @include font-dpr(14px);
+                            @include overflow-ellipsis;
                         }
                         p{
                             line-height: px2rem(18px);
@@ -402,5 +452,6 @@
             }
         }
     }
+}
 </style>
 
