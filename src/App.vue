@@ -30,7 +30,7 @@ export default {
         justify-content: space-between;
         color: #fff;
         line-height: px2rem(30px);
-        font-size: px2rem(12px);
+        @include font-dpr(12px);
         .icon-gonggao_icon {
             width: px2rem(16px);
             height: px2rem(14px);

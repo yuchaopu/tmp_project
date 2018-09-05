@@ -26,5 +26,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+@mixin rounded-corners-2 {     // @mixin 定义
+     -moz-border-radius: 2px;
+     -webkit-border-radius: 2px;
+     border-radius: 2px;
+}
 /* 基础色*/
 $base-color:#006CE1; 
