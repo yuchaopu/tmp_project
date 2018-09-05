@@ -6,7 +6,7 @@ import router from './router'
 import VueI18n from 'vue-i18n'
 
 import messages from './i18n/i18n'
-import './style/iconfont.css'
+import IconSvg from '@/components/IconSvg/IconSvg'
 
 Vue.config.productionTip = false
 
@@ -27,7 +27,7 @@ const i18n = new VueI18n({
     locale: locale ? locale : 'en',
     messages
 })
-
+Vue.component('icon-svg', IconSvg);
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

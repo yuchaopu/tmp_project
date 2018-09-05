@@ -1,6 +1,7 @@
 <template>
     <div id="header">
-        header
+        <icon-svg class="icon-logo" icon-class="logo" />
+
     </div>
 </template>
 
@@ -14,6 +15,11 @@ export default {
 @import '../../style/base';
 #header{
     height: px2rem(50px);
-    background-color: #006CE1;
+    background-color: $base-color;
+    .icon-logo{
+        width: px2rem(90px);
+        height: px2rem(18px);
+        margin: px2rem(16px) 0 0 px2rem(15px);
+    }
 }
 </style>

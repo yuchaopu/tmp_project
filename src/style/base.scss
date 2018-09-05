@@ -20,3 +20,11 @@
         font-size: $font-size * 3;
     }
 }
+/* 超出 省略号*/
+@mixin overflow-ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* 基础色*/
+$base-color:#006CE1; 
