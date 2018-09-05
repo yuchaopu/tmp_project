@@ -1,13 +1,26 @@
 <template>
     <div id="QuickRegist">
-        <input type="text" placeholder="输入邮箱地址">
-        <button>免费注册<icon-svg class="icon-tiaozhuan" icon-class="tiaozhuan" /></button>
+        <input type="text" :placeholder="$t('message.placeholder.mail')" v-model="registMail">
+        <button @click = "regist()">{{$t('message.btn.regist')}}<icon-svg class="icon-tiaozhuan" icon-class="tiaozhuan" /></button>
     </div>
 </template>
 
 <script>
     export default {
-
+        data() {
+            return {
+                registMail: ""
+            }
+        },
+        methods: {
+            regist() {
+                if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(this.registMail)) {
+                    alert("注意你的邮箱格式")
+                } else {
+                    alert('跳转到注册页面')
+                }
+            }
+        }
     }
 </script>
 
