@@ -156,13 +156,16 @@
                 <img src="../assets/images/investors-9@2x.png" alt="">
             </div>
         </div>
-        <v-footer class="header"></v-footer>
+        <v-footer></v-footer>
+        <v-fixedTools></v-fixedTools>
+
     </div>
     
 </template>
 <script>
     import header from '@/components/Header/Header';
     import footer from '@/components/Footer/Footer';
+    import fixedTools from '@/components/FixedTools/FixedTools';
     import quickRegist from '@/components/QuickRegist/QuickRegist';
     export default {
         name: 'Home',
@@ -175,6 +178,7 @@
             'v-header': header,
             'v-quickRegist': quickRegist,
             'v-footer': footer,
+            'v-fixedTools': fixedTools
         },
         methods: {
             swiperChange (index){

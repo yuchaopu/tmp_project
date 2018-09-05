@@ -127,6 +127,7 @@ export default {
         flex-grow: 1;
         background-color: $white-color;
         padding: px2rem(30px) px2rem(20px);
+        margin-top: px2rem(50px);
         &-title {
             @include font-dpr(30px);
             font-weight: 300;
