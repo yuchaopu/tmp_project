@@ -22,7 +22,8 @@ module.exports = {
                 registText1: '已经注册?',
                 registText2: '如有疑问请联系客服：',
                 registLogin: '立即登录'
-            }
+            },
+            volume: "24h Volume"
         }
     },
     zh: {
@@ -48,7 +49,8 @@ module.exports = {
                 registText1: '已经注册?',
                 registText2: '如有疑问请联系客服：',
                 registLogin: '立即登录'
-            }
+            },
+            volume: "24h成交量"
         }
     }
 }

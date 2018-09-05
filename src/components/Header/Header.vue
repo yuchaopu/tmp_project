@@ -3,7 +3,7 @@
         <div class="header-main">
             <div class="logo">
                 <router-link to="/">
-                    <icon-svg class="icon-logo" icon-class="logo" />
+                    <icon-svg class="icon-logo" icon-class="logo_" />
                 </router-link>
                 
             </div>
@@ -27,15 +27,16 @@
                 <ul>
                     <li>
                         <div class="cur-lan" @click="changeSubNav">
-                            简体中文
+                            {{text}}
+                            <icon-svg class="icon-xiala" icon-class="xiala" :class="{'open': subNavShow}" />
                         </div>
                         <transition name="lan-toggle"
                                     v-on:enter="enter"
                                     v-on:after-enter="afterEnter"
                                     v-on:leave="leave"
                                     v-on:after-leave="afterLeave">
-                            <div class="sel-lan" v-show="subNavShow">
-                                English
+                            <div class="sel-lan" v-show="subNavShow" @click="changeLang()">
+                                {{text1}}
                             </div>
                         </transition>
                     </li>
@@ -69,12 +70,26 @@ export default {
     data() {
         return {
             navShow: false,
-            subNavShow: false
+            subNavShow: false,
+            lang: window.localStorage.getItem('lang') || 'en'
         };
+    },
+    computed:{
+        text: function(){
+            return this.lang === 'en' ? 'English': '简体中文';
+        },
+        text1: function() {
+            return this.lang === 'en' ? '简体中文': 'English';
+        }
     },
     methods: {
         changeNav() {
             this.navShow = !this.navShow;
+        },
+        changeLang() {
+            const val = this.lang === 'en' ? 'zh' : 'en';
+            window.localStorage.setItem('lang', val);
+            location.reload();
         },
         hideNav() {
             this.navShow = false;
@@ -166,8 +181,24 @@ export default {
             border-bottom: 1px solid #E1E2E6;
             text-indent: px2rem(15px);
             @include font-dpr(14px);
+            .cur-lan{
+                position: relative;
+                .icon-xiala{
+                    width: px2rem(21px);
+                    height: px2rem(14px);
+                    position: absolute;
+                    right: px2rem(15px);
+                    top: px2rem(18px);
+                    transition: all .2s ease-in-out;
+                    color: $grey-color;
+                    transform: rotate(180deg);
+                    &.open{
+                        transform: rotate(0);
+                    }
+                }
+            }
             .sel-lan{
-                color: #6B798E;
+                color: $grey-color;
                 background-color: rgba($color: #E1E2E6, $alpha: 0.5);
                 transition: height .2s ease-in-out;
                 overflow: hidden;

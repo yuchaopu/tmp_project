@@ -99,7 +99,7 @@ export default {
     &-content {
         width: 100%;
         flex-grow: 1;
-        background-color: $c-white;
+        background-color: $white-color;
         padding: px2rem(30px) px2rem(20px);
         &-title {
             @include font-dpr(30px);
@@ -114,7 +114,7 @@ export default {
         &-btn {
             @include ta_c;
             @include font-dpr(16px);
-            color: $c-white;
+            color: $white-color;
             width: 100%;
             height: px2rem(42px);
             line-height: px2rem(42px);
