@@ -3,25 +3,25 @@
         <icon-svg class="icon-logo" icon-class="logo" />
         <ul>
             <li>
-                公告中心
+                {{$t('message.btn.announcements')}}
             </li>
             <li>
-                帮助中心
+                {{$t('message.btn.help')}}
             </li>
             <li>
-                服务协议
+                {{$t('message.btn.termService')}}
             </li>
             <li>
-                隐私协议
+                {{$t('message.btn.privacyPolicy')}}
             </li>
             <li>
-                免责声明
+                {{$t('message.btn.disclaimer')}}
             </li>
             <li>
-                费率标准
+                {{$t('message.btn.fees')}}
             </li>
             <li>
-                API接入
+                {{$t('message.btn.apidoc')}}
             </li>
         </ul>
     </div>
