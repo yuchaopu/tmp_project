@@ -127,11 +127,10 @@ export default {
                 padding: 0 px2rem(12px);
                 display: inline-block;
                 margin-top: px2rem(10px);
-                // @include font-dpr(14px);
-                font-size: px2rem(14px);
+                @include font-dpr(14px);
                 text-align: center;
                 @include rounded-corners-2;
-                border: 1px solid rgba(255, 255, 255, .5);
+                border: 1px solid rgba($color: #fff, $alpha: 0.5);
                 a{
                     color: #fff;
                 }
@@ -151,7 +150,7 @@ export default {
     }
     .nav-wrapper{
         background-color: #fff;
-        box-shadow: 0 px2rem(4px) px2rem(11px) 0 rgba(0,0,0,0.43);
+        box-shadow: 0 px2rem(4px) px2rem(11px) 0 rgba($color: #000, $alpha: 0.43);;
         width: 100%;
         transition: height .3s ease-in-out;
         position: absolute;
@@ -163,10 +162,10 @@ export default {
             line-height: px2rem(50px);
             border-bottom: 1px solid #E1E2E6;
             text-indent: px2rem(15px);
-            font-size: px2rem(14px);
+            @include font-dpr(14px);
             .sel-lan{
                 color: #6B798E;
-                background-color: rgba(225,226,230,.5);
+                background-color: rgba($color: #E1E2E6, $alpha: 0.5);
                 transition: height .2s ease-in-out;
                 overflow: hidden;
             }

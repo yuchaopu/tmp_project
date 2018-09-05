@@ -22,12 +22,13 @@
         height: px2rem(44px);
         line-height: px2rem(24px);
         padding: px2rem(10px);
-        font-size: px2rem(16px);
-        border: 1px solid rgba(255,255,255,.6);
+        @include font-dpr(16px);
+        border: 1px solid rgba($color: #fff, $alpha: 0.6);
         background: transparent;
+        -webkit-appearance: none;
         color: #fff;
         &::-webkit-input-placeholder{
-            color: rgba(255,255,255,.6);
+            color: rgba($color: #fff, $alpha: 0.6);
         }
         &:focus{
             border-color: #fff;
@@ -39,7 +40,7 @@
         height: px2rem(44px);
         line-height: px2rem(44px);
         margin-top: px2rem(20px);
-        font-size: px2rem(16px);
+        @include font-dpr(16px);
         color: $base-color;
         background: #FFFFFF;
         border: none;

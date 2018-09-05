@@ -29,13 +29,13 @@ export default {
 @import '../style/commom';
 .demo-page {
     &-title {
-        font-size: px2rem(28px);
+        @include font-dpr(28px);
     }
 
     &-btn {
         height: px2rem(30px);
         width: px2rem(78px);
-        font-size: px2rem(14px);
+        @include font-dpr(14px);
         text-align: center;
         line-height: px2rem(30px);
         border: 1px solid #fff;

@@ -14,9 +14,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import './style/base';
 @import './style/commom';
+html,body{
+    background-color: #F3F3F3;
+}
 #app {
     .toptips{
         height: px2rem(30px);
