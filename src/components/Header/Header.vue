@@ -28,6 +28,7 @@
                     <li>
                         <div class="cur-lan" @click="changeSubNav">
                             简体中文
+                            <icon-svg class="icon-xiala" icon-class="xiala" :class="{'open': subNavShow}" />
                         </div>
                         <transition name="lan-toggle"
                                     v-on:enter="enter"
@@ -166,8 +167,24 @@ export default {
             border-bottom: 1px solid #E1E2E6;
             text-indent: px2rem(15px);
             @include font-dpr(14px);
+            .cur-lan{
+                position: relative;
+                .icon-xiala{
+                    width: px2rem(21px);
+                    height: px2rem(14px);
+                    position: absolute;
+                    right: px2rem(15px);
+                    top: px2rem(18px);
+                    transition: all .2s ease-in-out;
+                    color: $grey-color;
+                    transform: rotate(180deg);
+                    &.open{
+                        transform: rotate(0);
+                    }
+                }
+            }
             .sel-lan{
-                color: #6B798E;
+                color: $grey-color;
                 background-color: rgba($color: #E1E2E6, $alpha: 0.5);
                 transition: height .2s ease-in-out;
                 overflow: hidden;

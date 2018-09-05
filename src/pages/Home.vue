@@ -163,7 +163,7 @@
                             line-height: px2rem(18px);
                             @include font-dpr(11px);
                             margin-top: px2rem(8px);
-                            color: #6B798E;
+                            color: $grey-color;
                         }
                     }
                 }
@@ -175,7 +175,7 @@
                 .line{
                     width: px2rem(40px);
                     height: px2rem(3px);
-                    background-color: rgba($color: #6B798E, $alpha: 0.2);
+                    background-color: rgba($color: $grey-color, $alpha: 0.2);
                     &:last-child{
                         margin-left: px2rem(20px);
                     }
@@ -189,7 +189,7 @@
     }
     .quotation{
         margin-top: px2rem(100px);
-        padding-top: px2rem(10px);
+        padding: px2rem(10px) 0;
         .quotation-item{
             width: px2rem(345px);
             background: #FFFFFF;
@@ -230,12 +230,12 @@
                 .CNY{
                     margin-top: px2rem(10px);
                     @include font-dpr(12px);
-                    color: #6B798E;
+                    color: $grey-color;
                 }
             }
             .latest-24{
                 @include font-dpr(14px);
-                color: #6B798E;
+                color: $grey-color;
                 span{
                     color: $black-color;
                     margin-right: px2rem(10px);
