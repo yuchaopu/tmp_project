@@ -77,8 +77,69 @@
                 </div>
             </div>
         </div>
-        <div class="introduce">
-            
+        <div class="advantage">
+            <h2>我们的优势</h2>
+            <div class="advantage-item">
+                <icon-svg class="advantage-icon icon-gongkaitouming_icon" icon-class="gongkaitouming_icon" />
+                <h3>公开透明</h3>
+                <p>实时的资产与交易数据查询验证机制，可为用户提供24小时实时全交易记录，以达到高度公开透明。 </p>
+            </div>
+            <div class="advantage-item">
+                <icon-svg class="advantage-icon icon-gaoxingnengzhichi_icon" icon-class="gaoxingnengzhichi_icon" />
+                <h3>高性能支持</h3>
+                <p>面向大型金融机构服务的系统架构设计，采用先进的内存算法、快速读写、分布式信息传输框架，能够实时处理大规模交易。 </p>
+            </div>
+            <div class="advantage-item">
+                <icon-svg class="advantage-icon icon-anquanwuqin_icon" icon-class="anquanwuqin_icon" />
+                <h3>安全稳定</h3>
+                <p>多级防⽕墙，多重签名，冷热隔离钱包，多维度降低用户资产风险。 </p>
+            </div>
+            <div class="advantage-item">
+                <icon-svg class="advantage-icon icon-liudongxingzhichi_icon" icon-class="liudongxingzhichi_icon" />
+                <h3>流动性支持</h3>
+                <p>丰富的行业资源和优质的战略合作伙伴，活跃的社区参与度，为交易提供更好的流动性。 </p>
+            </div>
+            <div class="advantage-item">
+                <icon-svg class="advantage-icon icon-tuanduiliangdian_icon" icon-class="tuanduiliangdian_icon" />
+                <h3>团队亮点</h3>
+                <p>结合传统金融行业的大规模交易技术、互联网企业的高效运营体系和数字资产系统的研发经验，致力于打造和完善为全球用户服务的新型数字资产交易平台。 </p>
+            </div>
+        </div>
+        <div class="middle-regist">
+            <p class="slogan">
+                免费注册<br>即可马上交易
+            </p>
+            <v-quickRegist>
+            </v-quickRegist>
+        </div>
+        <div class="investors">
+            <div class="investors-item">
+                <img src="../assets/images/investors-1@2x.png" alt="">
+            </div>
+            <div class="investors-item">
+                <img src="../assets/images/investors-2@2x.png" alt="">
+            </div>
+            <div class="investors-item">
+                <img src="../assets/images/investors-3@2x.png" alt="">
+            </div>
+            <div class="investors-item">
+                <img src="../assets/images/investors-4@2x.png" alt="">
+            </div>
+            <div class="investors-item">
+                <img src="../assets/images/investors-5@2x.png" alt="">
+            </div>
+            <div class="investors-item">
+                <img src="../assets/images/investors-6@2x.png" alt="">
+            </div>
+            <div class="investors-item">
+                <img src="../assets/images/investors-7@2x.png" alt="">
+            </div>
+            <div class="investors-item">
+                <img src="../assets/images/investors-8@2x.png" alt="">
+            </div>
+            <div class="investors-item">
+                <img src="../assets/images/investors-9@2x.png" alt="">
+            </div>
         </div>
     </div>
     
@@ -240,6 +301,101 @@
                     color: $black-color;
                     margin-right: px2rem(10px);
                 }
+            }
+        }
+    }
+    .advantage{
+        margin: px2rem(40px) 0;
+            color: $black-color;
+        @include ta_c;
+        h2{
+            font-weight: normal;
+            @include font-dpr(24px);
+        }
+        .advantage-item{
+            margin-top: px2rem(30px);
+            h3{
+                font-weight: normal;
+                margin: px2rem(15px) 0 px2rem(10px) 0;
+                @include font-dpr(16px);
+            }
+            p{
+                color: $grey-color;
+                @include font-dpr(12px);
+                padding: 0 px2rem(20px);
+            }
+            .advantage-icon{
+                color: $base-color;
+                &.icon-gongkaitouming_icon{
+                    width: px2rem(42px);
+                    height: px2rem(44px);
+                }
+                &.icon-gaoxingnengzhichi_icon{
+                    width: px2rem(44px);
+                    height: px2rem(42px);
+                }
+                &.icon-anquanwuqin_icon{
+                    width: px2rem(44px);
+                    height: px2rem(38px);
+                }
+                &.icon-tuanduiliangdian_icon{
+                    width: px2rem(40px);
+                    height: px2rem(44px);
+                }
+                &.icon-liudongxingzhichi_icon{
+                    width: px2rem(44px);
+                    height: px2rem(44px);
+                }
+            }
+            
+        }
+    }
+    .middle-regist{
+        height: px2rem(487px);
+        background-color: $base-color;
+        position: relative;
+        &:before{
+            content: '';
+            width: px2rem(125px);
+            height: px2rem(142px);
+            position: absolute;
+            top: px2rem(29px);
+            left: 0;
+            background: url(../assets/images/regist-left@2x.png) center center/px2rem(125px) px2rem(142px) no-repeat;
+        }
+        &:after{
+            content: '';
+            width: px2rem(138px);
+            height: px2rem(128px);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: url(../assets/images/regist-right@2x.png) center center/px2rem(138px) px2rem(128px) no-repeat;
+        }
+        .slogan{
+            @include ta_c;
+            font-size: px2rem(24px);
+            color: #fff;
+            padding: px2rem(144px) 0 px2rem(18px);
+        }
+    }
+    .investors{
+        display: flex;
+        // justify-content: center;
+        flex-wrap: wrap;
+        background-color: #fff;
+        padding: px2rem(40px) 0 0;
+        .investors-item{
+            width: px2rem(185px);
+            height: px2rem(46px);
+            margin-bottom: px2rem(30px);
+            &:nth-child(2n+1){
+                margin-left: px2rem(3px);
+            }
+            img{
+                width: 100%;
+                height: auto;
+                display: block;
             }
         }
     }
