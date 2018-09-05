@@ -47,7 +47,7 @@
                     <p class="CNY">￥15.78</p>
                 </div>
                 <div class="latest-24">
-                    <p>24h成交量：<span>7,891.12345678</span><span>EOS</span> </p>
+                    <p>{{$t('message.volume')}}：<span>7,891.12345678</span><span>EOS</span> </p>
                 </div>
             </div>
             <div class="quotation-item">
@@ -60,7 +60,7 @@
                     <p class="CNY">￥15.78</p>
                 </div>
                 <div class="latest-24">
-                    <p>24h成交量：<span>7,891.12345678</span><span>EOS</span> </p>
+                    <p>{{$t('message.volume')}}：<span>7,891.12345678</span><span>EOS</span> </p>
                 </div>
             </div>
             <div class="quotation-item">
@@ -73,7 +73,7 @@
                     <p class="CNY">￥15.78</p>
                 </div>
                 <div class="latest-24">
-                    <p>24h成交量：<span>7,891.12345678</span><span>EOS</span> </p>
+                    <p>{{$t('message.volume')}}：<span>7,891.12345678</span><span>EOS</span> </p>
                 </div>
             </div>
         </div>

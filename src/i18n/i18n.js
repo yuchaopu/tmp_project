@@ -10,7 +10,8 @@ module.exports = {
             },
             placeholder: {
                 mail: 'Enter your email address'
-            }
+            },
+            volume: "24h Volume"
         }
     },
     zh: {
@@ -24,7 +25,8 @@ module.exports = {
             },
             placeholder: {
                 mail: "输入邮箱地址"
-            }
+            },
+            volume: "24h成交量"
         }
     }
 }
