@@ -3,7 +3,7 @@
         <div class="header-main">
             <div class="logo">
                 <router-link to="/">
-                    <icon-svg class="icon-logo" icon-class="logo" />
+                    <icon-svg class="icon-logo" icon-class="logo_" />
                 </router-link>
                 
             </div>
