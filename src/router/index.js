@@ -9,6 +9,10 @@ export default new Router({
     routes: [
         {
             path: '/',
+            redirect: 'Home'
+        },
+        {
+            path: '/Home',
             name: 'Home',
             component: Home
         },
