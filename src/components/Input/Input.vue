@@ -9,7 +9,8 @@
             :class="{'with-icon': icon, 'verify-error': !verifyPass}"
             :placeholder="placeholder"
             @input="onInput($event)"
-            :type="type">
+            :type="type"
+            :value="value">
         <div v-if="errorText" class="b-input-error-text">{{ errorText }}</div>
     </div>
 </template>

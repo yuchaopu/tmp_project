@@ -60,7 +60,7 @@ export default {
             contact: 'support@bitmax.io',
             registEnabled: true,
             registData: {
-                email: '',
+                email: 'test@163.com',
                 passd: '',
                 passdConf: '',
                 recommend: ''
