@@ -9,7 +9,13 @@ module.exports = {
                 login: "Log in",
                 announcements: "Announcements",
                 whitePaper: "White Paper",
-                registBtn: "Regist"
+                registBtn: "Regist",
+                help: 'Help Center',
+                termService: "Terms of Services",
+                privacyPolicy: "Privacy Policy",
+                disclaimer: "Disclaimer",
+                fees: "Fees",
+                apidoc: "API Doc"
             },
             placeholder: {
                 mail: "Enter your email address",
@@ -60,7 +66,13 @@ module.exports = {
                 login: "登录",
                 announcements: "公告中心",
                 whitePaper: "白皮书",
-                registBtn: "注册"
+                registBtn: "注册",
+                help: "帮助中心",
+                termService: "服务协议",
+                privacyPolicy: "隐私协议",
+                disclaimer: "免责声明",
+                fees: "费率标准",
+                apidoc: "API接入"
             },
             placeholder: {
                 mail: "输入邮箱地址",
