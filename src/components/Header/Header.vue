@@ -12,14 +12,29 @@
                 <div class="regist">
                     <router-link to="/demopage">{{ $t('message.btn.regist') }}</router-link>
                 </div>
-                <i class="icon icon-nav"></i>
+                <i class="icon icon-nav" @click="changeNav"></i>
             </div>
         </div>
-        <nav>
-            <div class="nav-wrapper">
+        <transition name="slide-toggle"
+                    v-on:enter="enter"
+                    v-on:after-enter="afterEnter"
+                    v-on:leave="leave"
+                    v-on:after-leave="afterLeave">
+            <div class="nav-wrapper" v-show="navShow">
                 <ul>
                     <li>
-                        简体中文
+                        <div class="cur-lan" @click="changeSubNav">
+                            简体中文
+                        </div>
+                        <transition name="lan-toggle"
+                                    v-on:enter="enter"
+                                    v-on:after-enter="afterEnter"
+                                    v-on:leave="leave"
+                                    v-on:after-leave="afterLeave">
+                            <div class="sel-lan" v-show="subNavShow">
+                                English
+                            </div>
+                        </transition>
                     </li>
                     <li>
                         币币交易
@@ -38,14 +53,50 @@
                     </li>
                 </ul>
             </div>
-        </nav> 
+        </transition>
         
     </div>
 </template>
 
 <script>
 export default {
-
+    data() {
+        return {
+            navShow: false,
+            subNavShow: false
+        };
+    },
+    methods: {
+        changeNav() {
+            this.navShow = !this.navShow;
+        },
+        hideNav() {
+            this.navShow = false;
+        },
+        changeSubNav() {
+            this.subNavShow = !this.subNavShow;
+        },
+        enter (el) {
+            el.style.height = 'auto'
+            // noinspection JSSuspiciousNameCombination
+            var endWidth = window.getComputedStyle(el).height
+            el.style.height = '0px'
+            el.offsetHeight // force repaint
+            // noinspection JSSuspiciousNameCombination
+            el.style.height = endWidth;
+        },
+        afterEnter (el) {
+            el.style.height = null
+        },
+        leave (el) {
+            el.style.height = window.getComputedStyle(el).height
+            el.offsetHeight // force repaint
+            el.style.height = '0px'
+        },
+        afterLeave (el) {
+            el.style.height = null
+        }
+    }
 }
 </script>
 
@@ -95,15 +146,23 @@ export default {
         background-color: #fff;
         box-shadow: 0 px2rem(4px) px2rem(11px) 0 rgba(0,0,0,0.43);
         width: 100%;
+        transition: height .3s ease-in-out;
         position: absolute;
         left: 0;
         top: px2rem(50px);
+        overflow: hidden;
         li{
-            height: px2rem(50px);
+            // height: px2rem(50px);
             line-height: px2rem(50px);
             border-bottom: 1px solid #E1E2E6;
             text-indent: px2rem(15px);
             font-size: px2rem(14px);
+            .sel-lan{
+                color: #6B798E;
+                background-color: rgba(225,226,230,.5);
+                transition: height .2s ease-in-out;
+                overflow: hidden;
+            }
         }
     }
         
