@@ -1,22 +1,25 @@
 <template>
-    <div id="app">
-        <router-view />
+    <div id="homePage">
+        <div class="toptips">
+            <icon-svg class="icon-gonggao_icon" icon-class="gonggao_icon" />
+            <p>公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符</p>
+            <span>(8-24)</span>
+        </div>
+        <v-header></v-header>
     </div>
+    
 </template>
-
 <script>
-import header from './components/Header/Header.vue';
-export default {
-    name: 'App',
-    components: {
-      'v-header': header
+    import header from '@/components/Header/Header';
+    export default {
+        name: 'Home',
+        components: {
+            'v-header': header
+        }
     }
-}
 </script>
-
 <style lang="scss" scoped>
-@import './style/base.scss';
-#app {
+    @import '../style/base.scss';
     .toptips{
         height: px2rem(30px);
         background: #004FA4;
@@ -39,6 +42,5 @@ export default {
             margin: 0 px2rem(16px);
         }
     }
-    
-}
 </style>
+
