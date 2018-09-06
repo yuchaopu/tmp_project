@@ -33,7 +33,8 @@ module.exports = {
                 registLogin: 'Login',
                 loginText1: 'No account?',
                 loginText2: 'Regist',
-                loginText3: 'Forgot Password'
+                loginText3: 'Forgot Password',
+                forgetText1: '英文待填写'
             },
             verify: {
                 notEmpty: "请输入{key}",
@@ -101,7 +102,8 @@ module.exports = {
                 registLogin: '立即登录',
                 loginText1: '没有账户?',
                 loginText2: '立即注册',
-                loginText3: '忘记密码'
+                loginText3: '忘记密码',
+                forgetText1:'为了您的资产安全，重置登录密码修改24小时以内不允许提币。'
             },
             verify: {
                 notEmpty: "请输入{key}",

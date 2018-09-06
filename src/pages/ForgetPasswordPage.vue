@@ -3,6 +3,10 @@
         <v-header class="regist-page-header" :show-regist="false" />
         <div class="regist-page-content">
             <div class="regist-page-content-title">{{ $t('message.title.requestPassword') }}</div>
+            <div class="regist-page-content-warning">
+                <icon-svg icon-class="jinggao" class="regist-page-content-warning-jinggao"></icon-svg>
+                {{ $t('message.content.forgetText1') }}
+            </div>
             <div class="regist-page-content-form">
                 <b-input
                     v-model="registData.email"
@@ -87,8 +91,17 @@ export default {
             @include font-dpr(30px);
             font-weight: 300;
         }
+        &-warning{
+            color: #F5A623;
+            margin-top: px2rem(20px);
+            @include font-dpr(12px);
+            &-jinggao{
+                width: px2rem(12px)!important;
+                height: px2rem(12px)!important;
+            }
+        }
         &-form {
-            margin: px2rem(30px) 0 px2rem(20px);
+            margin: px2rem(10px) 0 px2rem(20px);
             &-input {
                 @include font-dpr(14px);
             }

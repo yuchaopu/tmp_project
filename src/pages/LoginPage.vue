@@ -130,6 +130,8 @@ export default {
         &-footer {
             @include font-dpr(12px);
             color: #A8ACB9;
+            display: flex;
+            justify-content: space-between;
             &-login {
                 color: #006CE1;
             }

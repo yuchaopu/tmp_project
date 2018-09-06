@@ -2,8 +2,15 @@
     <div id="homePage">
         <div class="toptips">
             <icon-svg class="icon-gonggao_icon" icon-class="gonggao_icon" />
-            <p>公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符</p>
-            <span>(8-24)</span>
+            <div class="news-list">
+                <transition name="slide" mode="out-in">
+                    <div class="news-item" :key="news.index">
+                        <p>{{news.text}}</p>
+                        <span>({{news.time}})</span>
+                    </div>
+                </transition>
+            </div>
+            
         </div>
         <v-header class="header"></v-header>
         <div class="banner">
@@ -171,8 +178,26 @@
         name: 'Home',
         data (){
             return {
-                swiperIndex: 1
+                swiperIndex: 1,
+                number: 0,
+                topNews:[
+                    {text:"111公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符", time: '8-21'},
+                    {text:"222公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符", time: '8-22'},
+                    {text:"333公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符", time: '8-23'}
+                ]
             };
+        },
+        computed: {
+            news() {
+                return {
+                    index: this.number,
+                    text: this.topNews[this.number].text,
+                    time: this.topNews[this.number].time
+                }
+            }
+        },
+        mounted() {
+            this.startMove()
         },
         components: {
             'v-header': header,
@@ -183,8 +208,17 @@
         methods: {
             swiperChange (index){
                 this.swiperIndex = index;
-                console.log(this.swiperIndex)
             },
+            startMove() {
+                let timer = setTimeout(() => {
+                    if (this.number === this.topNews.length - 1) {
+                        this.number = 0;
+                    } else {
+                        this.number += 1;
+                    }
+                    this.startMove();
+                }, 5000)
+            }
         }
     }
 </script>
@@ -208,14 +242,32 @@
             height: px2rem(14px);
             margin: px2rem(8px) px2rem(16px) 0 px2rem(16px);
         }
-        p {
-            width: px2rem(248px);
+        .news-list{
             flex: 1;
-            @include overflow-ellipsis;
+            overflow: hidden;
+            .news-item{
+                display: flex;
+                justify-content: space-between;
+                p {
+                    // width: px2rem(248px);
+                    flex: 1;
+                    @include overflow-ellipsis;
+                }
+                span {
+                    margin: 0 px2rem(16px);
+                }
+            }
+            .slide-enter-active, .slide-leave-active {
+                transition: all 0.5s linear;
+            }
+            .slide-leave-to {
+                transform: translateY(px2rem(-15px));
+            }
+            .slide-enter{
+                transform: translateY(px2rem(15px));
+            }
         }
-        span {
-            margin: 0 px2rem(16px);
-        }
+       
     }
     #header.header{
         top: px2rem(30px);
