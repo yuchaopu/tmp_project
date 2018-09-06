@@ -1,35 +1,35 @@
 <template>
-    <div class="regist-page">
-        <v-header class="regist-page-header" :show-regist="false" />
-        <div class="regist-page-content">
-            <div class="regist-page-content-title">{{ $t('message.title.login') }}</div>
-            <div class="regist-page-content-form">
+    <div class="login-page">
+        <v-header class="login-page-header" :show-regist="false" />
+        <div class="login-page-content">
+            <div class="login-page-content-title">{{ $t('message.title.login') }}</div>
+            <div class="login-page-content-form">
                 <b-input
                     v-model="registData.email"
-                    class="regist-page-content-form-input"
+                    class="login-page-content-form-input"
                     icon="email_icon"
                     :placeholder="$t('message.placeholder.registMail')"
                     :verify="emailVerify"/>
                 <b-input
                     v-model="registData.passd"
-                    class="regist-page-content-form-input regist-page-gap-top_20"
+                    class="login-page-content-form-input login-page-gap-top_20"
                     icon="password_icon"
                     type="password"
                     :placeholder="$t('message.placeholder.registPassd')"
                     :verify="passdVerify"/>
             </div>
             <b-button
-                class="regist-page-content-btn"
+                class="login-page-content-btn"
                 :class="{'enabled': registEnabled}"
-                active="regist-page-content-btn-active"
+                active="login-page-content-btn-active"
                 :disabled="!registEnabled">{{ $t('message.content.registLogin') }}</b-button>
-            <div class="regist-page-content-footer regist-page-gap-top_20">
+            <div class="login-page-content-footer login-page-gap-top_20">
                 <div>
                     {{ $t('message.content.loginText1') }}
-                    <router-link class="regist-page-content-footer-login" to="/regist">{{ $t('message.content.loginText2') }}</router-link>
+                    <router-link class="login-page-content-footer-login" to="/regist">{{ $t('message.content.loginText2') }}</router-link>
                 </div>
                 <div class="">
-                    <router-link class="regist-page-content-footer-login" to="/forgetpassword">{{ $t('message.content.loginText3') }}</router-link>
+                    <router-link class="login-page-content-footer-login" to="/forgetpassword">{{ $t('message.content.loginText3') }}</router-link>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@ export default {
 <style lang="scss" scoped>
 @import '../style/base';
 @import '../style/commom';
-.regist-page {
+.login-page {
     height: 100%;
     width: 100%;
     display: flex;
@@ -134,10 +134,6 @@ export default {
                 color: #006CE1;
             }
         }
-    }
-
-    &-gap-top_10 {
-        margin-top: px2rem(10px);
     }
     &-gap-top_20 {
         margin-top: px2rem(20px);
