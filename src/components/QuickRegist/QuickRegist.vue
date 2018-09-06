@@ -34,7 +34,12 @@
                 if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(this.registMail)) {
                     alert("注意你的邮箱格式")
                 } else {
-                    alert('跳转到注册页面')
+                    this.$router.push({
+                        name: 'Regist',
+                        params: {
+                            email: this.registMail
+                        }
+                    });
                 }
             }
         }

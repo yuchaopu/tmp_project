@@ -60,7 +60,7 @@ export default {
             contact: 'support@bitmax.io',
             registEnabled: true,
             registData: {
-                email: '',
+                email: this.$route.params.email || '',
                 passd: '',
                 passdConf: '',
                 recommend: ''
