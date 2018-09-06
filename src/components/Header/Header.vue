@@ -125,7 +125,8 @@ export default {
         scroll (){
             let scrollTop = this.getScrollTop(),
                 elem = document.getElementsByClassName('toptips')[0];
-            if(scrollTop > window.getComputedStyle(elem).height.split('px')[0]){
+            let scrollDistance = elem ? window.getComputedStyle(elem).height.split('px')[0] : 0;
+            if(scrollTop > scrollDistance){
                 this.fixed = true;
             } else {
                 this.fixed = false;
