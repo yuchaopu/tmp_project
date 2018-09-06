@@ -1,7 +1,7 @@
 <template>
     <div id="QuickRegist">
         <input type="text" :placeholder="$t('message.placeholder.mail')" v-model="registMail">
-        <button @click = "regist()">{{$t('message.btn.regist')}}<icon-svg class="icon-tiaozhuan" icon-class="tiaozhuan" /></button>
+        <button @click="regist()" ref="button">{{$t('message.btn.regist')}}<icon-svg class="icon-tiaozhuan" icon-class="tiaozhuan" /></button>
     </div>
 </template>
 
@@ -9,10 +9,27 @@
     export default {
         data() {
             return {
-                registMail: ""
+                registMail: "",
+                active: 'active'
+            }
+        },
+        mounted() {
+            this.attatchTouch();
+        },
+        computed: {
+            activeClass() {
+                return ' ' + this.active;
             }
         },
         methods: {
+            attatchTouch() {
+                this.$refs.button.ontouchstart = () => {
+                    this.$refs.button.className += this.activeClass;
+                }
+                this.$refs.button.ontouchend = () => {
+                    this.$refs.button.className = this.$refs.button.className.split(this.activeClass)[0];
+                }
+            },
             regist() {
                 if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(this.registMail)) {
                     alert("注意你的邮箱格式")
@@ -59,8 +76,8 @@
         border: none;
         @include rounded-corners-2;
         @include ta_c;
-        &:active,&:hover{
-            opacity: 0.5;
+        &.active{
+            opacity: 0.5!important;
         }
         .icon-tiaozhuan{
             width: px2rem(16px);

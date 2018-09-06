@@ -47,10 +47,14 @@
                         {{$t('message.btn.announcements')}}
                     </li>
                     <li>
-                        {{$t('message.btn.login')}}
+                        <router-link to="/login">
+                            {{$t('message.btn.login')}}
+                        </router-link>
                     </li>
                     <li>
-                        {{$t('message.btn.regist')}}
+                        <router-link to="/regist">
+                            {{$t('message.btn.regist')}}
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -179,6 +183,9 @@ export default {
                 border: 1px solid rgba($color: #fff, $alpha: 0.5);
                 a{
                     color: #fff;
+                    &:hover { 
+                        text-decoration:none; 
+                    }
                 }
             }
             .icon-nav{
@@ -208,6 +215,7 @@ export default {
             line-height: px2rem(50px);
             border-bottom: 1px solid #E1E2E6;
             text-indent: px2rem(15px);
+            color: $black-color;
             @include font-dpr(14px);
             .cur-lan{
                 position: relative;
@@ -231,6 +239,13 @@ export default {
                 border-top: 1px solid #E1E2E6;
                 transition: height .2s ease-in-out;
                 overflow: hidden;
+            }
+            a{
+                display: block;
+                color: $black-color;
+                &:hover { 
+                    text-decoration:none; 
+                }
             }
         }
     }  
