@@ -56,6 +56,21 @@
                             {{$t('message.btn.regist')}}
                         </router-link>
                     </li>
+                    <li>
+                        <router-link to="/regist">
+                            订单
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/regist">
+                            我的资产
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/regist">
+                            个人中心
+                        </router-link>
+                    </li>
                 </ul>
             </div>
         </transition>
