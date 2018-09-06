@@ -2,7 +2,7 @@
     <div class="regist-page">
         <v-header class="regist-page-header" :show-regist="false" />
         <div class="regist-page-content">
-            <div class="regist-page-content-title">{{ $t('message.title.regist') }}</div>
+            <div class="regist-page-content-title">{{ $t('message.title.requestPassword') }}</div>
             <div class="regist-page-content-form">
                 <b-input
                     v-model="registData.email"
@@ -10,41 +10,12 @@
                     icon="email_icon"
                     :placeholder="$t('message.placeholder.registMail')"
                     :verify="emailVerify"/>
-                <b-input
-                    v-model="registData.passd"
-                    class="regist-page-content-form-input regist-page-gap-top_20"
-                    icon="password_icon"
-                    type="password"
-                    :placeholder="$t('message.placeholder.registPassd')"
-                    :verify="passdVerify"/>
-                <b-input
-                    v-model="registData.passdConf"
-                    class="regist-page-content-form-input regist-page-gap-top_20"
-                    icon="password_icon"
-                    type="password"
-                    :placeholder="$t('message.placeholder.registPassdConf')"
-                    :verify="passdConfVerify"/>
-                <b-input
-                    v-model="registData.recommend"
-                    class="regist-page-content-form-input regist-page-gap-top_20"
-                    icon="referral_icon"
-                    :placeholder="$t('message.placeholder.registRecommend')"/>
             </div>
             <b-button
                 class="regist-page-content-btn"
                 :class="{'enabled': registEnabled}"
                 active="regist-page-content-btn-active"
-                :disabled="!registEnabled">{{ $t('message.btn.registBtn') }}</b-button>
-            <div class="regist-page-content-footer regist-page-gap-top_20">
-                <div>
-                    {{ $t('message.content.registText1') }}
-                    <router-link class="regist-page-content-footer-login" to="/login">{{ $t('message.content.registLogin') }}</router-link>
-                </div>
-                <div class="regist-page-gap-top_10">
-                    {{ $t('message.content.registText2') }}
-                    {{ contact }}
-                </div>
-            </div>
+                :disabled="!registEnabled">{{ $t('message.btn.sure') }}</b-button>
         </div>
     </div>
 </template>
@@ -57,13 +28,9 @@ import Button from '@/components/Button/Button'
 export default {
     data() {
         return {
-            contact: 'support@bitmax.io',
             registEnabled: true,
             registData: {
-                email: '',
-                passd: '',
-                passdConf: '',
-                recommend: ''
+                email: ''
             }
         }
     },
@@ -85,18 +52,6 @@ export default {
                     key: this.$t('message.placeholder.registPassd')
                 });
             }
-        },
-        passdConfVerify(data) {
-            if (!data) {
-                return this.$t('message.verify.notEmpty', {
-                    key: this.$t('message.placeholder.registPassdConf')
-                });
-            }
-
-            if (data !== this.registData.passd) {
-                return this.$t('message.verify.passdNotUnify');
-            }
-            return false;
         }
     },
     components: {
@@ -155,20 +110,6 @@ export default {
                 background-color: #006CE1;
             }
         }
-        &-footer {
-            @include font-dpr(12px);
-            color: #A8ACB9;
-            &-login {
-                color: #006CE1;
-            }
-        }
-    }
-
-    &-gap-top_10 {
-        margin-top: px2rem(10px);
-    }
-    &-gap-top_20 {
-        margin-top: px2rem(20px);
     }
 }
 </style>

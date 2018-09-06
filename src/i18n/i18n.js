@@ -2,7 +2,9 @@ module.exports = {
     en: {
         message: {
             title: {
-                regist: "Free Regist"
+                regist: "Free Regist",
+                login: "Account",
+                requestPassword: "Request your password"
             },
             btn: {
                 regist: "Free Regist",
@@ -15,7 +17,8 @@ module.exports = {
                 privacyPolicy: "Privacy Policy",
                 disclaimer: "Disclaimer",
                 fees: "Fees",
-                apidoc: "API Doc"
+                apidoc: "API Doc",
+                sure: "Ensure"
             },
             placeholder: {
                 mail: "Enter your email address",
@@ -25,9 +28,12 @@ module.exports = {
                 registRecommend: "Recommend ID"
             },
             content: {
-                registText1: '已经注册?',
+                registText1: 'Registered?',
                 registText2: '如有疑问请联系客服：',
-                registLogin: '立即登录'
+                registLogin: 'Login',
+                loginText1: 'No account?',
+                loginText2: 'Regist',
+                loginText3: 'Forgot Password'
             },
             verify: {
                 notEmpty: "请输入{key}",
@@ -64,7 +70,9 @@ module.exports = {
     zh: {
         message: {
             title: {
-                regist: "免费注册"
+                regist: "免费注册",
+                login: "登录账号",
+                requestPassword: "找回密码"
             },
             btn: {
                 regist: "免费注册",
@@ -77,7 +85,8 @@ module.exports = {
                 privacyPolicy: "隐私协议",
                 disclaimer: "免责声明",
                 fees: "费率标准",
-                apidoc: "API接入"
+                apidoc: "API接入",
+                sure: "确定"
             },
             placeholder: {
                 mail: "输入邮箱地址",
@@ -89,7 +98,10 @@ module.exports = {
             content: {
                 registText1: '已经注册?',
                 registText2: '如有疑问请联系客服：',
-                registLogin: '立即登录'
+                registLogin: '立即登录',
+                loginText1: '没有账户?',
+                loginText2: '立即注册',
+                loginText3: '忘记密码'
             },
             verify: {
                 notEmpty: "请输入{key}",
