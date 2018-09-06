@@ -4,7 +4,8 @@ module.exports = {
             title: {
                 regist: "Free Regist",
                 login: "Account",
-                requestPassword: "Request your password"
+                requestPassword: "Request your password",
+                googleAuthenticator: 'Google Authenticator',
             },
             btn: {
                 regist: "Free Regist",
@@ -34,7 +35,8 @@ module.exports = {
                 loginText1: 'No account?',
                 loginText2: 'Regist',
                 loginText3: 'Forgot Password',
-                forgetText1: '英文待填写'
+                forgetText1: '英文待填写',
+                verifyText1: '英文待填写丢失谷歌验证码？'
             },
             verify: {
                 notEmpty: "请输入{key}",
@@ -73,7 +75,8 @@ module.exports = {
             title: {
                 regist: "免费注册",
                 login: "登录账号",
-                requestPassword: "找回密码"
+                requestPassword: "找回密码",
+                googleAuthenticator: "谷歌验证"
             },
             btn: {
                 regist: "免费注册",
@@ -103,7 +106,8 @@ module.exports = {
                 loginText1: '没有账户?',
                 loginText2: '立即注册',
                 loginText3: '忘记密码',
-                forgetText1:'为了您的资产安全，重置登录密码修改24小时以内不允许提币。'
+                forgetText1:'为了您的资产安全，重置登录密码修改24小时以内不允许提币。',
+                verifyText1: '丢失谷歌验证码？'
             },
             verify: {
                 notEmpty: "请输入{key}",

@@ -83,6 +83,7 @@ export default {
         @include rounded-corners-2;
         transition: .2s;
         transition-property: border;
+        padding-left: px2rem(10px);
         &.verify-error {
             border-color: #F05253!important;
         }

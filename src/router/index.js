@@ -5,6 +5,8 @@ import Home from '@/pages/Home'
 import RegistPage from '@/pages/RegistPage'
 import LoginPage from '@/pages/LoginPage'
 import ForgetPasswordPage from '@/pages/ForgetPasswordPage'
+import GoogleAuthenticator from '@/pages/GoogleAuthenticator'
+import resetGoogleAuthenticator from '@/pages/resetGoogleAuthenticator'
 
 Vue.use(Router)
 
@@ -12,10 +14,10 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: 'Home'
+            redirect: 'home'
         },
         {
-            path: '/Home',
+            path: '/home',
             name: 'Home',
             component: Home
         },
@@ -33,6 +35,16 @@ export default new Router({
             path: '/forgetpassword',
             name: 'Forgetpassword',
             component: ForgetPasswordPage
+        },
+        {
+            path: '/googleauthenticator',
+            name: 'GoogleAuthenticator',
+            component: GoogleAuthenticator
+        },
+        {
+            path: '/resetgoogleauthenticator',
+            name: 'resetGoogleAuthenticator',
+            component: resetGoogleAuthenticator
         },
         {
             path: '/demopage',

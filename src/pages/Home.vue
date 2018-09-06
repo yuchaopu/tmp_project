@@ -290,10 +290,11 @@
             padding: px2rem(110px) 0 px2rem(80px);
         }
         .swiper-wrapper{
-            width: 100%;
+            width: px2rem(375px);
             height: px2rem(230px);
             position: absolute;
-            left: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
             bottom: px2rem(-70px);
             overflow: hidden;
             .swiper-content{
@@ -301,7 +302,7 @@
                 height: px2rem(210px);
                 transition: all 0.5s ease;
                 &.move{
-                    transform: translate(-100%, 0);
+                    transform: translate(px2rem(-375px), 0);
                 }
                 .swiper-tab{
                     width: px2rem(375px);
@@ -312,7 +313,7 @@
                     left: 0;
                     top: 0;
                     &:last-child{
-                        left: 100%;
+                        left: px2rem(375px);
                     }
                     .swiper-item{
                         width: px2rem(165px);
