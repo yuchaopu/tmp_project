@@ -32,7 +32,10 @@
             },
             regist() {
                 if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(this.registMail)) {
-                    alert("注意你的邮箱格式")
+                    this.$Toast.error({
+                        text: '请输入正确的邮箱地址',
+                        duration: 1500
+                    });
                 } else {
                     this.$router.push({
                         name: 'Regist',
