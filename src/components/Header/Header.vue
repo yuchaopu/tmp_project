@@ -105,7 +105,7 @@ export default {
         enter (el) {
             el.style.height = 'auto'
             // noinspection JSSuspiciousNameCombination
-            var endWidth = window.getComputedStyle(el).height
+            let endWidth = window.getComputedStyle(el).height
             el.style.height = '0px'
             el.offsetHeight // force repaint
             // noinspection JSSuspiciousNameCombination
@@ -123,7 +123,7 @@ export default {
             el.style.height = null
         },
         scroll (){
-            var scrollTop = this.getScrollTop(),
+            let scrollTop = this.getScrollTop(),
                 elem = document.getElementsByClassName('toptips')[0];
             if(scrollTop > window.getComputedStyle(elem).height.split('px')[0]){
                 this.fixed = true;
