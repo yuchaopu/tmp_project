@@ -7,10 +7,12 @@ import VueI18n from 'vue-i18n'
 
 import messages from './i18n/i18n'
 import IconSvg from '@/components/IconSvg/IconSvg'
+import Toast from '@/components/Toast/Toast'
 
 Vue.config.productionTip = false
 
 Vue.use(VueI18n)
+Vue.use(Toast)
 
 function getCookie(name,defaultValue) {
     let arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");

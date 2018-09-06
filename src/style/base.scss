@@ -37,6 +37,7 @@
 @mixin va-middle {     // @mixin 定义
     vertical-align: middle;
 }
+
 /* 基础色*/
 $base-color:#0E6FD6; 
 /* 灰色*/
@@ -44,4 +45,86 @@ $grey-color:#6B798E;
 /* 白色*/
 $white-color:#FFF;
 /* 字号色*/
-$black-color:#172B4D; 
+$black-color:#172B4D;
+
+
+/* 组件样式*/
+/* Toast*/
+.b-toast {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    &-mask {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, .5);
+    }
+    &-panel {
+        width: px2rem(300px);
+        height: px2rem(64px);
+        background-color: $white-color;
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate3d(-50%, 0, 0);
+        @include rounded-corners-2;
+        &-icon {
+            height: px2rem(24px);
+            width: px2rem(24px);
+            margin: px2rem(20px) px2rem(15px) px2rem(20px) px2rem(20px);
+        }
+        &-text {
+            color: #172B4D;
+            height: 100%;
+            display: inline-block;
+            vertical-align: top;
+            max-width: px2rem(206px);
+            line-height: px2rem(64px);
+            @include font-dpr(14px);
+            @include overflow-ellipsis;
+        }
+        &-close {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcBAMAAACAI8KnAAAAKlBMVEUAAAAXLE4XLE4nO04ZLE4XLE0aLk0YLE8YK04XLl0iRGYZLE8ZLU4XK03sI/NdAAAADXRSTlMAkMUNWsY3akELB1E+7pVSrQAAAIlJREFUGNNdzrEJAmEQROEndwiKgQ0YGQsimF9mFYKhBViDsSVYgq1o/vcizM7dwE22fME+5ru88FYP6Nse79wGNu13rKu7tg/sxMIvsDB3h7aFiU/C4qDZaA6KhWFhWBgO6mfK9dNpY63TxlqXT7XFxkoLioPFQfNaaH7TC80DS6H5BvfEPpntD+MORxa33lRzAAAAAElFTkSuQmCC) no-repeat;
+            height: px2rem(14px);
+            width: px2rem(14px);
+            position: absolute;
+            background-size: px2rem(14px) px2rem(14px);
+            top: px2rem(10px);
+            right: px2rem(10px);
+        }
+        &.enter {
+            animation-duration: .37s;
+            animation-fill-mode: both;
+            animation-name: easyIn;
+        }
+        &.leave {
+            animation-duration: .37s;
+            animation-fill-mode: both;
+            animation-name: easyOut;
+        }
+    }
+}
+
+@keyframes easyIn {
+    from {
+        opacity: 0;
+        transform: translate3d(-50%, -64px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+@keyframes easyOut {
+    from {
+        opacity: 1;
+        transform: translate3d(-50%, 0, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(-50%, 64px, 0);
+    }
+}

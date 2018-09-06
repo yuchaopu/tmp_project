@@ -6,6 +6,10 @@
             class="demo-page-btn"
             active="demo-page-btn-hover"
             @click="regist">{{ $t('message.btn.regist') }}</b-btn>
+        <b-btn
+            class="demo-page-btn"
+            active="demo-page-btn-hover"
+            @click="openError">弹出错误Toast</b-btn>
     </div>
 </template>
 
@@ -15,7 +19,17 @@ import Button from '@/components/Button/Button'
 export default {
     methods: {
         regist(e) {
-            console.log(e);
+            this.$Toast.success({
+                text: '打开Toast成功，2.7秒后关闭',
+                autoClose: true,
+                duration: 2700
+            });
+        },
+        openError() {
+            this.$Toast.error({
+                text: '打开Toast成功，可手动关闭，5s后自动关闭',
+                duration: 5000
+            });
         }
     },
     components: {
