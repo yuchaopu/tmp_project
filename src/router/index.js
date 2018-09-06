@@ -6,7 +6,7 @@ import RegistPage from '@/pages/RegistPage'
 import LoginPage from '@/pages/LoginPage'
 import ForgetPasswordPage from '@/pages/ForgetPasswordPage'
 import GoogleAuthenticator from '@/pages/GoogleAuthenticator'
-import resetGoogleAuthenticator from '@/pages/resetGoogleAuthenticator'
+import ResetGoogleAuthenticator from '@/pages/resetGoogleAuthenticator'
 
 Vue.use(Router)
 
@@ -43,8 +43,8 @@ export default new Router({
         },
         {
             path: '/resetgoogleauthenticator',
-            name: 'resetGoogleAuthenticator',
-            component: resetGoogleAuthenticator
+            name: 'ResetGoogleAuthenticator',
+            component: ResetGoogleAuthenticator
         },
         {
             path: '/demopage',

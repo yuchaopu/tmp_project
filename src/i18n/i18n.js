@@ -19,7 +19,8 @@ module.exports = {
                 disclaimer: "Disclaimer",
                 fees: "Fees",
                 apidoc: "API Doc",
-                sure: "Ensure"
+                sure: "Ensure",
+                reset: "确认申请重置"
             },
             placeholder: {
                 mail: "Enter your email address",
@@ -90,7 +91,8 @@ module.exports = {
                 disclaimer: "免责声明",
                 fees: "费率标准",
                 apidoc: "API接入",
-                sure: "确定"
+                sure: "确定",
+                reset: "确认申请重置"
             },
             placeholder: {
                 mail: "输入邮箱地址",
