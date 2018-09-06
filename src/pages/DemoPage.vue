@@ -14,9 +14,17 @@
 </template>
 
 <script>
-import Button from '@/components/Button/Button'
+import Button from '@/components/Button/Button';
+import HTTP from '@/api/HttpRequest';
 
 export default {
+    mounted() {
+        HTTP.getAnnouncements().then(res => {
+            console.log(res);
+        }, err => {
+            console.log(err);
+        })
+    },
     methods: {
         regist(e) {
             this.$Toast.success({
