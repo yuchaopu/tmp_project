@@ -4,10 +4,10 @@
             <icon-svg class="icon-gonggao_icon" icon-class="gonggao_icon" />
             <div class="news-list">
                 <transition name="slide" mode="out-in">
-                    <div class="news-item" :key="_setAnnouncements().index">
+                    <a class="news-item" :key="_setAnnouncements().index" :href="_setAnnouncements().url" target="_blank">
                         <p>{{_setAnnouncements().text}}</p>
                         <span>({{$moment(_setAnnouncements().time).format('MM-DD')}})</span>
-                    </div>
+                    </a>
                 </transition>
             </div>
             
@@ -22,37 +22,19 @@
             <div class="swiper-wrapper">
                 <div class="swiper-content" :class="{'move': swiperIndex == 2}">
                     <div class="swiper-tab">
-                        <div class="swiper-item">
-                            <h2>挖矿赚钱</h2>
-                            <p>据官方数据统计，平台开放注册24小时开放</p>
-                        </div>
-                        <div class="swiper-item">
-
-                        </div>
-                        <div class="swiper-item">
-
-                        </div>
-                        <div class="swiper-item">
-
-                        </div>
+                        <a class="swiper-item" v-for="(item, index) in activities" :href="item.url" v-if="index < 4" target="_blank" :style="{'background-image': 'url('+ item.bgUrl +')'}">
+                            <h2>{{item.title}}</h2>
+                            <p>{{item.content}}</p>
+                        </a>
                     </div>
-                    <div class="swiper-tab">
-                        <div class="swiper-item">
-                            <h2>挖矿赚钱222</h2>
-                            <p>据官方数据统计，平台开放注册24小时开放222</p>
-                        </div>
-                        <div class="swiper-item">
-
-                        </div>
-                        <div class="swiper-item">
-
-                        </div>
-                        <div class="swiper-item">
-
-                        </div>
+                    <div class="swiper-tab" v-if="activities.length > 4">
+                        <a class="swiper-item" v-for="(item, index) in activities" :href="item.url" v-if="index > 3" target="_blank">
+                            <h2>{{item.title}}</h2>
+                            <p>{{item.content}}</p>
+                        </a>
                     </div>
                 </div>
-                <div class="control-line">
+                <div class="control-line" v-if="activities.length > 4">
                     <span class="line" :class="{'active': swiperIndex == 1}" @click="swiperChange(1)"></span>
                     <span class="line" :class="{'active': swiperIndex == 2}" @click="swiperChange(2)"></span>
                 </div>
@@ -181,7 +163,8 @@
             return {
                 swiperIndex: 1,
                 number: 0,
-                announcements:[]
+                announcements:[], // 小喇叭公告
+                activities: [] // 近期活动
             };
         },
         computed: {
@@ -189,9 +172,9 @@
         },
         mounted() {
             this.startMove();
-             HTTP.getAnnouncements().then(res => {
-                if(res.status === 200){   
-                    console.log(res.data);
+            // 公告
+            HTTP.getAnnouncements().then(res => {
+                if(res.status === 200){
                     this.$nextTick(()=>{
                         this.announcements = res.data;
                         this._setAnnouncements();
@@ -200,7 +183,18 @@
                 
             }, err => {
                 console.log(err);
-            })
+            });
+            // 活动
+            HTTP.getActivities().then(res => {
+                if(res.status === 200){
+                    console.log(res.data);
+                    this.$nextTick(()=>{
+                        this.activities = res.data;
+                    })
+                }
+            }, err => {
+
+            });
         },
         components: {
             'v-header': header,
@@ -259,6 +253,10 @@
             .news-item{
                 display: flex;
                 justify-content: space-between;
+                color: #fff;
+                &:hover{
+                    text-decoration: none;
+                }
                 p {
                     // width: px2rem(248px);
                     flex: 1;
@@ -323,13 +321,16 @@
                     position: absolute;
                     left: 0;
                     top: 0;
-                    &:last-child{
+                    &:nth-child(2n){
                         left: px2rem(375px);
                     }
                     .swiper-item{
                         width: px2rem(165px);
                         height: px2rem(94px);
                         background-color: #fff;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        background-position: right bottom;
                         margin-bottom: px2rem(10px);
                         padding: px2rem(10px);
                         &:nth-child(2n){
@@ -358,9 +359,7 @@
                     width: px2rem(40px);
                     height: px2rem(3px);
                     background-color: rgba($color: $grey-color, $alpha: 0.2);
-                    &:last-child{
-                        margin-left: px2rem(20px);
-                    }
+                    margin: 0 px2rem(10px);
                     &.active{
                         background-color: $base-color;
                     }
