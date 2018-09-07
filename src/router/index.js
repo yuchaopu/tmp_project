@@ -6,7 +6,6 @@ import RegistPage from '@/pages/RegistPage'
 import LoginPage from '@/pages/LoginPage'
 import ForgetPasswordPage from '@/pages/ForgetPasswordPage'
 import GoogleAuthenticator from '@/pages/GoogleAuthenticator'
-import ResetGoogleAuthenticator from '@/pages/resetGoogleAuthenticator'
 import resetLoginPasswordByEmailPage from '@/pages/resetLoginPasswordByEmailPage'
 import ResetGoogleAuthenticator from '@/pages/ResetGoogleAuthenticator'
 import CheckMail from '@/pages/CheckMail'
@@ -76,7 +75,7 @@ mainRouter.beforeEach((to, from, next) => {
     //     })
     // } else {
     //     debugger;
-    //     next()
+        next()
     // }
 })
 export default mainRouter;
