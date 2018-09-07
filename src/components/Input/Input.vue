@@ -74,6 +74,7 @@ export default {
         height: px2rem(16px);
         width: px2rem(16px);
         margin: px2rem(13px);
+        color: #172B4D;
     }
 
     &-ipt {
