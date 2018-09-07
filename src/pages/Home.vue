@@ -22,13 +22,13 @@
             <div class="swiper-wrapper">
                 <div class="swiper-content" :class="{'move': swiperIndex == 2}">
                     <div class="swiper-tab">
-                        <a class="swiper-item" v-for="(item, index) in activities" :href="item.url" v-if="index < 4" target="_blank" :style="{'background-image': 'url('+ item.bgUrl +')'}">
+                        <a class = "swiper-item" v-for="(item, index) in activities" :key="item.index" :href="item.url" v-if="index < 4" target="_blank" :style="{'background-image': 'url('+ item.bgUrl +')'}">
                             <h2>{{item.title}}</h2>
                             <p>{{item.content}}</p>
                         </a>
                     </div>
                     <div class="swiper-tab" v-if="activities.length > 4">
-                        <a class="swiper-item" v-for="(item, index) in activities" :href="item.url" v-if="index > 3" target="_blank">
+                        <a class="swiper-item" v-for="(item, index) in activities" :key="item.index" :href="item.url" v-if="index > 3" target="_blank">
                             <h2>{{item.title}}</h2>
                             <p>{{item.content}}</p>
                         </a>
