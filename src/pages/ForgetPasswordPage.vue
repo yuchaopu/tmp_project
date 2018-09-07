@@ -74,7 +74,16 @@ export default {
             this.submiting = true;
             let that = this;
             HTTP.recoveryEmail(this.submitFormData).then(function(res) {
-                alert("跳转到发送邮箱页面");
+                that.$router.push({
+                    name: 'CheckMail',
+                    params: {
+                        data: {
+                            url: 'recoveryEmail',
+                            submitData: that.submitFormData,
+                            email: that.submitFormData.email
+                        }
+                    }
+                });
             }, function(errMessage) {
                 that.$Toast.error({
                     text: (errMessage && errMessage.response && errMessage.response.data &&  errMessage.response.data.msg) || that.$t("message.err.err"),

@@ -42,7 +42,9 @@ module.exports = {
                 loginText2: 'Regist',
                 loginText3: 'Forgot Password',
                 forgetText1: '英文待填写',
-                verifyText1: '英文待填写丢失谷歌验证码？'
+                verifyText1: '英文待填写丢失谷歌验证码？',
+                email1: 'We have sent a verification email to ',
+                email2: 'please check your inbox.'
             },
             verify: {
                 notEmpty: "请输入{key}",
@@ -120,7 +122,9 @@ module.exports = {
                 loginText2: '立即注册',
                 loginText3: '忘记密码',
                 forgetText1:'为了您的资产安全，重置登录密码修改24小时以内不允许提币。',
-                verifyText1: '丢失谷歌验证码？'
+                verifyText1: '丢失谷歌验证码？',
+                email1: '验证电子邮件已发送到',
+                email2: '请检查此电子邮件以完成验证。'
             },
             verify: {
                 notEmpty: "请输入{key}",

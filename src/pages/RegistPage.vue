@@ -145,11 +145,14 @@ export default {
             this.submiting = true;
             let that = this;
             HTTP.regist(this.submitFormData).then(function(res) {
-                alert("跳转到发送邮箱页面");
-                this.$router.push({
-                    name: 'checkMail',
+                that.$router.push({
+                    name: 'CheckMail',
                     params: {
-                        email: this.registData.email
+                        data: {
+                            url: 'regist',
+                            submitData: that.submitFormData,
+                            email: that.submitForm.email
+                        }
                     }
                 });
             }, function(errMessage) {

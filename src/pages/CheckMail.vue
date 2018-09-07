@@ -3,7 +3,7 @@
         <div class="check-page-content">
             <icon-svg icon-class="email_icon" class="check-page-content-icon email_icon"></icon-svg>
             <div class="check-page-content-text">
-                验证电子邮件已发送到{{mail}}，请检查此电子邮件以完成验证。
+                {{$t('message.content.email1') + routerData.email + ',' + $t('message.content.email2')}}
             </div>
             <b-button
                 class="check-page-content-btn"
@@ -19,12 +19,21 @@
 
 <script>
 import Button from '@/components/Button/Button';
+import HTTP from '@/api/HttpRequest';
 export default {
     data() {
         return{
-            mail: this.$route.params.email || '1@12.com',
+            mail: '',
             checkEnabled: false,
+            routerData: this.$route.params.data || {},
             time: 60
+        }
+    },
+    beforeCreate() {
+        if (!this.$route.params.data || !this.$route.params.data.email) {
+            this.$router.push({
+                path: "/home"
+            });
         }
     },
     mounted() {
@@ -39,16 +48,26 @@ export default {
             }
         },
         again() {
-            if (!this.checkEnabled) {
+            if (!this.checkEnabled || this.time > 0) {
                 return;
             }
-            this.time = 5;
-            this.timer();
+            this.checkEnabled = false;
+            let that = this;
+            HTTP[that.routerData.url](that.routerData.submitData).then(function(res) {
+                that.time = 60;
+                that.timer();
+            }, function(errMessage) {
+                that.checkEnabled = true;
+                that.time = 0;
+                that.$Toast.error({
+                    text: (errMessage && errMessage.response && errMessage.response.data &&  errMessage.response.data.msg) || that.$t("message.err.err"),
+                    duration: 1500
+                });
+            });
         }
     },
     computed: {
         text: function () {
-            // return this.time > 0 ? this.time + 's 后重新获取' : '获取验证码';
             return this.time > 0 ? this.$t('message.btn.again') + '('+ this.time + 's)' : this.$t('message.btn.again');
         }
     },
