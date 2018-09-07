@@ -8,6 +8,8 @@ import ForgetPasswordPage from '@/pages/ForgetPasswordPage'
 import GoogleAuthenticator from '@/pages/GoogleAuthenticator'
 import ResetGoogleAuthenticator from '@/pages/resetGoogleAuthenticator'
 import resetLoginPasswordByEmailPage from '@/pages/resetLoginPasswordByEmailPage'
+import ResetGoogleAuthenticator from '@/pages/ResetGoogleAuthenticator'
+import CheckMail from '@/pages/CheckMail'
 
 Vue.use(Router)
 
@@ -51,6 +53,11 @@ const mainRouter =  new Router({
             path: '/resetgoogleauthenticator',
             name: 'ResetGoogleAuthenticator',
             component: ResetGoogleAuthenticator
+        },
+        {
+            path: '/checkMail',
+            name: 'CheckMail',
+            component: CheckMail
         },
         {
             path: '/demopage',

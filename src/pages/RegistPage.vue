@@ -146,6 +146,12 @@ export default {
             let that = this;
             HTTP.regist(this.submitFormData).then(function(res) {
                 alert("跳转到发送邮箱页面");
+                this.$router.push({
+                    name: 'checkMail',
+                    params: {
+                        email: this.registData.email
+                    }
+                });
             }, function(errMessage) {
                 that.$Toast.error({
                     text: (errMessage && errMessage.response && errMessage.response.data &&  errMessage.response.data.msg) || that.$t("message.err.err"),

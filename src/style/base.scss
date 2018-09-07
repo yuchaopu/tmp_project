@@ -26,6 +26,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+/* 多行文本超出 省略号*/
+@mixin multi-line-ellipsis($line){
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+}
 @mixin rounded-corners-2 {     // @mixin 定义
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
