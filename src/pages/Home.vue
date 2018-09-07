@@ -187,7 +187,6 @@
             // 活动
             HTTP.getActivities().then(res => {
                 if(res.status === 200){
-                    console.log(res.data);
                     this.$nextTick(()=>{
                         this.activities = res.data;
                     })
@@ -344,9 +343,12 @@
                         }
                         p{
                             line-height: px2rem(18px);
-                            @include font-dpr(11px);
+                            max-height: px2rem(36px);
+                            @include font-dpr(12px);
+                            @include multi-line-ellipsis(2);
                             margin-top: px2rem(8px);
                             color: $grey-color;
+                            
                         }
                     }
                 }
