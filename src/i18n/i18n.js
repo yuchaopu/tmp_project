@@ -6,6 +6,10 @@ module.exports = {
                 login: "Account",
                 requestPassword: "Request your password",
                 googleAuthenticator: 'Google Authenticator',
+                resetpassword: 'Reset Password'
+            },
+            err: {
+                err: 'Request Error'
             },
             btn: {
                 regist: "Free Regist",
@@ -78,7 +82,11 @@ module.exports = {
                 regist: "免费注册",
                 login: "登录账号",
                 requestPassword: "找回密码",
-                googleAuthenticator: "谷歌验证"
+                googleAuthenticator: "谷歌验证",
+                resetpassword: '重置密码'
+            },
+            err: {
+                err: '请求错误'
             },
             btn: {
                 regist: "免费注册",

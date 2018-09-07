@@ -9,7 +9,7 @@
             </div>
             <div class="regist-page-content-form">
                 <b-input
-                    v-model="registData.email"
+                    v-model="forgetData.email"
                     class="regist-page-content-form-input"
                     icon="email_icon"
                     :placeholder="$t('message.placeholder.registMail')"
@@ -17,9 +17,10 @@
             </div>
             <b-button
                 class="regist-page-content-btn"
-                :class="{'enabled': registEnabled}"
+                :class="{'enabled': forgetEnabled}"
                 active="regist-page-content-btn-active"
-                :disabled="!registEnabled">{{ $t('message.btn.sure') }}</b-button>
+                @click = 'submit()'
+                :disabled="!forgetEnabled">{{ $t('message.btn.sure') }}</b-button>
         </div>
     </div>
 </template>
@@ -28,18 +29,31 @@
 import Header from '@/components/Header/Header';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button'
-
+import HTTP from '@/api/HttpRequest';
 export default {
     data() {
         return {
-            registEnabled: true,
-            registData: {
+            forgetEnabled: false,
+            submiting: false,
+            forgetData: {
                 email: ''
+            },
+            forgetValidata: {
+                email: false
             }
+        }
+    },
+    computed: {
+        submitFormData: function() {
+            return {
+                email: this.forgetData.email
+            };
         }
     },
     methods: {
         emailVerify(data) {
+            this.forgetValidata.email = false;
+            this.forgetEnabled = false;
             if (!data) {
                 return this.$t('message.verify.notEmpty', {
                     key: this.$t('message.placeholder.registMail')
@@ -48,14 +62,27 @@ export default {
             if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(data)) {
                 return this.$t('message.verify.registEmail');
             }
+            this.forgetValidata.email = true;
+            this.forgetEnabled = true;
             return false;
         },
-        passdVerify(data) {
-            if (!data) {
-                return this.$t('message.verify.notEmpty', {
-                    key: this.$t('message.placeholder.registPassd')
-                });
+        submit() {
+            if (!this.forgetEnabled || this.submiting) {
+                return;
             }
+            this.forgetEnabled = false;
+            this.submiting = true;
+            let that = this;
+            HTTP.recoveryEmail(this.submitFormData).then(function(res) {
+                alert("跳转到发送邮箱页面");
+            }, function(errMessage) {
+                that.$Toast.error({
+                    text: (errMessage && errMessage.response && errMessage.response.data &&  errMessage.response.data.msg) || that.$t("message.err.err"),
+                    duration: 1500
+                });
+                that.forgetEnabled = true;
+                that.submiting = false;
+            })
         }
     },
     components: {

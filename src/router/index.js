@@ -7,10 +7,11 @@ import LoginPage from '@/pages/LoginPage'
 import ForgetPasswordPage from '@/pages/ForgetPasswordPage'
 import GoogleAuthenticator from '@/pages/GoogleAuthenticator'
 import ResetGoogleAuthenticator from '@/pages/resetGoogleAuthenticator'
+import resetLoginPasswordByEmailPage from '@/pages/resetLoginPasswordByEmailPage'
 
 Vue.use(Router)
 
-export default new Router({
+const mainRouter =  new Router({
     routes: [
         {
             path: '/',
@@ -25,6 +26,11 @@ export default new Router({
             path: '/regist',
             name: 'Regist',
             component: RegistPage
+        },
+        {
+            path: '/resetLoginPasswordByEmail/:code',
+            name: 'ResetLoginPasswordByEmail',
+            component: resetLoginPasswordByEmailPage
         },
         {
             path: '/login',
@@ -53,3 +59,17 @@ export default new Router({
         }
     ]
 })
+// 导航守卫
+mainRouter.beforeEach((to, from, next) => {
+    // 判断当前模块是否需要登录
+    window.scrollTo(0, 0);
+    // if ((/^\/register$/.test(to.fullPath) || /^\/login$/.test(to.fullPath)) && /^\/otc\//.test(from.fullPath)) {
+    //     next({
+    //         path: '/register?redirect=' + from.fullPath
+    //     })
+    // } else {
+    //     debugger;
+    //     next()
+    // }
+})
+export default mainRouter;

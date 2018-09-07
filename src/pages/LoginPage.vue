@@ -5,13 +5,13 @@
             <div class="login-page-content-title">{{ $t('message.title.login') }}</div>
             <div class="login-page-content-form">
                 <b-input
-                    v-model="registData.email"
+                    v-model="loginData.email"
                     class="login-page-content-form-input"
                     icon="email_icon"
                     :placeholder="$t('message.placeholder.registMail')"
                     :verify="emailVerify"/>
                 <b-input
-                    v-model="registData.passd"
+                    v-model="loginData.passd"
                     class="login-page-content-form-input login-page-gap-top_20"
                     icon="password_icon"
                     type="password"
@@ -20,9 +20,10 @@
             </div>
             <b-button
                 class="login-page-content-btn"
-                :class="{'enabled': registEnabled}"
+                :class="{'enabled': loginEnabled}"
                 active="login-page-content-btn-active"
-                :disabled="!registEnabled">{{ $t('message.content.registLogin') }}</b-button>
+                @click = "submit()"
+                :disabled="!loginEnabled">{{ $t('message.content.registLogin') }}</b-button>
             <div class="login-page-content-footer login-page-gap-top_20">
                 <div>
                     {{ $t('message.content.loginText1') }}
@@ -40,19 +41,39 @@
 import Header from '@/components/Header/Header';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button'
-
+import HTTP from '@/api/HttpRequest';
 export default {
     data() {
         return {
-            registEnabled: true,
-            registData: {
+            loginEnabled: false,
+            submiting: false,
+            loginData: {
                 email: '',
                 passd: ''
+            },
+            loginValidata: {
+                email: false,
+                passd: false
             }
         }
     },
+    computed: {
+        submitFormData: function() {
+            return {
+                email: this.loginData.email,
+                password: this.loginData.passd
+            };
+        }
+    },
     methods: {
+        check() {
+            if (this.loginValidata.email && this.loginValidata.passd) {
+                this.loginEnabled = true;
+            }
+        },
         emailVerify(data) {
+            this.loginValidata.email = false;
+            this.loginEnabled = false;
             if (!data) {
                 return this.$t('message.verify.notEmpty', {
                     key: this.$t('message.placeholder.registMail')
@@ -61,14 +82,41 @@ export default {
             if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(data)) {
                 return this.$t('message.verify.registEmail');
             }
+            this.loginValidata.email = true;
+            this.check();
             return false;
         },
         passdVerify(data) {
+            this.loginValidata.passd = false;
+            this.loginEnabled = false;
             if (!data) {
                 return this.$t('message.verify.notEmpty', {
                     key: this.$t('message.placeholder.registPassd')
                 });
             }
+            if ((data + '').length < 8) {
+                return this.$t('message.verify.emailMinLength')
+            }
+            this.loginValidata.passd = true;
+            this.check();
+        },
+        submit() {
+            if (!this.loginEnabled || this.submiting) {
+                return;
+            }
+            this.loginEnabled = false;
+            this.submiting = true;
+            let that = this;
+            HTTP.login(this.submitFormData).then(function(res) {
+                alert("看他有没有设置谷歌登陆，没设置就直接到首页,设置了就到谷歌验证");
+            }, function(errMessage) {
+                that.$Toast.error({
+                    text: (errMessage && errMessage.response && errMessage.response.data &&  errMessage.response.data.msg) || that.$t("message.err.err"),
+                    duration: 1500
+                });
+                that.loginEnabled = true;
+                that.submiting = false;
+            })
         }
     },
     components: {

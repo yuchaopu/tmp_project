@@ -2,51 +2,30 @@
     <div class="regist-page">
         <v-header class="regist-page-header" :show-regist="false" />
         <div class="regist-page-content">
-            <div class="regist-page-content-title">{{ $t('message.title.regist') }}</div>
+            <div class="regist-page-content-title">{{ $t('message.title.resetpassword') }}</div>
             <div class="regist-page-content-form">
                 <b-input
-                    v-model="registData.email"
-                    class="regist-page-content-form-input"
-                    icon="email_icon"
-                    :placeholder="$t('message.placeholder.registMail')"
-                    :verify="emailVerify"/>
-                <b-input
-                    v-model="registData.passd"
+                    v-model="resetData.passd"
                     class="regist-page-content-form-input regist-page-gap-top_20"
                     icon="password_icon"
                     type="password"
                     :placeholder="$t('message.placeholder.registPassd')"
                     :verify="passdVerify"/>
                 <b-input
-                    v-model="registData.passdConf"
+                    v-model="resetData.passdConf"
                     class="regist-page-content-form-input regist-page-gap-top_20"
                     icon="password_icon"
                     type="password"
                     ref = 'child1'
                     :placeholder="$t('message.placeholder.registPassdConf')"
                     :verify="passdConfVerify"/>
-                <b-input
-                    v-model="registData.inviteCode"
-                    class="regist-page-content-form-input regist-page-gap-top_20"
-                    icon="referral_icon"
-                    :placeholder="$t('message.placeholder.registRecommend')"/>
             </div>
             <b-button
                 class="regist-page-content-btn"
-                :class="{'enabled': registEnabled}"
+                :class="{'enabled': resetEnabled}"
                 active="regist-page-content-btn-active"
                 @click="submit()"
-                :disabled="!registEnabled">{{ $t('message.btn.registBtn') }}</b-button>
-            <div class="regist-page-content-footer regist-page-gap-top_20">
-                <div>
-                    {{ $t('message.content.registText1') }}
-                    <router-link class="regist-page-content-footer-login" to="/login">{{ $t('message.content.registLogin') }}</router-link>
-                </div>
-                <div class="regist-page-gap-top_10">
-                    {{ $t('message.content.registText2') }}
-                    {{ contact }}
-                </div>
-            </div>
+                :disabled="!resetEnabled">{{ $t('message.btn.sure') }}</b-button>
         </div>
     </div>
 </template>
@@ -59,17 +38,14 @@ import HTTP from '@/api/HttpRequest';
 export default {
     data() {
         return {
-            contact: 'support@bitmax.io',
-            registEnabled: false,
+            resetEnabled: false,
             submiting: false,
-            registData: {
-                email: this.$route.params.email || '',
+            resetData: {
                 passd: '',
                 passdConf: '',
-                inviteCode: ''
+                code: ''
             },
-            registValidata: {
-                email: false,
+            resetValidata: {
                 passd: false,
                 passdConf: false
             }
@@ -78,36 +54,23 @@ export default {
     computed: {
         submitFormData: function() {
             return {
-                email: this.registData.email,
-                password: this.registData.passd,
-                inviteCode: this.registData.inviteCode
+                code: this.resetData.code,
+                newPassword: this.resetData.passd
             };
         }
     },
+    mounted() {
+        this.resetData.code = this.$route.params.code;
+    },
     methods: {
         check() {
-            if (this.registValidata.email && this.registValidata.passd) {
-                this.registEnabled = true;
+            if (this.resetValidata.passdConf && this.resetValidata.passd) {
+                this.resetEnabled = true;
             }
-        },
-        emailVerify(data) {
-            this.registValidata.email = false;
-            this.registEnabled = false;
-            if (!data) {
-                return this.$t('message.verify.notEmpty', {
-                    key: this.$t('message.placeholder.registMail')
-                });
-            }
-            if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(data)) {
-                return this.$t('message.verify.registEmail');
-            }
-            this.registValidata.email = true;
-            this.check();
-            return false;
         },
         passdVerify(data) {
-            this.registValidata.passd = false;
-            this.registEnabled = false;
+            this.resetValidata.passd = false;
+            this.resetEnabled = false;
             if (!data) {
                 return this.$t('message.verify.notEmpty', {
                     key: this.$t('message.placeholder.registPassd')
@@ -116,42 +79,46 @@ export default {
             if ((data + '').length < 8) {
                 return this.$t('message.verify.emailMinLength')
             }
-            if (this.registData.passdConf.length) {
-                this.$refs.child1.outVerify(this.registData.passdConf);
+            if (this.resetData.passdConf.length) {
+                this.$refs.child1.outVerify(this.resetData.passdConf);
             }
-            this.registValidata.passd = true;
+            this.resetValidata.passd = true;
             this.check();
         },
         passdConfVerify(data) {
-            this.registValidata.passdConf = false;
-            this.registEnabled = false;
+            this.resetValidata.passdConf = false;
+            this.resetEnabled = false;
             if (!data) {
                 return this.$t('message.verify.notEmpty', {
                     key: this.$t('message.placeholder.registPassdConf')
                 });
             }
-            if (data !== this.registData.passd) {
+            if (data !== this.resetData.passd) {
                 return this.$t('message.verify.passdNotUnify');
             }
-            this.registValidata.passdConf = true;
+            this.resetValidata.passdConf = true;
             this.check();
             return false;
         },
         submit() {
-            if (!this.registEnabled || this.submiting) {
+            if (!this.resetEnabled || this.submiting) {
                 return;
             }
-            this.registEnabled = false;
+            this.resetEnabled = false;
             this.submiting = true;
             let that = this;
-            HTTP.regist(this.submitFormData).then(function(res) {
-                alert("跳转到发送邮箱页面");
+            HTTP.resetPasswordCode(this.submitFormData).then(function(res) {
+                that.$Toast.success({
+                    text: '密码重置成功',
+                    autoClose: true,
+                    duration: 1500
+                });
             }, function(errMessage) {
                 that.$Toast.error({
                     text: (errMessage && errMessage.response && errMessage.response.data &&  errMessage.response.data.msg) || that.$t("message.err.err"),
                     duration: 1500
                 });
-                that.registEnabled = true;
+                that.resetEnabled = true;
                 that.submiting = false;
             })
         }
