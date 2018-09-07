@@ -1,10 +1,11 @@
 module.exports = {
     regist: {
-        url: '/api/user/v3/users/register/phone',
+        url: '/api/user/register',
         method: 'post'
     },
     getAnnouncements: {
         url: '/api/announcements',
         method: 'get'
     }
+    
 }

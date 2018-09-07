@@ -42,7 +42,8 @@ module.exports = {
             verify: {
                 notEmpty: "请输入{key}",
                 registEmail: "请输入正确的邮箱地址",
-                passdNotUnify: "密码输入不一致"
+                passdNotUnify: "密码输入不一致",
+                emailMinLength: "Password must be at least 8 characters long."
             },
             introduce: {
                 title: "OUR VISION",
@@ -114,7 +115,8 @@ module.exports = {
             verify: {
                 notEmpty: "请输入{key}",
                 registEmail: "请输入正确的邮箱地址",
-                passdNotUnify: "密码输入不一致"
+                passdNotUnify: "密码输入不一致",
+                emailMinLength: "密码不得低于8位"
             },
             introduce: {
                 title: "我们的优势",

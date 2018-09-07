@@ -8,12 +8,14 @@
                     v-model="registData.email"
                     class="regist-page-content-form-input"
                     icon="email_icon"
+                    ref="child1"
                     :placeholder="$t('message.placeholder.registMail')"
                     :verify="emailVerify"/>
                 <b-input
                     v-model="registData.passd"
                     class="regist-page-content-form-input regist-page-gap-top_20"
                     icon="password_icon"
+                    ref="child2"
                     type="password"
                     :placeholder="$t('message.placeholder.registPassd')"
                     :verify="passdVerify"/>
@@ -22,10 +24,11 @@
                     class="regist-page-content-form-input regist-page-gap-top_20"
                     icon="password_icon"
                     type="password"
+                    ref="child3"
                     :placeholder="$t('message.placeholder.registPassdConf')"
                     :verify="passdConfVerify"/>
                 <b-input
-                    v-model="registData.recommend"
+                    v-model="registData.inviteCode"
                     class="regist-page-content-form-input regist-page-gap-top_20"
                     icon="referral_icon"
                     :placeholder="$t('message.placeholder.registRecommend')"/>
@@ -34,6 +37,7 @@
                 class="regist-page-content-btn"
                 :class="{'enabled': registEnabled}"
                 active="regist-page-content-btn-active"
+                @click="submit()"
                 :disabled="!registEnabled">{{ $t('message.btn.registBtn') }}</b-button>
             <div class="regist-page-content-footer regist-page-gap-top_20">
                 <div>
@@ -53,22 +57,38 @@
 import Header from '@/components/Header/Header';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
-
+import HTTP from '@/api/HttpRequest';
 export default {
     data() {
         return {
             contact: 'support@bitmax.io',
             registEnabled: true,
+            submiting: false,
             registData: {
                 email: this.$route.params.email || '',
                 passd: '',
                 passdConf: '',
-                recommend: ''
+                inviteCode: ''
+            },
+            registValidata: {
+                email: false,
+                passd: false,
+                passdConf: false
             }
+        }
+    },
+    computed: {
+        submitFormData: function() {
+            return {
+                email: this.registData.email,
+                password: this.registData.passd,
+                inviteCode: this.registData.inviteCode
+            };
         }
     },
     methods: {
         emailVerify(data) {
+            this.registValidata.email = false;
             if (!data) {
                 return this.$t('message.verify.notEmpty', {
                     key: this.$t('message.placeholder.registMail')
@@ -77,26 +97,60 @@ export default {
             if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(data)) {
                 return this.$t('message.verify.registEmail');
             }
+            this.registValidata.email = true;
             return false;
         },
         passdVerify(data) {
+            this.registValidata.passd = false;
             if (!data) {
                 return this.$t('message.verify.notEmpty', {
                     key: this.$t('message.placeholder.registPassd')
                 });
             }
+            if ((data + '').length < 8) {
+                return this.$t('message.verify.emailMinLength')
+            }
+            this.registValidata.passd = true;
         },
         passdConfVerify(data) {
+            this.registValidata.passdConf = false;
             if (!data) {
                 return this.$t('message.verify.notEmpty', {
                     key: this.$t('message.placeholder.registPassdConf')
                 });
             }
-
             if (data !== this.registData.passd) {
                 return this.$t('message.verify.passdNotUnify');
             }
+            this.registValidata.passdConf = true;
             return false;
+        },
+        check() {
+            this.$refs.child1.outVerify(this.registData.email);
+            this.$refs.child2.outVerify(this.registData.passd);
+            this.$refs.child3.outVerify(this.registData.passdConf);
+            if (!this.registValidata.email || !this.registValidata.passd || !this.registValidata.passdConf) {
+                return false;
+            }
+            return true;
+        },
+        submit() {
+            if (!this.check() || !this.registEnabled || this.submiting) {
+                return;
+            }
+            this.registEnabled = false;
+            this.submiting = true;
+            let that = this;
+            HTTP.regist(this.submitFormData).then(function(res) {
+                alert("跳转到发送邮箱页面");
+            }, function(errMessage) {
+                that.$Toast.error({
+                    text: '请求错误',
+                    duration: 1500
+                });
+                that.registEnabled = true;
+                that.submiting = false;
+            })
         }
     },
     components: {
