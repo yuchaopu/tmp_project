@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueI18n from 'vue-i18n'
+import moment from 'moment'
 
 import messages from './i18n/i18n'
 import IconSvg from '@/components/IconSvg/IconSvg'
@@ -13,7 +14,6 @@ Vue.config.productionTip = false
 
 Vue.use(VueI18n)
 Vue.use(Toast)
-
 function getCookie(name,defaultValue) {
     let arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
     if (arr = document.cookie.match(reg)) {
@@ -39,6 +39,7 @@ const i18n = new VueI18n({
     messages
 })
 
+Vue.prototype.$moment = moment;
 Vue.component('icon-svg', IconSvg);
 /* eslint-disable no-new */
 new Vue({

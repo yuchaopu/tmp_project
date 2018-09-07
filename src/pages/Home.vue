@@ -1,12 +1,12 @@
 <template>
     <div id="homePage">
-        <div class="toptips">
+        <div class="toptips" v-if="announcements.length > 0">
             <icon-svg class="icon-gonggao_icon" icon-class="gonggao_icon" />
             <div class="news-list">
                 <transition name="slide" mode="out-in">
-                    <div class="news-item" :key="news.index">
-                        <p>{{news.text}}</p>
-                        <span>({{news.time}})</span>
+                    <div class="news-item" :key="_setAnnouncements().index">
+                        <p>{{_setAnnouncements().text}}</p>
+                        <span>({{$moment(_setAnnouncements().time).format('MM-DD')}})</span>
                     </div>
                 </transition>
             </div>
@@ -174,30 +174,33 @@
     import footer from '@/components/Footer/Footer';
     import fixedTools from '@/components/FixedTools/FixedTools';
     import quickRegist from '@/components/QuickRegist/QuickRegist';
+    import HTTP from '@/api/HttpRequest';
     export default {
         name: 'Home',
         data (){
             return {
                 swiperIndex: 1,
                 number: 0,
-                topNews:[
-                    {text:"111公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符", time: '8-21'},
-                    {text:"222公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符", time: '8-22'},
-                    {text:"333公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符公告文字内容限制同网站英文英文字符字符", time: '8-23'}
-                ]
+                announcements:[]
             };
         },
         computed: {
-            news() {
-                return {
-                    index: this.number,
-                    text: this.topNews[this.number].text,
-                    time: this.topNews[this.number].time
-                }
-            }
+            
         },
         mounted() {
-            this.startMove()
+            this.startMove();
+             HTTP.getAnnouncements().then(res => {
+                if(res.status === 200){   
+                    console.log(res.data);
+                    this.$nextTick(()=>{
+                        this.announcements = res.data;
+                        this._setAnnouncements();
+                    })
+                }
+                
+            }, err => {
+                console.log(err);
+            })
         },
         components: {
             'v-header': header,
@@ -211,13 +214,21 @@
             },
             startMove() {
                 let timer = setTimeout(() => {
-                    if (this.number === this.topNews.length - 1) {
+                    if (this.number === this.announcements.length - 1) {
                         this.number = 0;
                     } else {
                         this.number += 1;
                     }
                     this.startMove();
                 }, 5000)
+            },
+            _setAnnouncements() {
+                return {
+                    index: this.number,
+                    text: this.announcements[this.number].msg,
+                    time: this.announcements[this.number].publishTime,
+                    url: this.announcements[this.number].url
+                }
             }
         }
     }
