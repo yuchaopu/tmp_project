@@ -82,14 +82,15 @@ export default {
             lang: language == "zh" ? "zh-cn" : "en"
           },
           function(captchaObj) {
+            let btn = document.getElementById("geeTestButton");
             that.captchaObj = captchaObj;
-            document
-              .getElementById("geeTestButton")
-              .addEventListener("click", function() {
+            if (btn) {
+              btn.addEventListener("click", function() {
                 if (that.loginEnabled) {
                   captchaObj.verify();
                 }
               });
+            }
             captchaObj.onSuccess(function() {
               var result = captchaObj.getValidate();
               HTTP.postGeetest({
@@ -173,6 +174,8 @@ export default {
               }
             });
             return false;
+          } else {
+            localStorage.setItem('authorization', res.data.authorization);
           }
         },
         function(errMessage) {

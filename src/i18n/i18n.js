@@ -2,7 +2,7 @@ module.exports = {
     en: {
         message: {
             title: {
-                regist: "Free Regist",
+                regist: "Register BitMax",
                 login: "Account",
                 requestPassword: "Request your password",
                 googleAuthenticator: 'Google Authenticator',
@@ -16,7 +16,7 @@ module.exports = {
                 login: "Log in",
                 announcements: "Announcements",
                 whitePaper: "White Paper",
-                registBtn: "Regist",
+                registBtn: "Sign up",
                 help: 'Help Center',
                 termService: "Terms of Services",
                 privacyPolicy: "Privacy Policy",
@@ -29,14 +29,14 @@ module.exports = {
             },
             placeholder: {
                 mail: "Enter your email address",
-                registMail: "E-mail",
+                registMail: "Email",
                 registPassd: "Password",
-                registPassdConf: "Confirm Password",
-                registRecommend: "Recommend ID"
+                registPassdConf: "Confirm password",
+                registRecommend: "invitation code(optional)"
             },
             content: {
-                registText1: 'Registered?',
-                registText2: '如有疑问请联系客服：',
+                registText1: 'Already registered?',
+                registText2: 'Any questions please contact:',
                 registLogin: 'Login',
                 loginText1: 'No account?',
                 loginText2: 'Regist',
@@ -48,8 +48,8 @@ module.exports = {
             },
             verify: {
                 notEmpty: "请输入{key}",
-                registEmail: "请输入正确的邮箱地址",
-                passdNotUnify: "密码输入不一致",
+                registEmail: "Invalid email address",
+                passdNotUnify: "Passwords do not match. Please try again.",
                 emailMinLength: "Password must be at least 8 characters long."
             },
             introduce: {
@@ -82,7 +82,7 @@ module.exports = {
     zh: {
         message: {
             title: {
-                regist: "免费注册",
+                regist: "注册",
                 login: "登录账号",
                 requestPassword: "找回密码",
                 googleAuthenticator: "谷歌验证",
@@ -128,6 +128,7 @@ module.exports = {
             },
             verify: {
                 notEmpty: "请输入{key}",
+
                 registEmail: "请输入正确的邮箱地址",
                 passdNotUnify: "密码输入不一致",
                 emailMinLength: "密码不得低于8位"
