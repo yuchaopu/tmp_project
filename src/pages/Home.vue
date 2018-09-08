@@ -34,7 +34,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="control-line" v-if="activities.length > 4">
+                <div class="control-line" v-if="activities.length > 4 && activities.length <= 8">
                     <span class="line" :class="{'active': swiperIndex == 1}" @click="swiperChange(1)"></span>
                     <span class="line" :class="{'active': swiperIndex == 2}" @click="swiperChange(2)"></span>
                 </div>
@@ -194,6 +194,16 @@
             }, err => {
 
             });
+            // 市场行情
+            HTTP.getMarkets().then(res => {
+                if(res.status === 200){
+                    this.$nextTick(()=>{
+                        this.activities = res.data;
+                    })
+                }
+            }, err => {
+
+            });
         },
         components: {
             'v-header': header,
@@ -295,7 +305,7 @@
             font-size: px2rem(32px);
             // @include font-dpr(32px);
             color: #fff;
-            padding: px2rem(110px) 0 px2rem(80px);
+            padding: px2rem(160px) 0 px2rem(80px);
         }
         .swiper-wrapper{
             width: px2rem(375px);
