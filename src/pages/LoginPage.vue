@@ -174,6 +174,8 @@ export default {
               }
             });
             return false;
+          } else {
+            localStorage.setItem('authorization', res.data.authorization);
           }
         },
         function(errMessage) {

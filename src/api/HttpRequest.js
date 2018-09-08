@@ -3,11 +3,36 @@ import apis from './Apis';
 
 const HTTP = {};
 
+const headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Cache-Control': 'no-cache'
+};
+
+const instance = axios.create({
+    headers: headers
+});
+
 for (let [k, v] of Object.entries(apis)) {
     HTTP[k] = (data, params) => {
+        if (localStorage.getItem('authorization')) {
+            instance.defaults.headers.common['Authorization'] =
+                localStorage.getItem('authorization');
+        }
+        if (localStorage.getItem('lang')) {
+            instance.defaults.headers.common['Language'] =
+                {
+                    'zh': 'zh-CN',
+                    'en': 'en-US'
+                }[localStorage.getItem('lang')];
+        }
+        if (localStorage.getItem('NECaptchaValidate')) {
+            instance.defaults.headers.common['NECaptchaValidate'] =
+                localStorage.getItem('NECaptchaValidate');
+        }
         return new Promise((resolve, reject) => {
             if (v.method === 'post') {
-                axios.post(v.url, data)
+                instance.post(v.url, data)
                     .then(response => {
                         resolve(response);
                     })
@@ -23,7 +48,7 @@ for (let [k, v] of Object.entries(apis)) {
                     return $1;
                 });
     
-                axios.get(v.url, params)
+                instance.get(v.url, params)
                     .then(response => {
                         resolve(response);
                     })
