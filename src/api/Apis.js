@@ -34,6 +34,10 @@ module.exports = {
     bindGoogleAuth:{
         url:'/api/user/twofactorauth/verify',
         method: 'post'
+    },
+    getMarkets:{
+        url:'/api/market/mobile',
+        method: 'post'
     }
     
 }

@@ -41,17 +41,17 @@
             </div>
         </div>
         <div class="quotation">
-            <div class="quotation-item">
+            <div class="quotation-item" v-for="market in markets">
                 <div class="digital">
-                    <span class="digital-name">EOS/BTC</span>
+                    <span class="digital-name">{{market.s}}</span>
                     <span class="digital-change up">+123.00%</span>
                 </div>
                 <div class="price-wrapper">
-                    <p class="price up">0.12345678</p>
-                    <p class="CNY">￥15.78</p>
+                    <p class="price up">{{market.c}}</p>
+                    <!-- <p class="CNY">￥15.78</p> -->
                 </div>
                 <div class="latest-24">
-                    <p>{{$t('message.volume')}}：<span>7,891.12345678</span><span>EOS</span> </p>
+                    <p>{{$t('message.volume')}}：<span>{{market.v}}</span><span>{{market.qa}}</span> </p>
                 </div>
             </div>
             <div class="quotation-item">
@@ -61,7 +61,7 @@
                 </div>
                 <div class="price-wrapper">
                     <p class="price down">0.12345678</p>
-                    <p class="CNY">￥15.78</p>
+                    <!-- <p class="CNY">￥15.78</p> -->
                 </div>
                 <div class="latest-24">
                     <p>{{$t('message.volume')}}：<span>7,891.12345678</span><span>EOS</span> </p>
@@ -164,7 +164,8 @@
                 swiperIndex: 1,
                 number: 0,
                 announcements:[], // 小喇叭公告
-                activities: [] // 近期活动
+                activities: [],   // 近期活动
+                markets: []    // 行情
             };
         },
         computed: {
@@ -198,7 +199,7 @@
             HTTP.getMarkets().then(res => {
                 if(res.status === 200){
                     this.$nextTick(()=>{
-                        this.activities = res.data;
+                        this.markets = res.data.data;
                     })
                 }
             }, err => {
