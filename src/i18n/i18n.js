@@ -3,8 +3,8 @@ module.exports = {
         message: {
             title: {
                 regist: "Sign up",
-                login: "Account",
-                requestPassword: "Request your password",
+                login: "Login",
+                requestPassword: "Forgot Password",
                 googleAuthenticator: 'Google Authenticator',
                 resetpassword: 'Reset Password'
             },
@@ -12,7 +12,7 @@ module.exports = {
                 err: 'Request Error'
             },
             btn: {
-                regist: "Free Regist",
+                regist: "Sign up",
                 login: "Log in",
                 logout: "Exit",
                 announcements: "Announcements",
@@ -24,7 +24,7 @@ module.exports = {
                 disclaimer: "Disclaimer",
                 fees: "Fees",
                 apidoc: "API Doc",
-                sure: "Ensure",
+                sure: "Send email",
                 reset: "确认申请重置",
                 again: "Send again"
             },
@@ -39,10 +39,10 @@ module.exports = {
                 registText1: 'Already registered?',
                 registText2: 'Any questions please contact:',
                 registLogin: 'Login',
-                loginText1: 'No account?',
-                loginText2: 'Regist',
+                loginText1: 'Not on BitMax yet?',
+                loginText2: 'Sign up now',
                 loginText3: 'Forgot Password',
-                forgetText1: '英文待填写',
+                forgetText1: 'For your asset security, withdrawal is disabled within 24 hours of password reset.',
                 verifyText1: '英文待填写丢失谷歌验证码？',
                 email1: 'We have sent a verification email to ',
                 email2: 'please check your inbox.',
@@ -88,7 +88,7 @@ module.exports = {
             title: {
                 regist: "注册",
                 login: "登录账号",
-                requestPassword: "找回密码",
+                requestPassword: "忘记密码",
                 googleAuthenticator: "谷歌验证",
                 resetpassword: '重置密码'
             },
@@ -108,7 +108,7 @@ module.exports = {
                 disclaimer: "免责声明",
                 fees: "费率标准",
                 apidoc: "API接入",
-                sure: "确定",
+                sure: "发送邮件",
                 reset: "确认申请重置",
                 again: "重发"
             },

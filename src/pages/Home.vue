@@ -14,29 +14,34 @@
         </div>
         <v-header class="header"></v-header>
         <div class="banner">
-            <p class="slogan">
-                BitMax<br>We Know Exchange
-            </p>
-            <v-quickRegist v-if="!isLogin" />
-            <div class="swiper-wrapper">
-                <div class="swiper-content" :class="{'move': swiperIndex == 2}">
-                    <div class="swiper-tab">
-                        <a class = "swiper-item" v-for="(item, index) in activities" :key="item.index" :href="item.url" v-if="index < 4" target="_blank" :style="{'background-image': 'url('+ item.bgUrl +')'}">
-                            <h2>{{item.title}}</h2>
-                            <p>{{item.content}}</p>
-                        </a>
+            <div class="banner-main" :class="{'oneRow': activities.length < 3}">
+                <p class="slogan">
+                    BitMax<br>We Know Exchange
+                </p>
+                <v-quickRegist v-if="!isLogin" class="banner-main-regist" />
+                <div class="swiper-wrapper" :class="{'oneRow': activities.length < 3}">
+                    <div class="swiper-content" :class="{'move': swiperIndex == 2}">
+                        <div class="swiper-tab">
+                            <a class = "swiper-item" v-for="(item, index) in activities" :key="item.index" :href="item.url" v-if="index < 4" target="_blank" :style="{'background-image': 'url('+ item.bgUrl +')'}">
+                                <h2>{{item.title}}</h2>
+                                <p>{{item.content}}</p>
+                            </a>
+                        </div>
+                        <div class="swiper-tab" v-if="activities.length > 4">
+                            <a class="swiper-item" v-for="(item, index) in activities" :key="item.index" :href="item.url" v-if="index > 3" target="_blank">
+                                <h2>{{item.title}}</h2>
+                                <p>{{item.content}}</p>
+                            </a>
+                        </div>
                     </div>
-                    <div class="swiper-tab" v-if="activities.length > 4">
-                        <a class="swiper-item" v-for="(item, index) in activities" :key="item.index" :href="item.url" v-if="index > 3" target="_blank">
-                            <h2>{{item.title}}</h2>
-                            <p>{{item.content}}</p>
-                        </a>
+                    <div class="control-line" v-if="activities.length > 4 && activities.length <= 8">
+                        <span class="line" :class="{'active': swiperIndex == 1}" @click="swiperChange(1)"></span>
+                        <span class="line" :class="{'active': swiperIndex == 2}" @click="swiperChange(2)"></span>
                     </div>
                 </div>
-                <div class="control-line" v-if="activities.length > 4 && activities.length <= 8">
-                    <span class="line" :class="{'active': swiperIndex == 1}" @click="swiperChange(1)"></span>
-                    <span class="line" :class="{'active': swiperIndex == 2}" @click="swiperChange(2)"></span>
-                </div>
+            </div>
+            <div class="banner-radius">
+                <div class="banner-radius-color"></div>
             </div>
         </div>
         <div class="quotation">
@@ -305,88 +310,122 @@
         }
     }
     .banner{
-        background-color: $base-color; 
-        height: px2rem(642px);
-        border-radius: 0 0 200px 200px/0 0 50px 50px;
-        position: relative;
         margin-top: px2rem(-30px);
-        .slogan{
-            @include ta_c;
-            font-size: px2rem(32px);
-            // @include font-dpr(32px);
-            color: #fff;
-            padding: px2rem(160px) 0 px2rem(80px);
-        }
-        .swiper-wrapper{
-            width: px2rem(375px);
-            height: px2rem(230px);
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%, 0);
-            bottom: px2rem(-70px);
-            overflow: hidden;
-            .swiper-content{
-                position: relative;
-                height: px2rem(210px);
-                transition: all 0.5s ease;
-                &.move{
-                    transform: translate(px2rem(-375px), 0);
+        position: relative;
+        z-index: 1;
+        &-main{
+            background-color: $base-color; 
+            // height: px2rem(642px);
+            // border-radius: 0 0 200px 200px/0 0 50px 50px;
+            position: relative;
+            z-index: 10;
+            padding-bottom: px2rem(150px);
+            &.oneRow{
+                padding-bottom: px2rem(45px);
+            }
+            &-regist{
+                margin-bottom: px2rem(60px);
+            }
+            .slogan{
+                @include ta_c;
+                font-size: px2rem(32px);
+                // @include font-dpr(32px);
+                color: #fff;
+                padding: px2rem(160px) 0 px2rem(80px);
+            }
+            .swiper-wrapper{
+                width: px2rem(375px);
+                height: px2rem(230px);
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0);
+                bottom: px2rem(-70px);
+                overflow: hidden;
+                &.oneRow{
+                    height: px2rem(125px);
+                    .swiper-content{
+                        height: px2rem(105px);
+                    }
                 }
-                .swiper-tab{
-                    width: px2rem(375px);
+                .swiper-content{
+                    position: relative;
+                    height: px2rem(210px);
+                    transition: all 0.5s ease;
+                    &.move{
+                        transform: translate(px2rem(-375px), 0);
+                    }
+                    .swiper-tab{
+                        width: px2rem(375px);
+                        display: flex;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        &:nth-child(2n){
+                            left: px2rem(375px);
+                        }
+                        .swiper-item{
+                            width: px2rem(165px);
+                            height: px2rem(94px);
+                            background-color: #fff;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            background-position: right bottom;
+                            margin-bottom: px2rem(10px);
+                            padding: px2rem(10px);
+                            &:nth-child(2n){
+                                margin-left: px2rem(10px);
+                            }
+                            h2{
+                                font-weight: normal;
+                                color: $black-color;
+                                @include font-dpr(14px);
+                                @include overflow-ellipsis;
+                            }
+                            p{
+                                line-height: px2rem(18px);
+                                max-height: px2rem(36px);
+                                @include font-dpr(12px);
+                                @include multi-line-ellipsis(2);
+                                margin-top: px2rem(8px);
+                                color: $grey-color;
+                                
+                            }
+                        }
+                    }
+                }
+                .control-line{
                     display: flex;
                     justify-content: center;
-                    flex-wrap: wrap;
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    &:nth-child(2n){
-                        left: px2rem(375px);
-                    }
-                    .swiper-item{
-                        width: px2rem(165px);
-                        height: px2rem(94px);
-                        background-color: #fff;
-                        background-repeat: no-repeat;
-                        background-size: cover;
-                        background-position: right bottom;
-                        margin-bottom: px2rem(10px);
-                        padding: px2rem(10px);
-                        &:nth-child(2n){
-                            margin-left: px2rem(10px);
+                    margin-top: px2rem(10px);
+                    .line{
+                        width: px2rem(40px);
+                        height: px2rem(3px);
+                        background-color: rgba($color: $grey-color, $alpha: 0.2);
+                        margin: 0 px2rem(10px);
+                        &.active{
+                            background-color: $base-color;
                         }
-                        h2{
-                            font-weight: normal;
-                            color: $black-color;
-                            @include font-dpr(14px);
-                            @include overflow-ellipsis;
-                        }
-                        p{
-                            line-height: px2rem(18px);
-                            max-height: px2rem(36px);
-                            @include font-dpr(12px);
-                            @include multi-line-ellipsis(2);
-                            margin-top: px2rem(8px);
-                            color: $grey-color;
-                            
-                        }
+                        
                     }
                 }
             }
-            .control-line{
-                display: flex;
-                justify-content: center;
-                margin-top: px2rem(10px);
-                .line{
-                    width: px2rem(40px);
-                    height: px2rem(3px);
-                    background-color: rgba($color: $grey-color, $alpha: 0.2);
-                    margin: 0 px2rem(10px);
-                    &.active{
-                        background-color: $base-color;
-                    }
-                    
-                }
+        }
+        &-radius{
+            height: px2rem(100px);
+            position: relative;
+            margin-top: px2rem(-80px);
+            z-index: 9;
+            width: 100%;
+            overflow: hidden;
+            &-color{
+                width: 200%;
+                height: px2rem(100px);
+                left: -50%;
+                position: relative;
+                background-color: $base-color; 
+                border-radius: 0 0 100% 100%;
             }
         }
     }
