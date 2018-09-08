@@ -1,5 +1,5 @@
 <template>
-    <div id="footerserver" class="server">
+    <div id="Risk" class="risk">
         <v-header class="header"></v-header>
         <div class="content" v-if="lang == 'zh'">
             <h1 class="title">风险和免责声明</h1> 
@@ -94,7 +94,7 @@ export default {
 <style lang="scss" scoped>
 @import "../style/base";
 @import "../style/commom";
-.server{
+.risk{
     .content{
         padding: px2rem(50px) px2rem(20px) px2rem(40px);
         @include font-dpr(12px);

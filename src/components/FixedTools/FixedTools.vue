@@ -1,9 +1,9 @@
 <template>
     <div id="FixedTools">
-        <div class="card telegraph">
+        <div class="card telegraph" @click="openTelegraph()">
             <icon-svg icon-class="dianbao_btn" class="card-icon icon-dianbao_btn"></icon-svg>
         </div>
-        <div class="card wx">
+        <div class="card wx" @click = "openWx()">
             <icon-svg icon-class="weixin_btn" class="card-icon icon-weixin_btn"></icon-svg>
         </div>
         <div class="card backup"  v-show="showTop" @click="scrollToTop">
@@ -54,7 +54,13 @@
             },
             getScrollTop() {
                 this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-            }
+            },
+            openTelegraph() {
+                window.open('https://t.me/BitMaxChineseOfficial')
+            },
+            openWx() {
+                window.open(window.location.origin + '/#/wx')
+            },
         }
     }
 </script>

@@ -12,6 +12,7 @@ import CheckMail from '@/pages/CheckMail'
 import FooterServer from '@/pages/FooterServer'
 import Privacy from '@/pages/Privacy'
 import Risk from '@/pages/Risk'
+import Wx from '@/pages/Wx'
 
 Vue.use(Router)
 
@@ -75,6 +76,11 @@ const mainRouter =  new Router({
             path: '/risk',
             name: 'Risk',
             component: Risk
+        },
+        {
+            path: '/wx',
+            name: 'Wx',
+            component: Wx
         },
         {
             path: '/demopage',

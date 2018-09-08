@@ -45,7 +45,8 @@ module.exports = {
                 forgetText1: '英文待填写',
                 verifyText1: '英文待填写丢失谷歌验证码？',
                 email1: 'We have sent a verification email to ',
-                email2: 'please check your inbox.'
+                email2: 'please check your inbox.',
+                wxText: '7*24 Customer Support'
             },
             verify: {
                 emailNotEmpty: "Enter your email address",
@@ -128,7 +129,8 @@ module.exports = {
                 forgetText1:'为了您的资产安全，重置登录密码修改24小时以内不允许提币。',
                 verifyText1: '丢失谷歌验证码？',
                 email1: '验证电子邮件已发送到',
-                email2: '请检查此电子邮件以完成验证。'
+                email2: '请检查此电子邮件以完成验证。',
+                wxText: '7*24h 为您服务'
             },
             verify: {
                 emailNotEmpty: "请输入邮箱",
