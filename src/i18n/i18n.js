@@ -8,8 +8,15 @@ module.exports = {
                 googleAuthenticator: 'Google Authenticator',
                 resetpassword: 'Reset Password'
             },
+            word: {
+                hello: 'Hello'
+            },
             err: {
                 err: 'Request Error'
+            },
+            tip: {
+                tip1: "Account verified",
+                tip2: "Email delivery successful"
             },
             btn: {
                 regist: "Sign up",
@@ -24,7 +31,7 @@ module.exports = {
                 disclaimer: "Disclaimer",
                 fees: "Fees",
                 apidoc: "API Doc",
-                sure: "Send email",
+                sendEmail: "Send email",
                 reset: "确认申请重置",
                 again: "Send again"
             },
@@ -46,6 +53,7 @@ module.exports = {
                 verifyText1: '英文待填写丢失谷歌验证码？',
                 email1: 'We have sent a verification email to ',
                 email2: 'please check your inbox.',
+                email3: 'If you received this email in error, please ignore or contact the Service',
                 wxText: '7*24 Customer Support'
             },
             verify: {
@@ -92,8 +100,15 @@ module.exports = {
                 googleAuthenticator: "谷歌验证",
                 resetpassword: '重置密码'
             },
+            word: {
+                hello: '您好'
+            },
             err: {
                 err: '请求错误'
+            },
+            tip: {
+                tip1: "验证成功",
+                tip2: '邮件发送成功'
             },
             btn: {
                 regist: "免费注册",
@@ -108,7 +123,7 @@ module.exports = {
                 disclaimer: "免责声明",
                 fees: "费率标准",
                 apidoc: "API接入",
-                sure: "发送邮件",
+                sendEmail: "发送邮件",
                 reset: "确认申请重置",
                 again: "重发"
             },
@@ -130,6 +145,9 @@ module.exports = {
                 verifyText1: '丢失谷歌验证码？',
                 email1: '验证电子邮件已发送到',
                 email2: '请检查此电子邮件以完成验证。',
+                email3: '如果您误收此邮件, 请自动忽略或者联系客服。',
+                email4:'感谢您注册BitMax。',
+                email5: '请您激活BitMax账号以完整体验功能。',
                 wxText: '7*24h 为您服务'
             },
             verify: {

@@ -14,7 +14,7 @@
                 :class="{'enabled': verifyEnabled}"
                 active="verify-page-content-btn-active"
                 @click="submit"
-                :disabled="!verifyEnabled">{{ $t('message.btn.sure') }}</b-button>
+                :disabled="!verifyEnabled">{{ $t('message.btn.sendEmail') }}</b-button>
             <div class="verify-page-content-footer verify-page-gap-top_20">
                 <div class="">
                     <router-link class="verify-page-content-footer-login" to="/resetgoogleauthenticator">{{ $t('message.content.verifyText1') }}</router-link>
