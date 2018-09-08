@@ -44,10 +44,12 @@
                         </transition>
                     </li>
                     <li>
-                        {{$t('message.btn.whitePaper')}}
+                        <a v-if ="this.lang == 'zh'" target="_blank" href="https://bitmax.io/static/whitePaper_CN.pdf">{{$t('message.btn.whitePaper')}}</a>
+                        <a v-else target="_blank" href="https://bitmax.io/static/whitePaper_EN.pdf">{{$t('message.btn.whitePaper')}}</a>
                     </li>
                     <li>
-                        {{$t('message.btn.announcements')}}
+                        <a v-if ="this.lang=='zh'" target = "_blank" href="https://bitmaxhelp.zendesk.com/hc/zh-cn">{{$t('message.btn.announcements')}}</a>
+                        <a v-else target = "_blank" href="https://bitmaxhelp.zendesk.com/hc/en-us">{{$t('message.btn.announcements')}}</a>
                     </li>
                     <li v-if="!isLogin">
                         <router-link to="/login">
