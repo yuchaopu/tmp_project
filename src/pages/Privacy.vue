@@ -1,5 +1,5 @@
 <template>
-    <div id="footerserver" class="server">
+    <div id="Privacy" class="privacy">
         <v-header class="header"></v-header>
         <div class="content" v-if="lang == 'zh'">
             <h1>BitMax隐私政策</h1>
@@ -226,7 +226,7 @@ export default {
 <style lang="scss" scoped>
 @import "../style/base";
 @import "../style/commom";
-.server{
+.privacy{
     .content{
         padding: px2rem(50px) px2rem(20px) px2rem(40px);
         @include font-dpr(12px);
