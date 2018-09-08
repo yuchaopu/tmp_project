@@ -9,7 +9,7 @@
             </div>
             
             <div class="header-right">
-                <div v-if="showRegist" class="regist">
+                <div v-if="showRegist && !isLogin" class="regist">
                     <router-link to="/regist">{{ $t('message.btn.regist') }}</router-link>
                 </div>
                 <!-- <i class="icon icon-nav" @click="changeNav"></i> -->
@@ -72,7 +72,7 @@
                         </router-link>
                     </li>
                     <li v-if="isLogin">
-                        <div @click="logout">退出</div>
+                        <div @click="logout">{{ $t('message.btn.logout') }}</div>
                     </li>
                 </ul>
             </div>

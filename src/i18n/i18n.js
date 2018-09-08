@@ -2,7 +2,7 @@ module.exports = {
     en: {
         message: {
             title: {
-                regist: "Register BitMax",
+                regist: "Sign up",
                 login: "Account",
                 requestPassword: "Request your password",
                 googleAuthenticator: 'Google Authenticator',
@@ -14,6 +14,7 @@ module.exports = {
             btn: {
                 regist: "Free Regist",
                 login: "Log in",
+                logout: "Exit",
                 announcements: "Announcements",
                 whitePaper: "White Paper",
                 registBtn: "Sign up",
@@ -47,7 +48,9 @@ module.exports = {
                 email2: 'please check your inbox.'
             },
             verify: {
-                notEmpty: "请输入{key}",
+                emailNotEmpty: "Enter your email address",
+                passdNotEmpty: "Enter your password",
+                passdConfNotEmpty: "Please repeat your password",
                 registEmail: "Invalid email address",
                 passdNotUnify: "Passwords do not match. Please try again.",
                 emailMinLength: "Password must be at least 8 characters long."
@@ -94,6 +97,7 @@ module.exports = {
             btn: {
                 regist: "免费注册",
                 login: "登录",
+                logout: "退出",
                 announcements: "公告中心",
                 whitePaper: "白皮书",
                 registBtn: "注册",
@@ -127,10 +131,11 @@ module.exports = {
                 email2: '请检查此电子邮件以完成验证。'
             },
             verify: {
-                notEmpty: "请输入{key}",
-
+                emailNotEmpty: "请输入邮箱",
+                passdNotEmpty: "请输入密码",
+                passdConfNotEmpty: "请再次输入密码",
                 registEmail: "请输入正确的邮箱地址",
-                passdNotUnify: "密码输入不一致",
+                passdNotUnify: "两次输入密码不一致",
                 emailMinLength: "密码不得低于8位"
             },
             introduce: {

@@ -145,9 +145,7 @@ export default {
       this.registValidata.email = false;
       this.registEnabled = false;
       if (!data) {
-        return this.$t("message.verify.notEmpty", {
-          key: this.$t("message.placeholder.registMail")
-        });
+        return this.$t("message.verify.emailNotEmpty");
       }
       if (
         !/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(
@@ -164,9 +162,7 @@ export default {
       this.registValidata.passd = false;
       this.registEnabled = false;
       if (!data) {
-        return this.$t("message.verify.notEmpty", {
-          key: this.$t("message.placeholder.registPassd")
-        });
+        return this.$t("message.verify.passdNotEmpty");
       }
       if ((data + "").length < 8) {
         return this.$t("message.verify.emailMinLength");
@@ -181,9 +177,7 @@ export default {
       this.registValidata.passdConf = false;
       this.registEnabled = false;
       if (!data) {
-        return this.$t("message.verify.notEmpty", {
-          key: this.$t("message.placeholder.registPassdConf")
-        });
+        return this.$t("message.verify.passdConfNotEmpty");
       }
       if (data !== this.registData.passd) {
         return this.$t("message.verify.passdNotUnify");
