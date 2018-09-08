@@ -32,7 +32,10 @@ if (navLang === 'zh-CN') {
 } else if (navLang === 'en-US') {
     localLang = 'en';
 }
-const lang = window.localStorage.lang || localLang || 'en'
+let lang = window.localStorage.lang || localLang || 'en';
+if (!lang || lang !== 'en' || lang !== 'zh') {
+    lang = "en";
+}
 localStorage.setItem('lang', lang);
 Vue.config.lang = lang;
 const i18n = new VueI18n({

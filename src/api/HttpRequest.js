@@ -20,7 +20,7 @@ for (let [k, v] of Object.entries(apis)) {
                 localStorage.getItem('authorization');
         }
         if (localStorage.getItem('lang')) {
-            instance.defaults.headers.common['Language'] =
+            instance.defaults.headers.common['language'] =
                 {
                     'zh': 'zh-CN',
                     'en': 'en-US'
