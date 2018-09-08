@@ -17,7 +17,8 @@ module.exports = {
             tip: {
                 tip1: "Account verified",
                 tip2: "Email delivery successful",
-                tip3: '修改密码成功'
+                tip3: 'New password set',
+                tip4: 'You are now logged in'
             },
             btn: {
                 regist: "Sign up",
@@ -111,7 +112,8 @@ module.exports = {
             tip: {
                 tip1: "验证成功",
                 tip2: '邮件发送成功',
-                tip3: 'New password set'
+                tip3: '修改密码成功',
+                tip4: '登录成功'
             },
             btn: {
                 regist: "免费注册",

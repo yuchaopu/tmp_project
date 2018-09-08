@@ -175,6 +175,11 @@ export default {
             });
             return false;
           } else {
+            that.$Toast.success({
+                text: that.$t('message.tip.tip4'),
+                autoClose: true,
+                duration: 1500
+            });
             localStorage.setItem('authorization', res.data.authorization);
             localStorage.setItem('email', res.data.email);
             that.$router.push(that.$route.query.redirect || "/home");

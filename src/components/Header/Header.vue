@@ -61,7 +61,7 @@
                             {{$t('message.btn.regist')}}
                         </router-link>
                     </li>
-                    <li v-if="isLogin">
+                    <!-- <li v-if="isLogin">
                         <router-link to="/regist">
                             订单
                         </router-link>
@@ -75,7 +75,7 @@
                         <router-link to="/regist">
                             个人中心
                         </router-link>
-                    </li>
+                    </li> -->
                     <li v-if="isLogin">
                         <div @click="logout">{{ $t('message.btn.logout') }}</div>
                     </li>
