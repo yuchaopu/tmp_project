@@ -46,30 +46,33 @@
                     <li>
                         {{$t('message.btn.announcements')}}
                     </li>
-                    <li>
+                    <li v-if="!isLogin">
                         <router-link to="/login">
                             {{$t('message.btn.login')}}
                         </router-link>
                     </li>
-                    <li>
+                    <li v-if="!isLogin">
                         <router-link to="/regist">
                             {{$t('message.btn.regist')}}
                         </router-link>
                     </li>
-                    <li>
+                    <li v-if="isLogin">
                         <router-link to="/regist">
                             订单
                         </router-link>
                     </li>
-                    <li>
+                    <li v-if="isLogin">
                         <router-link to="/regist">
                             我的资产
                         </router-link>
                     </li>
-                    <li>
+                    <li v-if="isLogin">
                         <router-link to="/regist">
                             个人中心
                         </router-link>
+                    </li>
+                    <li v-if="isLogin">
+                        <div @click="logout">退出</div>
                     </li>
                 </ul>
             </div>
@@ -88,6 +91,7 @@ export default {
     },
     data() {
         return {
+            isLogin: false,
             navShow: false,
             subNavShow: false,
             fixed: false,
@@ -150,8 +154,15 @@ export default {
         getScrollTop () {
             return window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop
         },
+        logout () {
+            localStorage.removeItem('authorization');
+            window.location.reload();
+        }
     },
     mounted() {
+        if (localStorage.getItem('authorization')) {
+            this.isLogin = true;
+        }
         window.addEventListener("scroll", this.scroll, false),
         this.scroll()
     },
