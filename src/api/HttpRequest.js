@@ -16,11 +16,11 @@ const instance = axios.create({
 for (let [k, v] of Object.entries(apis)) {
     HTTP[k] = (data, params) => {
         if (localStorage.getItem('authorization')) {
-            instance.defaults.headers.common['Authorization'] =
+            instance.defaults.headers.common['authorization'] =
                 localStorage.getItem('authorization');
         }
         if (localStorage.getItem('lang')) {
-            instance.defaults.headers.common['Language'] =
+            instance.defaults.headers.common['language'] =
                 {
                     'zh': 'zh-CN',
                     'en': 'en-US'
