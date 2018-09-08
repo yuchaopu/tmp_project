@@ -5,7 +5,7 @@
             <div class="verify-page-content-title">{{ $t('message.title.googleAuthenticator') }}</div>
             <div class="verify-page-content-form">
                 <b-input
-                    v-model="verifyData.google"
+                    v-model="verifyData.twoFacToken"
                     class="verify-page-content-form-input"
                     :verify="googlelVerify"/>
             </div>
@@ -35,45 +35,32 @@ export default {
     return {
       verifyEnabled: false,
       verifyData: {
-        google: ""
+        twoFacToken: ""
       }
     };
   },
   methods: {
+    check() {
+      if (this.verifyData.twoFacToken) {
+        this.verifyEnabled = true;
+      }
+    },
     googlelVerify(data) {
       if (!data) {
         return this.$t("message.verify.notEmpty", {
           key: this.$t("message.placeholder.registMail")
         });
       }
-      if (
-        !/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(
-          data
-        )
-      ) {
-        return this.$t("message.verify.registEmail");
-      }
+      this.check();
       return false;
     },
-    passdVerify(data) {
-      if (!data) {
-        return this.$t("message.verify.notEmpty", {
-          key: this.$t("message.placeholder.registPassd")
-        });
-      }
-    },
     submit() {
-      alert('未经过验证');
+      var that = this;
       HTTP.bindGoogleAuth(this.verifyData).then(
         res => {
           res = res.data;
           if (res.status === "success") {
-            this.$Toast.success(res.msg);
-            this.$store.commit("setBitMaxInfo", {
-              res: JSON.parse(this.$route.query.res),
-              flag: true
-            });
-            let res = JSON.parse(this.$route.query.res);
+            res = JSON.parse(this.$route.query.res);
             localStorage.setItem("authorization", res.authorization);
             localStorage.setItem("accountGroup", res.accountGroup);
             this.$router.push(this.$route.query.redirect || "/home");
