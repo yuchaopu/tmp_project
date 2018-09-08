@@ -108,14 +108,15 @@ export default {
             lang: language == "zh" ? "zh-cn" : "en"
           },
           function(captchaObj) {
+            let btn = document.getElementById("geeTestButtonRegister");
             that.captchaObj = captchaObj;
-            document
-              .getElementById("geeTestButtonRegister")
-              .addEventListener("click", function() {
+            if (btn) {
+              btn.addEventListener("click", function() {
                 if (that.registEnabled) {
                   captchaObj.verify();
                 }
               });
+            }
             captchaObj.onSuccess(function() {
               var result = captchaObj.getValidate();
               HTTP.postGeetest({
