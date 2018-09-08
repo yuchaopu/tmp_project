@@ -22,6 +22,18 @@ module.exports = {
     getActivities: {
         url: '/api/activities',
         method: 'get'
+    },
+    getGeetest:{
+        url: '/api/user/humanchallenge',
+        method: 'get'
+    },
+    postGeetest:{
+        url: '/api/user/humanchallenge',
+        method: 'post'
+    },
+    bindGoogleAuth:{
+        url:'/api/user/twofactorauth/verify',
+        method: 'post'
     }
     
 }

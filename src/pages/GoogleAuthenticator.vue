@@ -13,6 +13,7 @@
                 class="verify-page-content-btn"
                 :class="{'enabled': verifyEnabled}"
                 active="verify-page-content-btn-active"
+                @click="submit"
                 :disabled="!verifyEnabled">{{ $t('message.btn.sure') }}</b-button>
             <div class="verify-page-content-footer verify-page-gap-top_20">
                 <div class="">
@@ -24,108 +25,143 @@
 </template>
 
 <script>
-import Header from '@/components/Header/Header';
-import Input from '@/components/Input/Input';
-import Button from '@/components/Button/Button'
+import Header from "@/components/Header/Header";
+import Input from "@/components/Input/Input";
+import Button from "@/components/Button/Button";
+import HTTP from "@/api/HttpRequest";
 
 export default {
-    data() {
-        return {
-            verifyEnabled: false,
-            verifyData: {
-                google: ''
-            }
-        }
+  data() {
+    return {
+      verifyEnabled: false,
+      verifyData: {
+        google: ""
+      }
+    };
+  },
+  methods: {
+    googlelVerify(data) {
+      if (!data) {
+        return this.$t("message.verify.notEmpty", {
+          key: this.$t("message.placeholder.registMail")
+        });
+      }
+      if (
+        !/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(
+          data
+        )
+      ) {
+        return this.$t("message.verify.registEmail");
+      }
+      return false;
     },
-    methods: {
-        googlelVerify(data) {
-            if (!data) {
-                return this.$t('message.verify.notEmpty', {
-                    key: this.$t('message.placeholder.registMail')
-                });
-            }
-            if (!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(data)) {
-                return this.$t('message.verify.registEmail');
-            }
-            return false;
+    passdVerify(data) {
+      if (!data) {
+        return this.$t("message.verify.notEmpty", {
+          key: this.$t("message.placeholder.registPassd")
+        });
+      }
+    },
+    submit() {
+      alert('未经过验证');
+      HTTP.bindGoogleAuth(this.verifyData).then(
+        res => {
+          res = res.data;
+          if (res.status === "success") {
+            this.$Toast.success(res.msg);
+            this.$store.commit("setBitMaxInfo", {
+              res: JSON.parse(this.$route.query.res),
+              flag: true
+            });
+            let res = JSON.parse(this.$route.query.res);
+            localStorage.setItem("authorization", res.authorization);
+            localStorage.setItem("accountGroup", res.accountGroup);
+            this.$router.push(this.$route.query.redirect || "/home");
+          }
         },
-        passdVerify(data) {
-            if (!data) {
-                return this.$t('message.verify.notEmpty', {
-                    key: this.$t('message.placeholder.registPassd')
-                });
-            }
+        function(errMessage) {
+          that.$Toast.error({
+            text:
+              (errMessage &&
+                errMessage.response &&
+                errMessage.response.data &&
+                errMessage.response.data.msg) ||
+              that.$t("message.err.err"),
+            duration: 1500
+          });
         }
-    },
-    components: {
-        'v-header': Header,
-        'b-input': Input,
-        'b-button': Button
+      );
     }
-}
+  },
+  components: {
+    "v-header": Header,
+    "b-input": Input,
+    "b-button": Button
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import '../style/base';
-@import '../style/commom';
+@import "../style/base";
+@import "../style/commom";
 .verify-page {
-    height: 100%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &-header {
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    flex-grow: 0;
+    z-index: 2;
+  }
 
-    &-header {
-        width: 100%;
-        flex-grow: 0;
-        z-index: 2;
+  &-content {
+    width: 100%;
+    flex-grow: 1;
+    background-color: $white-color;
+    padding: px2rem(30px) px2rem(20px);
+    margin-top: px2rem(50px);
+    &-title {
+      @include font-dpr(30px);
+      font-weight: 300;
     }
-
-    &-content {
-        width: 100%;
-        flex-grow: 1;
-        background-color: $white-color;
-        padding: px2rem(30px) px2rem(20px);
-        margin-top: px2rem(50px);
-        &-title {
-            @include font-dpr(30px);
-            font-weight: 300;
-        }
-        &-form {
-            margin: px2rem(30px) 0 px2rem(20px);
-            &-input {
-                @include font-dpr(14px);
-            }
-        }
-        &-btn {
-            @include ta_c;
-            @include font-dpr(16px);
-            color: $white-color;
-            width: 100%;
-            height: px2rem(42px);
-            line-height: px2rem(42px);
-            background-color: #172B4D;
-            opacity: .2;
-            &-active {
-                opacity: .7!important;
-            }
-            &.enabled {
-                opacity: 1;
-                background-color: #006CE1;
-            }
-        }
-        &-footer {
-            @include font-dpr(12px);
-            color: #A8ACB9;
-            display: flex;
-            justify-content: space-between;
-            flex-direction: row-reverse;
-            &-login {
-                color: #006CE1;
-            }
-        }
+    &-form {
+      margin: px2rem(30px) 0 px2rem(20px);
+      &-input {
+        @include font-dpr(14px);
+      }
     }
-    &-gap-top_20 {
-        margin-top: px2rem(20px);
+    &-btn {
+      @include ta_c;
+      @include font-dpr(16px);
+      color: $white-color;
+      width: 100%;
+      height: px2rem(42px);
+      line-height: px2rem(42px);
+      background-color: #172b4d;
+      opacity: 0.2;
+      &-active {
+        opacity: 0.7 !important;
+      }
+      &.enabled {
+        opacity: 1;
+        background-color: #006ce1;
+      }
     }
+    &-footer {
+      @include font-dpr(12px);
+      color: #a8acb9;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      &-login {
+        color: #006ce1;
+      }
+    }
+  }
+  &-gap-top_20 {
+    margin-top: px2rem(20px);
+  }
 }
 </style>

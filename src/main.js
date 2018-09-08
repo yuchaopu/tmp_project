@@ -9,6 +9,7 @@ import moment from 'moment'
 import messages from './i18n/i18n'
 import IconSvg from '@/components/IconSvg/IconSvg'
 import Toast from '@/components/Toast/Toast'
+import '../static/geetest/index.js'
 
 Vue.config.productionTip = false
 
