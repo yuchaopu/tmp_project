@@ -176,6 +176,7 @@ export default {
             return false;
           } else {
             localStorage.setItem('authorization', res.data.authorization);
+            that.$router.push('/home');
           }
         },
         function(errMessage) {
