@@ -1,6 +1,5 @@
 <template>
     <div class="regist-page">
-        <v-header class="regist-page-header" :show-regist="false" />
         <div class="regist-page-content">
             <div class="regist-page-content-title">{{ $t('message.title.resetpassword') }}</div>
             <div class="regist-page-content-form">
@@ -25,7 +24,7 @@
                 :class="{'enabled': resetEnabled}"
                 active="regist-page-content-btn-active"
                 id="geeTestButton"
-                :disabled="!resetEnabled">{{ $t('message.btn.sendEmail') }}</b-button>
+                :disabled="!resetEnabled">{{ $t('message.btn.resetBtn') }}</b-button>
         </div>
     </div>
 </template>
@@ -158,10 +157,12 @@ export default {
       HTTP.resetPasswordCode(this.submitFormData).then(
         function(res) {
           that.$Toast.success({
-            text: "密码重置成功",
+            text: that.$t('message.tip.tip3'),
             autoClose: true,
             duration: 1500
           });
+          localStorage.removeItem('authorization');
+          that.$router.push('/login')
         },
         function(errMessage) {
           that.$Toast.error({
@@ -207,7 +208,7 @@ export default {
     flex-grow: 1;
     background-color: $white-color;
     padding: px2rem(30px) px2rem(20px);
-    margin-top: px2rem(50px);
+    // margin-top: px2rem(50px);
     &-title {
       @include font-dpr(30px);
       font-weight: 300;

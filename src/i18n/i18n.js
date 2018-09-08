@@ -16,7 +16,8 @@ module.exports = {
             },
             tip: {
                 tip1: "Account verified",
-                tip2: "Email delivery successful"
+                tip2: "Email delivery successful",
+                tip3: '修改密码成功'
             },
             btn: {
                 regist: "Sign up",
@@ -33,7 +34,8 @@ module.exports = {
                 apidoc: "API Doc",
                 sendEmail: "Send email",
                 reset: "确认申请重置",
-                again: "Send again"
+                again: "Send again",
+                resetBtn: 'Reset'
             },
             placeholder: {
                 mail: "Enter your email address",
@@ -108,7 +110,8 @@ module.exports = {
             },
             tip: {
                 tip1: "验证成功",
-                tip2: '邮件发送成功'
+                tip2: '邮件发送成功',
+                tip3: 'New password set'
             },
             btn: {
                 regist: "免费注册",
@@ -125,7 +128,8 @@ module.exports = {
                 apidoc: "API接入",
                 sendEmail: "发送邮件",
                 reset: "确认申请重置",
-                again: "重发"
+                again: "重发",
+                resetBtn: '重置'
             },
             placeholder: {
                 mail: "输入邮箱地址",
