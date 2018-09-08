@@ -2,25 +2,25 @@
     <div id="footer">
         <icon-svg class="icon-logo" icon-class="logo" />
         <ul>
-            <li>
-                {{$t('message.btn.announcements')}}
-            </li>
-            <li>
+            <!-- <li @click = 'openAnnounce()'>
+            {{$t('message.btn.announcements')}}
+            </li> -->
+            <li @click = "openHelp()">
                 {{$t('message.btn.help')}}
             </li>
-            <li>
+            <li @click = "openTerm">
                 {{$t('message.btn.termService')}}
             </li>
-            <li>
+            <li @click = "openPrivacy">
                 {{$t('message.btn.privacyPolicy')}}
             </li>
-            <li>
+            <li @click = "openDiscla">
                 {{$t('message.btn.disclaimer')}}
             </li>
-            <li>
+            <li @click = "openFees">
                 {{$t('message.btn.fees')}}
             </li>
-            <li>
+            <li @click = "openApi()">
                 {{$t('message.btn.apidoc')}}
             </li>
         </ul>
@@ -29,7 +29,51 @@
 
 <script>
     export default {
-
+        data() {
+            const navLang = navigator.language;
+            let language = localStorage.getItem('lang');
+            if (!language) {
+                localStorage.setItem('lang', navLang);
+                language = navLang;
+            }
+            return {
+                lang: language
+            }
+        },
+        methods: {
+            // openAnnounce() {
+            //     if (this.lang == 'zh') {
+            //         window.open('')
+            //     }
+            //     debugger;
+            // },
+            openHelp() {
+                if (this.lang == 'zh') {
+                    window.open('https://bitmaxhelp.zendesk.com/hc/zh-cn');
+                } else {
+                    window.open('https://bitmaxhelp.zendesk.com/hc/en-us')
+                }
+            },
+            openTerm() {
+                window.open('https://bitmax.io/#/footerserver')
+            },
+            openPrivacy() {
+                window.open('https://bitmax.io/#/privacy')
+            },
+            openDiscla() {
+                window.open('https://bitmax.io/#/risk')
+            },
+            openFees() {
+                if (this.lang == 'zh') {
+                    window.open( 'https://bitmaxhelp.zendesk.com/hc/zh-cn/articles/360007941073-%E4%BA%A4%E6%98%93%E6%89%8B%E7%BB%AD%E8%B4%B9');
+                } else {
+                    window.open('https://bitmaxhelp.zendesk.com/hc/en-us/articles/360007881894-Trading-Fees');
+                }
+            },
+            openApi() {
+                window.open('https://github.com/bitmax-exchange/api-doc');
+            }
+        }
     }
 </script>
 
