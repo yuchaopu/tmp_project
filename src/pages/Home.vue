@@ -17,8 +17,7 @@
             <p class="slogan">
                 BitMax<br>We Know Exchange
             </p>
-            <v-quickRegist>
-            </v-quickRegist>
+            <v-quickRegist v-if="!isLogin" />
             <div class="swiper-wrapper">
                 <div class="swiper-content" :class="{'move': swiperIndex == 2}">
                     <div class="swiper-tab">
@@ -83,12 +82,11 @@
                 <p>{{$t('message.introduce.fifth.content')}} </p>
             </div>
         </div>
-        <div class="middle-regist">
+        <div v-if="!isLogin" class="middle-regist">
             <p class="slogan">
                 {{ $t('message.btn.regist') }}<br>{{ $t('message.text1') }}
             </p>
-            <v-quickRegist>
-            </v-quickRegist>
+            <v-quickRegist />
         </div>
         <div class="investors">
             <div class="investors-item">
@@ -135,6 +133,7 @@
         name: 'Home',
         data (){
             return {
+                isLogin: false,
                 swiperIndex: 1,
                 number: 0,
                 announcements:[], // 小喇叭公告
@@ -146,6 +145,7 @@
             
         },
         mounted() {
+            this.checkStatus();
             this.startMove();
             // 公告
             HTTP.getAnnouncements().then(res => {
@@ -235,6 +235,13 @@
                 var re = /([0-9]+\.[0-9]{2})[0-9]*/;
                 aNew = parseFloat(a.replace(re,"$1"));
                 return aNew;
+            },
+            checkStatus() {
+                if (localStorage.getItem('authorization')) {
+                    this.isLogin = true;
+                } else {
+                    this.isLogin = false;
+                }
             }
         }
     }

@@ -12,6 +12,9 @@
                 <div v-if="showRegist && !isLogin" class="regist">
                     <router-link to="/regist">{{ $t('message.btn.regist') }}</router-link>
                 </div>
+                <div v-if="isLogin" class="username">
+                    {{ username }}
+                </div>
                 <!-- <i class="icon icon-nav" @click="changeNav"></i> -->
                 <div @click="changeNav" class="icon-nav">
                     <icon-svg class="icon-hanbaobao" icon-class="hanbaobao" />
@@ -95,6 +98,7 @@ export default {
             navShow: false,
             subNavShow: false,
             fixed: false,
+            username: '',
             lang: window.localStorage.getItem('lang') || 'en'
         };
     },
@@ -163,6 +167,9 @@ export default {
         if (localStorage.getItem('authorization')) {
             this.isLogin = true;
         }
+        if (localStorage.getItem('email')) {
+            this.username = localStorage.getItem('email');
+        }
         window.addEventListener("scroll", this.scroll, false),
         this.scroll()
     },
@@ -225,6 +232,13 @@ export default {
                     height: px2rem(16px);
                     color: #fff;
                 }
+            }
+            .username {
+                @include font-dpr(14px);
+                @include overflow-ellipsis;
+                width: px2rem(100px);
+                color: $white-color;
+                margin: px2rem(15px) 0 0 0;
             }
         }
     }

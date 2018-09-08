@@ -176,6 +176,7 @@ export default {
             return false;
           } else {
             localStorage.setItem('authorization', res.data.authorization);
+            localStorage.setItem('email', res.data.email);
             that.$router.push('/home');
           }
         },
