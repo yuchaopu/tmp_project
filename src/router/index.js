@@ -9,6 +9,9 @@ import GoogleAuthenticator from '@/pages/GoogleAuthenticator'
 import resetLoginPasswordByEmailPage from '@/pages/resetLoginPasswordByEmailPage'
 import ResetGoogleAuthenticator from '@/pages/ResetGoogleAuthenticator'
 import CheckMail from '@/pages/CheckMail'
+import FooterServer from '@/pages/FooterServer'
+import Privacy from '@/pages/Privacy'
+import Risk from '@/pages/Risk'
 
 Vue.use(Router)
 
@@ -57,6 +60,21 @@ const mainRouter =  new Router({
             path: '/checkMail',
             name: 'CheckMail',
             component: CheckMail
+        },
+        {
+            path: '/footerServer',
+            name: 'FooterServer',
+            component: FooterServer
+        },
+        {
+            path: '/privacy',
+            name: 'Privacy',
+            component: Privacy
+        },
+        {
+            path: '/risk',
+            name: 'Risk',
+            component: Risk
         },
         {
             path: '/demopage',

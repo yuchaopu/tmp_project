@@ -55,7 +55,7 @@
                 }
             },
             openTerm() {
-                window.open('https://bitmax.io/#/footerserver')
+                window.open(window.location.origin + '/#/footerServer')
             },
             openPrivacy() {
                 window.open('https://bitmax.io/#/privacy')
