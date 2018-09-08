@@ -42,7 +42,7 @@ if (navLang === 'zh-CN') {
     localLang = 'en';
 }
 let lang = window.localStorage.lang || localLang || 'en';
-if (!lang || lang !== 'en' || lang !== 'zh') {
+if (!lang || (lang !== 'en' && lang !== 'zh')) {
     lang = "en";
 }
 localStorage.setItem('lang', lang);
