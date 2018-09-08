@@ -25,7 +25,7 @@
                 :class="{'enabled': resetEnabled}"
                 active="regist-page-content-btn-active"
                 id="geeTestButton"
-                :disabled="!resetEnabled">{{ $t('message.btn.sure') }}</b-button>
+                :disabled="!resetEnabled">{{ $t('message.btn.sendEmail') }}</b-button>
         </div>
     </div>
 </template>

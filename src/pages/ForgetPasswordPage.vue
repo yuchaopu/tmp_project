@@ -20,7 +20,7 @@
                 :class="{'enabled': forgetEnabled}"
                 id="geeTestButton"
                 active="regist-page-content-btn-active"
-                :disabled="!forgetEnabled">{{ $t('message.btn.sure') }}</b-button>
+                :disabled="!forgetEnabled">{{ $t('message.btn.sendEmail') }}</b-button>
         </div>
     </div>
 </template>

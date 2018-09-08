@@ -38,6 +38,13 @@ module.exports = {
     getMarkets:{
         url:'/api/market/mobile',
         method: 'post'
+    },
+    verifyClientEmail: {
+        url: '/api/user/verifyemail',
+        method: 'post'
+    },
+    sendVerificationEmail: {
+        url: '/api/user/sendverification',
+        method: 'post'
     }
-    
 }
