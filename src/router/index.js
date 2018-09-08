@@ -13,6 +13,7 @@ import FooterServer from '@/pages/FooterServer'
 import Privacy from '@/pages/Privacy'
 import Risk from '@/pages/Risk'
 import Wx from '@/pages/Wx'
+import EmailVerify from '@/pages/EmailVerify'
 
 Vue.use(Router)
 
@@ -81,6 +82,11 @@ const mainRouter =  new Router({
             path: '/wx',
             name: 'Wx',
             component: Wx
+        },
+        {
+            path: '/emailVerify',
+            name: 'EmailVerify',
+            component: EmailVerify
         },
         {
             path: '/demopage',
