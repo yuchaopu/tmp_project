@@ -201,7 +201,7 @@ export default {
               data: {
                 url: "regist",
                 submitData: that.submitFormData,
-                email: that.submitForm.email
+                email: that.submitFormData.email
               }
             }
           });
