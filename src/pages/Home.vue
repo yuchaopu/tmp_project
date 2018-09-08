@@ -41,43 +41,17 @@
             </div>
         </div>
         <div class="quotation">
-            <div class="quotation-item" v-for="market in markets">
+            <div class="quotation-item" v-for="market in markets" :key="market.index">
                 <div class="digital">
                     <span class="digital-name">{{market.s}}</span>
-                    <span class="digital-change up">+123.00%</span>
+                    <span class="digital-change" :class="market.price_status" >{{market.symbol}}{{market.change}}%</span>
                 </div>
                 <div class="price-wrapper">
-                    <p class="price up">{{market.c}}</p>
+                    <p class="price" :class="market.price_status">{{market.c}}</p>
                     <!-- <p class="CNY">￥15.78</p> -->
                 </div>
                 <div class="latest-24">
                     <p>{{$t('message.volume')}}：<span>{{market.v}}</span><span>{{market.qa}}</span> </p>
-                </div>
-            </div>
-            <div class="quotation-item">
-                <div class="digital">
-                    <span class="digital-name">EOS/BTC</span>
-                    <span class="digital-change down">-123.00%</span>
-                </div>
-                <div class="price-wrapper">
-                    <p class="price down">0.12345678</p>
-                    <!-- <p class="CNY">￥15.78</p> -->
-                </div>
-                <div class="latest-24">
-                    <p>{{$t('message.volume')}}：<span>7,891.12345678</span><span>EOS</span> </p>
-                </div>
-            </div>
-            <div class="quotation-item">
-                <div class="digital">
-                    <span class="digital-name">EOS/BTC</span>
-                    <span class="digital-change up">+123.00%</span>
-                </div>
-                <div class="price-wrapper">
-                    <p class="price up">0.12345678</p>
-                    <p class="CNY">￥15.78</p>
-                </div>
-                <div class="latest-24">
-                    <p>{{$t('message.volume')}}：<span>7,891.12345678</span><span>EOS</span> </p>
                 </div>
             </div>
         </div>
@@ -196,15 +170,9 @@
 
             });
             // 市场行情
-            HTTP.getMarkets().then(res => {
-                if(res.status === 200){
-                    this.$nextTick(()=>{
-                        this.markets = res.data.data;
-                    })
-                }
-            }, err => {
-
-            });
+            this.getMarkets();
+            this.marketsTimer();
+            
         },
         components: {
             'v-header': header,
@@ -233,6 +201,40 @@
                     time: this.announcements[this.number].publishTime,
                     url: this.announcements[this.number].url
                 }
+            },
+            marketsTimer() {
+                setInterval(()=>{this.getMarkets()},5000)
+            },
+            getMarkets(){
+                HTTP.getMarkets().then(res => {
+                    if(res.status === 200){
+                        this.$nextTick(()=>{
+                            this.markets = res.data.data;
+                            this.markets.forEach((item)=>{
+                                if(item.c == item.o){
+                                    item.price_status = 'hold';
+                                    item.symbol = '';
+                                } else if (item.c > item.o){
+                                    item.price_status = 'rise';
+                                    item.symbol = '+';
+                                } else {
+                                    item.price_status = 'lower';
+                                    item.symbol = '-';
+                                }
+                                item.change = item.o == 0? 0 :this.getFloat(Math.abs(item.c - item.o)*100/item.o);
+                            })
+                        })
+                    }
+                }, err => {
+
+                }); 
+            },
+            getFloat(num) {
+                var a = num.toString();
+                var aNew;
+                var re = /([0-9]+\.[0-9]{2})[0-9]*/;
+                aNew = parseFloat(a.replace(re,"$1"));
+                return aNew;
             }
         }
     }
@@ -400,10 +402,10 @@
                     @include font-dpr(14px);
                     color: $black-color;
                     margin-left: px2rem(8px);
-                    &.up{
+                    &.rise{
                         color: #24B864;
                     }
-                    &.down{
+                    &.lower{
                         color: #F05253;
                     }
                 }
@@ -414,10 +416,10 @@
                     font-weight: 600;
                     color: $black-color;
                     @include font-dpr(36px);
-                    &.up{
+                    &.rise{
                         color: #24B864;
                     }
-                    &.down{
+                    &.lower{
                         color: #F05253;
                     }
                 }
@@ -429,6 +431,7 @@
             }
             .latest-24{
                 @include font-dpr(14px);
+                word-break: break-all;
                 color: $grey-color;
                 span{
                     color: $black-color;
