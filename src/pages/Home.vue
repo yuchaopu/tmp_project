@@ -143,7 +143,8 @@
                 number: 0,
                 announcements:[], // 小喇叭公告
                 activities: [],   // 近期活动
-                markets: []    // 行情
+                markets: [],    // 行情
+                timer: null
             };
         },
         computed: {
@@ -208,7 +209,7 @@
                 }
             },
             marketsTimer() {
-                setInterval(()=>{this.getMarkets()},5000)
+                this.timer = setInterval(()=>{this.getMarkets()},5000)
             },
             getMarkets(){
                 HTTP.getMarkets().then(res => {
@@ -248,6 +249,9 @@
                     this.isLogin = false;
                 }
             }
+        },
+        destroyed(){
+            clearInterval(this.timer);
         }
     }
 </script>
