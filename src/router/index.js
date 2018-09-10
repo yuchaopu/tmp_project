@@ -6,7 +6,7 @@ import RegistPage from '@/pages/RegistPage'
 import LoginPage from '@/pages/LoginPage'
 import ForgetPasswordPage from '@/pages/ForgetPasswordPage'
 import GoogleAuthenticator from '@/pages/GoogleAuthenticator'
-import resetLoginPasswordByEmailPage from '@/pages/resetLoginPasswordByEmailPage'
+import resetLoginPasswordByEmailPage from '@/pages/ResetLoginPasswordByEmailPage'
 import ResetGoogleAuthenticator from '@/pages/ResetGoogleAuthenticator'
 import CheckMail from '@/pages/CheckMail'
 import FooterServer from '@/pages/FooterServer'
@@ -99,13 +99,12 @@ const mainRouter =  new Router({
 mainRouter.beforeEach((to, from, next) => {
     // 判断当前模块是否需要登录
     window.scrollTo(0, 0);
-    // if ((/^\/register$/.test(to.fullPath) || /^\/login$/.test(to.fullPath)) && /^\/otc\//.test(from.fullPath)) {
-    //     next({
-    //         path: '/register?redirect=' + from.fullPath
-    //     })
-    // } else {
-    //     debugger;
-        next()
-    // }
+    if (to.matched.length === 0) { 
+        from.name ? next({
+          name: from.name
+        }) : next('/home'); 
+      } else {
+        next(); //如果匹配到正确跳转
+      }
 })
 export default mainRouter;

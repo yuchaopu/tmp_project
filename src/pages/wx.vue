@@ -40,5 +40,6 @@ export default {
             margin: 0 auto px2rem(20px);
         }
     }
+    
 }
 </style>

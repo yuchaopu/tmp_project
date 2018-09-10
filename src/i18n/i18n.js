@@ -70,20 +70,20 @@ module.exports = {
             introduce: {
                 title: "OUR VISION",
                 first: {
-                    title: "Open & Transparent",
-                    content: "Support real-time settlement and consistent 24-hour trading operation; full transparency of all the transaction records upon request."
+                    title: "Open and Transparent",
+                    content: "Real-time settlement and 24-hour trading operation; All the transaction records available upon request."
                 },
                 second: {
-                    title: "High-performance Tech Support",
-                    content: "Institutional-level trading architecture with advanced technology design; trading friendly environment with support for the FIX protocols and API."
+                    title: "High Performance Platform",
+                    content: "Institutional-grade trading architecture with advanced technology design; API and FIX access."
                 },
                 third: {
-                    title: "Safety & Stability",
-                    content: "Multi-level firewalls are set up to monitor system data processing in real time; multi- signature requirement with combined hot and cold wallets solutions."
+                    title: "Security and Stability",
+                    content: "Multi-level firewall and segmentation; Real-time system monitoring; Multi-signature requirement with combined solution of hot and cold wallets."
                 },
                 fourth: {
-                    title: "Market Liquidity & Depth",
-                    content: "Participation and support from professional traders, market makers, brokers, quant trading funds, other investors and communities will provide sufficient liquidity for trading."
+                    title: "Market Liquidity",
+                    content: "Broad participation from professional traders, market makers, funds, other investors and communities."
                 },
                 fifth: {
                     title: "Global Team with Deep Experience",

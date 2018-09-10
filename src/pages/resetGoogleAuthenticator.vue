@@ -42,6 +42,7 @@
                 :disabled="!resetEnabled">{{ $t('message.btn.reset') }}</b-button>
         </div>
     </div>
+    
 </template>
 
 <script>
