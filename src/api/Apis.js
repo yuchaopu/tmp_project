@@ -41,10 +41,10 @@ module.exports = {
     },
     verifyClientEmail: {
         url: '/api/user/verifyemail',
-        method: 'post'
+        method: 'get'
     },
     sendVerificationEmail: {
         url: '/api/user/sendverification',
-        method: 'post'
+        method: 'get'
     }
 }

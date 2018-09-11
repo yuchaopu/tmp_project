@@ -86,6 +86,9 @@ export default {
     }
   },
   mounted() {
+    if (this.registData.email) {
+      this.emailVerify(this.registData.email);
+    }
     var that = this;
     HTTP.getGeetest(
       {},

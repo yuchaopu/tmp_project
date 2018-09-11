@@ -59,7 +59,7 @@ export default {
             if(!this.emailDone) {
                 this.reduceTime();
                 let that = this;
-                HTTP.sendVerificationEmail({email: this.$route.query.email}).then(res => {
+                HTTP.sendVerificationEmail(null, {params:{email: this.$route.query.email}}).then(res => {
                     that.emailDone = true;
                     that.$Toast.success({
                         text: that.$t('message.tip.tip2'),
@@ -85,7 +85,7 @@ export default {
         sendVerifyEmail () {
             let that = this;
             if (this.email != '' && this.code != '' && /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(this.email)) {
-                HTTP.verifyClientEmail({email: this.email, code: this.code}).then(res => {
+                HTTP.verifyClientEmail(null,{params:{email: this.email, code: this.code}}).then(res => {
                     that.$Toast.success({
                         text: that.$t('message.tip.tip1'),
                         autoClose: true,

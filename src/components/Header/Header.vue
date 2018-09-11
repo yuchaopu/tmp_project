@@ -44,8 +44,8 @@
                         </transition>
                     </li>
                     <li>
-                        <a v-if ="this.lang == 'zh'" target="_blank" href="https://bitmax.io/static/whitePaper_CN.pdf">{{$t('message.btn.whitePaper')}}</a>
-                        <a v-else target="_blank" href="https://bitmax.io/static/whitePaper_EN.pdf">{{$t('message.btn.whitePaper')}}</a>
+                        <a v-if ="this.lang == 'zh'" target="_blank" href="/static/whitePaper_CN.pdf">{{$t('message.btn.whitePaper')}}</a>
+                        <a v-else target="_blank" href="/static/whitePaper_EN.pdf">{{$t('message.btn.whitePaper')}}</a>
                     </li>
                     <li>
                         <a v-if ="this.lang=='zh'" target = "_blank" href="https://bitmaxhelp.zendesk.com/hc/zh-cn">{{$t('message.btn.announcements')}}</a>

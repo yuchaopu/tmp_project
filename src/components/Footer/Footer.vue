@@ -58,10 +58,10 @@
                 window.open(window.location.origin + '/#/footerServer')
             },
             openPrivacy() {
-                window.open('https://bitmax.io/#/privacy')
+                window.open(window.location.origin + '/#/privacy')
             },
             openDiscla() {
-                window.open('https://bitmax.io/#/risk')
+                window.open(window.location.origin + '/#/risk')
             },
             openFees() {
                 if (this.lang == 'zh') {
