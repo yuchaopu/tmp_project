@@ -170,8 +170,8 @@ export default {
             this.isLogin = true;
         }
         if (localStorage.getItem('email')) {
-            let username = localStorage.getItem('email');
-            let hideStr = username.substring(3, username.length-3);
+            let username = localStorage.getItem('email'),
+                hideStr = username.substring(3, username.length-3);
             this.username = username.replace(hideStr,'****');
         }
         window.addEventListener("scroll", this.scroll, false),
