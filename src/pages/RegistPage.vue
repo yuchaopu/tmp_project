@@ -137,7 +137,7 @@ export default {
   },
   methods: {
     check() {
-      if (this.registValidata.email && this.registValidata.passd) {
+      if (this.registValidata.email && this.registValidata.passd && this.registValidata.passdConf) {
         this.registEnabled = true;
       }
     },
@@ -167,8 +167,8 @@ export default {
       if ((data + "").length < 8) {
         return this.$t("message.verify.emailMinLength");
       }
-      if (this.registData.passdConf.length) {
-        this.$refs.child1.outVerify(this.registData.passdConf);
+      if (this.registData.passdConf.length && !this.$refs.child1.outVerify(this.registData.passdConf)) {
+        this.registValidata.passdConf = false;
       }
       this.registValidata.passd = true;
       this.check();

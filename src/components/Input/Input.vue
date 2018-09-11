@@ -9,6 +9,7 @@
             :class="{'with-icon': icon, 'verify-error': !verifyPass}"
             :placeholder="placeholder"
             @input="onInput($event)"
+            @blur="onBlur($event)"
             :type="type"
             :value="value">
         <div v-if="errorText" class="b-input-error-text">{{ errorText }}</div>
@@ -47,6 +48,11 @@ export default {
     methods: {
         onInput(e) {
             this.$emit('input', e.target.value);
+            this.verifyPass = true;
+            this.errorText = '';
+        },
+        onBlur(e) {
+            this.$emit('blur', e);
             this.outVerify(e.target.value);
         },
         outVerify(val) {
@@ -54,9 +60,11 @@ export default {
             if (result) {
                 this.verifyPass = false;
                 this.errorText = result;
+                return false;
             } else {
                 this.verifyPass = true;
                 this.errorText = '';
+                return true;
             }
         }
     }
