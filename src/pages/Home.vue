@@ -16,7 +16,8 @@
         <div class="banner">
             <div class="banner-main" :class="{'oneRow': activities.length < 3}">
                 <p class="slogan">
-                    BitMax<br>We Know Exchange
+                    <!-- BitMax<br> -->
+                    We Know Exchange
                 </p>
                 <v-quickRegist v-if="!isLogin" class="banner-main-regist" />
                 <div class="swiper-wrapper" :class="{'oneRow': activities.length < 3}">
@@ -170,6 +171,7 @@
                 if(res.status === 200){
                     this.$nextTick(()=>{
                         this.activities = res.data;
+                        // this.activities = this.activities.concat(this.activities.concat(this.activities.concat(this.activities)))
                     })
                 }
             }, err => {
@@ -262,7 +264,7 @@
     position: relative;
     .toptips{
         height: px2rem(30px);
-        background: #004FA4;
+        background: #172B4D;
         display: flex;
         justify-content: space-between;
         color: #fff;
@@ -274,6 +276,7 @@
             width: px2rem(16px);
             height: px2rem(14px);
             margin: px2rem(8px) px2rem(16px) 0 px2rem(16px);
+            color: rgba($color: #fff, $alpha: 0.5)
         }
         .news-list{
             flex: 1;
@@ -434,7 +437,7 @@
         }
     }
     .quotation{
-        margin-top: px2rem(100px);
+        margin-top: px2rem(50px);
         padding: px2rem(10px) 0;
         .quotation-item{
             width: px2rem(345px);

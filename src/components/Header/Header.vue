@@ -170,7 +170,9 @@ export default {
             this.isLogin = true;
         }
         if (localStorage.getItem('email')) {
-            this.username = localStorage.getItem('email');
+            let username = localStorage.getItem('email');
+            let hideStr = username.substring(3, username.length-3);
+            this.username = username.replace(hideStr,'****');
         }
         window.addEventListener("scroll", this.scroll, false),
         this.scroll()
@@ -211,7 +213,7 @@ export default {
                 height: px2rem(30px);
                 line-height: px2rem(28px);
                 padding: 0 px2rem(12px);
-                display: inline-block;
+                display: block;
                 margin-top: px2rem(10px);
                 @include font-dpr(14px);
                 text-align: center;
@@ -228,7 +230,7 @@ export default {
                 width: px2rem(16px);
                 height: px2rem(16px);
                 margin: px2rem(17px) px2rem(16px) 0 px2rem(20px);
-                display: inline-block;
+                display: block;
                 .icon-hanbaobao{
                     width: px2rem(16px);
                     height: px2rem(16px);
@@ -237,7 +239,8 @@ export default {
             }
             .username {
                 @include font-dpr(14px);
-                @include overflow-ellipsis;
+                // @include overflow-ellipsis;
+                @include ta_c;
                 width: px2rem(100px);
                 color: $white-color;
                 margin: px2rem(15px) 0 0 0;
