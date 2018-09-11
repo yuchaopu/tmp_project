@@ -1,7 +1,7 @@
 <template>
     <div id="footerserver" class="server">
         <v-header class="header"></v-header>
-        <div class="content" v-if="lang == 'zn'">
+        <div class="content" v-if="lang == 'zh'">
             <h1>服务条款</h1>
             <br>
             数字资产交易存在高度风险。数字资产市场是一个新型和未被检验的市场，且可能由于各种因素经历频繁的价格波动，包括但不仅限于以下因素：（I）与投机者的相对较高使用量相比，数字资产在零售和商业市场的使用量较低，且（II）不能保证那些接受数字资产支付方式的个人或机构在将来仍持接受态度。上述价格波动可能会对投资产生不利影响。因此在使用BitMax之前，请评估投资的回报与风险，并且确保能够承担短时间内损失全部投资的经济风险。BitMax上的任何材料均不得视为BitMax的出售要约或BitMax对数字资产购买要约的劝诱。
