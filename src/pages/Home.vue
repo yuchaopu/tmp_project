@@ -16,8 +16,7 @@
         <div class="banner">
             <div class="banner-main" :class="{'oneRow': activities.length < 3}">
                 <p class="slogan">
-                    <!-- BitMax<br> -->
-                    We Know Exchange
+                    BitMax<br>We know exchange
                 </p>
                 <v-quickRegist v-if="!isLogin" class="banner-main-regist" />
                 <div class="swiper-wrapper" :class="{'oneRow': activities.length < 3}">
