@@ -38,7 +38,7 @@
                     });
                 } else {
                     this.$router.push({
-                        name: 'Regist',
+                        name: 'Register',
                         params: {
                             email: this.registMail
                         }

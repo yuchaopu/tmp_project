@@ -47,6 +47,7 @@ export default {
     },
     methods: {
         onInput(e) {
+            this.verify(e.target.value);
             this.$emit('input', e.target.value);
             this.verifyPass = true;
             this.errorText = '';

@@ -10,7 +10,7 @@
             
             <div class="header-right">
                 <div v-if="showRegist && !isLogin" class="regist">
-                    <router-link to="/regist">{{ $t('message.btn.regist') }}</router-link>
+                    <router-link to="/register">{{ $t('message.btn.regist') }}</router-link>
                 </div>
                 <div v-if="isLogin" class="username">
                     {{ username }}
@@ -57,7 +57,7 @@
                         </router-link>
                     </li>
                     <li v-if="!isLogin">
-                        <router-link to="/regist">
+                        <router-link to="/register">
                             {{$t('message.btn.regist')}}
                         </router-link>
                     </li>

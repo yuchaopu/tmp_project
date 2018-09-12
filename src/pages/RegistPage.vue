@@ -8,10 +8,12 @@
                     v-model="registData.email"
                     class="regist-page-content-form-input"
                     icon="email_icon"
+                    @input="check()"
                     :placeholder="$t('message.placeholder.registMail')"
                     :verify="emailVerify"/>
                 <b-input
                     v-model="registData.passd"
+                    @input="check()"
                     class="regist-page-content-form-input regist-page-gap-top_20"
                     icon="password_icon"
                     type="password"
@@ -19,6 +21,7 @@
                     :verify="passdVerify"/>
                 <b-input
                     v-model="registData.passdConf"
+                    @input="check()"
                     class="regist-page-content-form-input regist-page-gap-top_20"
                     icon="password_icon"
                     type="password"
@@ -67,7 +70,7 @@ export default {
         email: this.$route.params.email || "",
         passd: "",
         passdConf: "",
-        inviteCode: ""
+        inviteCode: this.$route.query.inviteCode || ""
       },
       registValidata: {
         email: false,
@@ -140,6 +143,7 @@ export default {
   },
   methods: {
     check() {
+      console.log(11)
       if (this.registValidata.email && this.registValidata.passd && this.registValidata.passdConf) {
         this.registEnabled = true;
       }

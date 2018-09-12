@@ -41,12 +41,6 @@
             }
         },
         methods: {
-            // openAnnounce() {
-            //     if (this.lang == 'zh') {
-            //         window.open('')
-            //     }
-            //     debugger;
-            // },
             openHelp() {
                 if (this.lang == 'zh') {
                     window.open('https://bitmaxhelp.zendesk.com/hc/zh-cn');

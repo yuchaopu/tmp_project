@@ -36,14 +36,16 @@ module.exports = {
                 sendEmail: "Send email",
                 reset: "确认申请重置",
                 again: "Send again",
-                resetBtn: 'Reset'
+                resetBtn: 'Reset',
+                verify: 'Verify'
             },
             placeholder: {
                 mail: "Enter your email address",
                 registMail: "Email",
                 registPassd: "Password",
                 registPassdConf: "Confirm password",
-                registRecommend: "invitation code(optional)"
+                registRecommend: "invitation code(optional)",
+                googleVerify: 'Enter verification code'
             },
             content: {
                 registText1: 'Already registered?',
@@ -65,7 +67,8 @@ module.exports = {
                 passdConfNotEmpty: "Please repeat your password",
                 registEmail: "Invalid email address",
                 passdNotUnify: "Passwords do not match. Please try again.",
-                emailMinLength: "Password must be at least 8 characters long."
+                emailMinLength: "Password must be at least 8 characters long.",
+                googleNotEmpty: 'Enter your verification code'
             },
             introduce: {
                 title: "OUR VISION",
@@ -131,14 +134,16 @@ module.exports = {
                 sendEmail: "发送邮件",
                 reset: "确认申请重置",
                 again: "重发",
-                resetBtn: '重置'
+                resetBtn: '重置',
+                verify: '验证'
             },
             placeholder: {
                 mail: "输入邮箱地址",
                 registMail: "邮箱",
                 registPassd: "密码",
                 registPassdConf: "确认密码",
-                registRecommend: "推荐人ID（选填）"
+                registRecommend: "推荐人ID（选填）",
+                googleVerify: "谷歌验证码"
             },
             content: {
                 registText1: '已经注册?',
@@ -162,7 +167,8 @@ module.exports = {
                 passdConfNotEmpty: "请再次输入密码",
                 registEmail: "请输入正确的邮箱地址",
                 passdNotUnify: "两次输入密码不一致",
-                emailMinLength: "密码不得低于8位"
+                emailMinLength: "密码不得低于8位",
+                googleNotEmpty: "请输入谷歌验证码"
             },
             introduce: {
                 title: "我们的优势",

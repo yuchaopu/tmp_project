@@ -8,12 +8,14 @@
                     v-model="loginData.email"
                     class="login-page-content-form-input"
                     icon="email_icon"
+                    @input="check()"
                     :placeholder="$t('message.placeholder.registMail')"
                     :verify="emailVerify"/>
                 <b-input
                     v-model="loginData.passd"
                     class="login-page-content-form-input login-page-gap-top_20"
                     icon="password_icon"
+                    @input="check()"
                     type="password"
                     :placeholder="$t('message.placeholder.registPassd')"
                     :verify="passdVerify"/>
@@ -27,7 +29,7 @@
             <div class="login-page-content-footer login-page-gap-top_20">
                 <div>
                     {{ $t('message.content.loginText1') }}
-                    <router-link class="login-page-content-footer-login" to="/regist">{{ $t('message.content.loginText2') }}</router-link>
+                    <router-link class="login-page-content-footer-login" to="/register">{{ $t('message.content.loginText2') }}</router-link>
                 </div>
                 <div class="">
                     <router-link class="login-page-content-footer-login" to="/forgetpassword">{{ $t('message.content.loginText3') }}</router-link>
@@ -127,7 +129,7 @@ export default {
       this.loginValidata.email = false;
       this.loginEnabled = false;
       if (!data) {
-        return this.$t("message.verify.notEmpty", {
+        return this.$t("message.verify.emailNotEmpty", {
           key: this.$t("message.placeholder.registMail")
         });
       }
@@ -146,7 +148,7 @@ export default {
       this.loginValidata.passd = false;
       this.loginEnabled = false;
       if (!data) {
-        return this.$t("message.verify.notEmpty", {
+        return this.$t("message.verify.emailNotEmpty", {
           key: this.$t("message.placeholder.registPassd")
         });
       }

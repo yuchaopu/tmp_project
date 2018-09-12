@@ -29,8 +29,8 @@ const mainRouter =  new Router({
             component: Home
         },
         {
-            path: '/regist',
-            name: 'Regist',
+            path: '/register',
+            name: 'Register',
             component: RegistPage
         },
         {

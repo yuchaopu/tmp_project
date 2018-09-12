@@ -7,6 +7,7 @@
                 <b-input
                     v-model="verifyData.twoFacToken"
                     class="verify-page-content-form-input"
+                    :placeholder="$t('message.placeholder.googleVerify')"
                     :verify="googlelVerify"/>
             </div>
             <b-button
@@ -14,7 +15,7 @@
                 :class="{'enabled': verifyEnabled}"
                 active="verify-page-content-btn-active"
                 @click="submit"
-                :disabled="!verifyEnabled">{{ $t('message.btn.sendEmail') }}</b-button>
+                :disabled="!verifyEnabled">{{ $t('message.btn.verify') }}</b-button>
             <!-- <div class="verify-page-content-footer verify-page-gap-top_20">
                 <div class="">
                     <router-link class="verify-page-content-footer-login" to="/resetgoogleauthenticator">{{ $t('message.content.verifyText1') }}</router-link>
@@ -36,25 +37,31 @@ export default {
       verifyEnabled: false,
       verifyData: {
         twoFacToken: ""
+      },
+      validata : {
+        twoFacToken:false
       }
     };
   },
   methods: {
-    check() {
-      if (this.verifyData.twoFacToken) {
-        this.verifyEnabled = true;
-      }
-    },
     googlelVerify(data) {
+      this.validata.twoFacToken = false;
+      this.verifyEnabled = false;
       if (!data) {
-        return this.$t("message.verify.notEmpty", {
+        return this.$t("message.verify.googleNotEmpty", {
           key: this.$t("message.placeholder.registMail")
         });
       }
-      this.check();
+      this.validata.twoFacToken = true;
+      this.verifyEnabled = true;
       return false;
     },
     submit() {
+      if (!this.verifyEnabled || this.submiting) {
+        return;
+      }
+      this.verifyEnabled = false;
+      this.submiting = true;
       var that = this;
       HTTP.bindGoogleAuth(this.verifyData).then(
         res => {
@@ -76,6 +83,8 @@ export default {
               that.$t("message.err.err"),
             duration: 1500
           });
+          that.verifyEnabled = true;
+          that.submiting = true;
         }
       );
     }

@@ -106,7 +106,7 @@ export default {
       this.forgetValidata.email = false;
       this.forgetEnabled = false;
       if (!data) {
-        return this.$t("message.verify.notEmpty", {
+        return this.$t("message.verify.emailNotEmpty", {
           key: this.$t("message.placeholder.registMail")
         });
       }

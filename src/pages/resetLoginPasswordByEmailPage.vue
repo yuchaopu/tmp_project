@@ -8,6 +8,7 @@
                     class="regist-page-content-form-input regist-page-gap-top_20"
                     icon="password_icon"
                     type="password"
+                    @input="check()"
                     :placeholder="$t('message.placeholder.registPassd')"
                     :verify="passdVerify"/>
                 <b-input
@@ -16,6 +17,7 @@
                     icon="password_icon"
                     type="password"
                     ref = 'child1'
+                    @input="check()"
                     :placeholder="$t('message.placeholder.registPassdConf')"
                     :verify="passdConfVerify"/>
             </div>
@@ -120,7 +122,7 @@ export default {
       this.resetValidata.passd = false;
       this.resetEnabled = false;
       if (!data) {
-        return this.$t("message.verify.notEmpty", {
+        return this.$t("message.verify.passdNotEmpty", {
           key: this.$t("message.placeholder.registPassd")
         });
       }
@@ -137,7 +139,7 @@ export default {
       this.resetValidata.passdConf = false;
       this.resetEnabled = false;
       if (!data) {
-        return this.$t("message.verify.notEmpty", {
+        return this.$t("message.verify.passdConfNotEmpty", {
           key: this.$t("message.placeholder.registPassdConf")
         });
       }
