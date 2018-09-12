@@ -64,27 +64,27 @@
             <div class="advantage-item">
                 <icon-svg class="advantage-icon icon-gongkaitouming_icon" icon-class="gongkaitouming_icon" />
                 <h3>{{$t('message.introduce.first.title')}}</h3>
-                <p>{{$t('message.introduce.first.content')}} </p>
+                <p v-html = "$t('message.introduce.first.content')"> </p>
             </div>
             <div class="advantage-item">
                 <icon-svg class="advantage-icon icon-gaoxingnengzhichi_icon" icon-class="gaoxingnengzhichi_icon" />
                 <h3>{{$t('message.introduce.second.title')}}</h3>
-                <p>{{$t('message.introduce.second.content')}} </p>
+                <p v-html = "$t('message.introduce.second.content')"> </p>
             </div>
             <div class="advantage-item">
                 <icon-svg class="advantage-icon icon-anquanwuqin_icon" icon-class="anquanwuqin_icon" />
                 <h3>{{$t('message.introduce.third.title')}}</h3>
-                <p>{{$t('message.introduce.third.content')}} </p>
+                <p v-html = "$t('message.introduce.third.content')"> </p>
             </div>
             <div class="advantage-item">
                 <icon-svg class="advantage-icon icon-liudongxingzhichi_icon" icon-class="liudongxingzhichi_icon" />
                 <h3>{{$t('message.introduce.fourth.title')}}</h3>
-                <p>{{$t('message.introduce.fourth.content')}} </p>
+                <p v-html = "$t('message.introduce.fourth.content')"> </p>
             </div>
             <div class="advantage-item">
                 <icon-svg class="advantage-icon icon-tuanduiliangdian_icon" icon-class="tuanduiliangdian_icon" />
                 <h3>{{$t('message.introduce.fifth.title')}}</h3>
-                <p>{{$t('message.introduce.fifth.content')}} </p>
+                <p v-html = "$t('message.introduce.fifth.content')"></p>
             </div>
         </div>
         <div v-if="!isLogin" class="middle-regist">

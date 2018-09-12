@@ -30,8 +30,8 @@
                         重置流程需人工审核，将花费2日以上时间，完成重置后48小时内禁止提现。
                     </div>
                     <div class="reset-page-content-select-item-radio" @click="check(2)">
-                        <icon-svg class="icon" icon-class="weixuanzhong"v-if="!resetData.check_2"></icon-svg>
-                        <icon-svg class="icon" icon-class="xuanzhong"v-if="resetData.check_2"></icon-svg>
+                        <icon-svg class="icon" icon-class="weixuanzhong" v-if="!resetData.check_2"></icon-svg>
+                        <icon-svg class="icon" icon-class="xuanzhong" v-if="resetData.check_2"></icon-svg>
                     </div>
                 </div>
             </div>

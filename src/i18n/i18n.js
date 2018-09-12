@@ -73,24 +73,24 @@ module.exports = {
             introduce: {
                 title: "OUR VISION",
                 first: {
-                    title: "Open and Transparent",
-                    content: "Real-time settlement and 24-hour trading operation; All the transaction records available upon request."
+                    title: "Transparency",
+                    content: "- 24-hour trading operation<br/>- Real-time settlement<br/>- All transaction records available upon request"
                 },
                 second: {
-                    title: "High Performance Platform",
-                    content: "Institutional-grade trading architecture with advanced technology design; API and FIX access."
+                    title: "High Performance",
+                    content: "- Institutional-grade trading architecture<br/>- Advanced technology design<br/>- API and FIX connectivity"
                 },
                 third: {
-                    title: "Security and Stability",
-                    content: "Multi-level firewall and segmentation; Real-time system monitoring; Multi-signature requirement with combined solution of hot and cold wallets."
+                    title: "Security",
+                    content: "- Multi-level firewall and segmentation<br/>- Real-time system monitoring<br/>- Multi-signature requirement with combined solution of hot and cold wallets"
                 },
                 fourth: {
-                    title: "Market Liquidity",
-                    content: "Broad participation from professional traders, market makers, funds, other investors and communities."
+                    title: "Liquidity",
+                    content: "- Broad participation from professional traders, market makers, funds, other investors and communities<br/>- Future incentive for liquidity provision"
                 },
                 fifth: {
                     title: "Global Team with Deep Experience",
-                    content: "The management team are seasoned professionals and executives with profound knowledge of capital market structure, in-depth R & D experience in institutional large-order matching systems and trading infrastructure, and significant operational management and strategic planning expertise across finance and internet industries."
+                    content: "- Profound knowledge of capital market structure<br/>- In-depth R&D experience in institutional trading infrastructure<br/>- Significant management expertise across finance and internet industries"
                 }
             },
             volume: "24h Volume",
