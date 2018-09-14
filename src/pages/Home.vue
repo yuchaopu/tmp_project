@@ -31,7 +31,7 @@
                             </div>
                          </transition>
                     </div>
-                    <div class="control-line" v-if="activities.length > 2">
+                    <div class="control-line" v-if="activities.length > 1">
                         <span class="line" v-for="(line,index) in activities" :key="index" :class="{'active': activeIndex == index}" @click="swiperChange(index)"></span>
                     </div>
                 </div>
@@ -180,6 +180,7 @@
                         for(let i = 0; i<original.length;i++){
                             this.activities[parseInt(i/num)][i%num] = original[i]; 
                         }
+                        this.autoActive();
                     })
                 }
             }, err => {
@@ -188,7 +189,6 @@
             // 市场行情
             this.getMarkets();
             this.marketsTimer();
-            this.autoActive();
             
             
         },
@@ -262,7 +262,7 @@
                 }
             },
             autoActive() {
-                if(this.activities.length < 3){
+                if(this.activities.length < 2){
                     return;
                 }
                 this.activeTimer = setInterval(() => {
