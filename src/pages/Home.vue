@@ -21,13 +21,15 @@
                 <v-quickRegist v-if="!isLogin" class="banner-main-regist" />
                 <div class="swiper-wrapper">
                     <div class="swiper-content">
-                        <div class="swiper-tab" v-for="(swiper,i) in activities" :key="i" v-show="activeIndex == i">
-                            {{swiper.index}}
-                            <a class = "swiper-item" v-for="(item, index) in swiper" :key="index" :href="item.url" target="_blank" :style="{'background-image': 'url('+ item.bgUrl +')'}" :class="{'hidden': !item}">
-                                <h2>{{item.title}}</h2>
-                                <p>{{item.content}}</p>
-                            </a>
-                        </div>
+                        <transition name="swiper-fade">
+                            <div class="swiper-tab" v-for="(swiper,i) in activities" :key="i" v-if="activeIndex == i">
+                                {{swiper.index}}
+                                <a class = "swiper-item" v-for="(item, index) in swiper" :key="index" :href="item.url" target="_blank" :style="{'background-image': 'url('+ item.bgUrl +')'}" :class="{'hidden': !item}">
+                                    <h2>{{item.title}}</h2>
+                                    <p>{{item.content}}</p>
+                                </a>
+                            </div>
+                         </transition>
                     </div>
                     <div class="control-line">
                         <span class="line" v-for="(line,index) in activities" :key="index" :class="{'active': activeIndex == index}" @click="swiperChange(index)"></span>
@@ -594,6 +596,12 @@
             }
         }
     }
+}
+.swiper-fade-enter-active, .swiper-fade-leave-active {
+  transition: opacity .4s;
+}
+.swiper-fade-enter, .swiper-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
 
