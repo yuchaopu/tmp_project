@@ -31,7 +31,7 @@
                             </div>
                          </transition>
                     </div>
-                    <div class="control-line">
+                    <div class="control-line" v-if="activities.length > 2">
                         <span class="line" v-for="(line,index) in activities" :key="index" :class="{'active': activeIndex == index}" @click="swiperChange(index)"></span>
                     </div>
                 </div>
@@ -262,6 +262,9 @@
                 }
             },
             autoActive() {
+                if(this.activities.length < 3){
+                    return;
+                }
                 this.activeTimer = setInterval(() => {
                     if (this.activeIndex === this.activities.length - 1) {
                         this.activeIndex = 0;
