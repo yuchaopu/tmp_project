@@ -138,7 +138,8 @@
                 announcements:[], // 小喇叭公告
                 activities: [],   // 近期活动
                 markets: [],    // 行情
-                timer: null
+                timer: null,
+                activeTimer: null
             };
         },
         computed: {
@@ -164,7 +165,7 @@
                 if(res.status === 200){
                     this.$nextTick(()=>{
                         let original = res.data;
-                        // original = original.concat(original.concat(original.concat(original.concat(original))));
+                        original = original.concat(original.concat(original.concat(original.concat(original))));
                         // 转成二维数组
                         let num = 2;
                         this.activities = new Array(Math.ceil(original.length/num));
@@ -185,6 +186,8 @@
             // 市场行情
             this.getMarkets();
             this.marketsTimer();
+            this.autoActive();
+            
             
         },
         components: {
@@ -195,7 +198,6 @@
         },
         methods: {
             swiperChange (index){
-                console.log(index);
                 this.activeIndex = index;
             },
             startMove() {
@@ -256,10 +258,21 @@
                 } else {
                     this.isLogin = false;
                 }
+            },
+            autoActive() {
+                this.activeTimer = setInterval(() => {
+                    if (this.activeIndex === this.activities.length - 1) {
+                        this.activeIndex = 0;
+                    } else {
+                        this.activeIndex += 1;
+                    }
+                    this.swiperChange(this.activeIndex);
+                }, 8000)
             }
         },
         destroyed(){
             clearInterval(this.timer);
+            clearInterval(this.activeTimer);
         }
     }
 </script>
