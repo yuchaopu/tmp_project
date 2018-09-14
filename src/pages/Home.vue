@@ -14,29 +14,23 @@
         </div>
         <v-header class="header"></v-header>
         <div class="banner">
-            <div class="banner-main" :class="{'oneRow': activities.length < 3}">
+            <div class="banner-main">
                 <p class="slogan">
                     BitMax<br>We know exchange
                 </p>
                 <v-quickRegist v-if="!isLogin" class="banner-main-regist" />
-                <div class="swiper-wrapper" :class="{'oneRow': activities.length < 3}">
-                    <div class="swiper-content" :class="{'move': swiperIndex == 2}">
-                        <div class="swiper-tab">
-                            <a class = "swiper-item" v-for="(item, index) in activities" :key="item.index" :href="item.url" v-if="index < 4" target="_blank" :style="{'background-image': 'url('+ item.bgUrl +')'}">
-                                <h2>{{item.title}}</h2>
-                                <p>{{item.content}}</p>
-                            </a>
-                        </div>
-                        <div class="swiper-tab" v-if="activities.length > 4">
-                            <a class="swiper-item" v-for="(item, index) in activities" :key="item.index" :href="item.url" v-if="index > 3" target="_blank">
+                <div class="swiper-wrapper">
+                    <div class="swiper-content">
+                        <div class="swiper-tab" v-for="(swiper,i) in activities" :key="i" v-show="activeIndex == i">
+                            {{swiper.index}}
+                            <a class = "swiper-item" v-for="(item, index) in swiper" :key="index" :href="item.url" target="_blank" :style="{'background-image': 'url('+ item.bgUrl +')'}" :class="{'hidden': !item}">
                                 <h2>{{item.title}}</h2>
                                 <p>{{item.content}}</p>
                             </a>
                         </div>
                     </div>
-                    <div class="control-line" v-if="activities.length > 4 && activities.length <= 8">
-                        <span class="line" :class="{'active': swiperIndex == 1}" @click="swiperChange(1)"></span>
-                        <span class="line" :class="{'active': swiperIndex == 2}" @click="swiperChange(2)"></span>
+                    <div class="control-line">
+                        <span class="line" v-for="(line,index) in activities" :key="index" :class="{'active': activeIndex == index}" @click="swiperChange(index)"></span>
                     </div>
                 </div>
             </div>
@@ -139,7 +133,7 @@
         data (){
             return {
                 isLogin: false,
-                swiperIndex: 1,
+                activeIndex: 0,
                 number: 0,
                 announcements:[], // 小喇叭公告
                 activities: [],   // 近期活动
@@ -169,8 +163,20 @@
             HTTP.getActivities().then(res => {
                 if(res.status === 200){
                     this.$nextTick(()=>{
-                        this.activities = res.data;
-                        // this.activities = this.activities.concat(this.activities.concat(this.activities.concat(this.activities)))
+                        let original = res.data;
+                        // original = original.concat(original.concat(original.concat(original.concat(original))));
+                        // 转成二维数组
+                        let num = 2;
+                        this.activities = new Array(Math.ceil(original.length/num));
+                        for(let i = 0; i<this.activities.length;i++){
+                            this.activities[i] = new Array();
+                            for(let j = 0; j<num; j++){
+                                this.activities[i][j] = '';
+                            }
+                        }
+                        for(let i = 0; i<original.length;i++){
+                            this.activities[parseInt(i/num)][i%num] = original[i]; 
+                        }
                     })
                 }
             }, err => {
@@ -189,7 +195,8 @@
         },
         methods: {
             swiperChange (index){
-                this.swiperIndex = index;
+                console.log(index);
+                this.activeIndex = index;
             },
             startMove() {
                 let timer = setTimeout(() => {
@@ -325,10 +332,7 @@
             // border-radius: 0 0 200px 200px/0 0 50px 50px;
             position: relative;
             z-index: 10;
-            padding-bottom: px2rem(150px);
-            &.oneRow{
-                padding-bottom: px2rem(45px);
-            }
+            padding-bottom: px2rem(45px);
             &-regist{
                 margin-bottom: px2rem(60px);
             }
@@ -341,25 +345,15 @@
             }
             .swiper-wrapper{
                 width: px2rem(375px);
-                height: px2rem(230px);
+                height: px2rem(125px);
                 position: absolute;
                 left: 50%;
                 transform: translate(-50%, 0);
                 bottom: px2rem(-70px);
                 overflow: hidden;
-                &.oneRow{
-                    height: px2rem(125px);
-                    .swiper-content{
-                        height: px2rem(105px);
-                    }
-                }
                 .swiper-content{
                     position: relative;
-                    height: px2rem(210px);
-                    transition: all 0.5s ease;
-                    &.move{
-                        transform: translate(px2rem(-375px), 0);
-                    }
+                    height: px2rem(105px);
                     .swiper-tab{
                         width: px2rem(375px);
                         display: flex;
@@ -368,9 +362,6 @@
                         position: absolute;
                         left: 0;
                         top: 0;
-                        &:nth-child(2n){
-                            left: px2rem(375px);
-                        }
                         .swiper-item{
                             width: px2rem(165px);
                             height: px2rem(94px);
@@ -380,6 +371,9 @@
                             background-position: right bottom;
                             margin-bottom: px2rem(10px);
                             padding: px2rem(10px);
+                            &.hidden{
+                                visibility: hidden;
+                            }
                             &:nth-child(2n){
                                 margin-left: px2rem(10px);
                             }
