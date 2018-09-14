@@ -601,10 +601,15 @@
     }
 }
 .swiper-fade-enter-active, .swiper-fade-leave-active {
-  transition: opacity .4s;
+    transition: all .4s ease;
 }
-.swiper-fade-enter, .swiper-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+.swiper-fade-enter {
+    opacity: 0;
+    transform: translateX(px2rem(375px));
+}
+.swiper-fade-leave-to{
+    opacity: 0;
+    transform: translateX(px2rem(-375px));
 }
 </style>
 
