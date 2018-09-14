@@ -31,7 +31,16 @@
 
         <div class="balance-page-list">
             <div class="balance-page-list-btn">
-                <icon-svg class="icon-select" icon-class="weixuanzhong" />
+                <icon-svg class="icon-select" icon-class="xuanzhong" />隐藏小额资产
+            </div>
+            <div class="balance-page-list-item">
+                <div class="balance-page-list-item-name">
+                    <span>EOS</span> · <span>Ethereum</span>
+                </div>
+                <div class="balance-page-list-item-hold">
+                    <p class="value">0.123456789</p>
+                </div>
+                <div class="balance-page-list-item-control"></div>
             </div>
         </div>
         <v-footer></v-footer>
@@ -105,11 +114,31 @@ export default {
         }
     }
     &-list{
-
+        color: $black-color;
+        @include font-dpr(14px);
         &-btn{
+            padding: px2rem(16px);
             .icon-select{
                 width: px2rem(16px);
                 height: px2rem(16px);
+                margin-right: px2rem(8px);
+            }
+        }
+        &-item{
+            padding: px2rem(16px);
+            margin: 0 px2rem(16px);
+            background: $white-color;
+            border: 1px solid #F0F0F2;
+            box-shadow: 0 px2rem(2px) px2rem(10px) 0 rgba(153,153,153,0.20);
+            border-radius: px2rem(4px);
+            &-name{
+                @include font-dpr(16px);
+            }
+            &-hold{
+                .value{
+                    color: #34A753;
+                    @include font-dpr(36px);
+                }
             }
         }
     }

@@ -165,7 +165,7 @@
                 if(res.status === 200){
                     this.$nextTick(()=>{
                         let original = res.data;
-                        original = original.concat(original.concat(original.concat(original.concat(original))));
+                        // original = original.concat(original.concat(original.concat(original.concat(original))));
                         // 转成二维数组
                         let num = 2;
                         this.activities = new Array(Math.ceil(original.length/num));
