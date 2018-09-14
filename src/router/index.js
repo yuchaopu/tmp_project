@@ -16,6 +16,7 @@ import Wx from '@/pages/Wx'
 import EmailVerify from '@/pages/EmailVerify'
 import Balance from '@/pages/assets/balance'
 import Recharge from '@/pages/assets/recharge'
+import RechargeDetail from '@/pages/assets/rechargeDetail'
 
 Vue.use(Router)
 
@@ -99,6 +100,11 @@ const mainRouter =  new Router({
             path: '/assets/recharge',
             name: 'Recharge',
             component: Recharge
+        },
+        {
+            path: '/assets/rechargeDetail',
+            name: 'RechargeDetail',
+            component: RechargeDetail
         },
         {
             path: '/demopage',
