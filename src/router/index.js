@@ -15,6 +15,7 @@ import Risk from '@/pages/Risk'
 import Wx from '@/pages/Wx'
 import EmailVerify from '@/pages/EmailVerify'
 import Balance from '@/pages/assets/balance'
+import Recharge from '@/pages/assets/recharge'
 
 Vue.use(Router)
 
@@ -90,9 +91,14 @@ const mainRouter =  new Router({
             component: EmailVerify
         },
         {
-            path: '/assets/nalance',
+            path: '/assets/balance',
             name: 'Balance',
             component: Balance
+        },
+        {
+            path: '/assets/recharge',
+            name: 'Recharge',
+            component: Recharge
         },
         {
             path: '/demopage',

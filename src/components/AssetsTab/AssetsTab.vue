@@ -17,7 +17,7 @@
                 tabList: [
                     {
                         name: '账户余额',
-                        path: '/assets/nalance'
+                        path: '/assets/balance'
                     },
                     {
                         name: '冲币',
