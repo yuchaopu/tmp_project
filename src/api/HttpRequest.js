@@ -12,24 +12,27 @@ const headers = {
 const instance = axios.create({
     headers: headers
 });
+instance.interceptors.request.use(config => {
+    if (localStorage.getItem('authorization')) {
+        config.headers.common['authorization'] =
+            localStorage.getItem('authorization');
+    }
+    if (localStorage.getItem('lang')) {
+        config.headers.common['language'] =
+            {
+                'zh': 'zh-CN',
+                'en': 'en-US'
+            }[localStorage.getItem('lang')];
+    }
+    if (localStorage.getItem('NECaptchaValidate')) {
+        instance.defaults.headers.common['NECaptchaValidate'] =
+            localStorage.getItem('NECaptchaValidate');
+    }
+    return config;
+})
 
 for (let [k, v] of Object.entries(apis)) {
     HTTP[k] = (data, params) => {
-        if (localStorage.getItem('authorization')) {
-            instance.defaults.headers.common['authorization'] =
-                localStorage.getItem('authorization');
-        }
-        if (localStorage.getItem('lang')) {
-            instance.defaults.headers.common['language'] =
-                {
-                    'zh': 'zh-CN',
-                    'en': 'en-US'
-                }[localStorage.getItem('lang')];
-        }
-        if (localStorage.getItem('NECaptchaValidate')) {
-            instance.defaults.headers.common['NECaptchaValidate'] =
-                localStorage.getItem('NECaptchaValidate');
-        }
         return new Promise((resolve, reject) => {
             if (v.method === 'post') {
                 instance.post(v.url, data)
@@ -47,7 +50,7 @@ for (let [k, v] of Object.entries(apis)) {
                     }
                     return $1;
                 });
-    
+
                 instance.get(v.url, params)
                     .then(response => {
                         resolve(response);
