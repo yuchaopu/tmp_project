@@ -205,6 +205,7 @@ export default {
             width: px2rem(90px);
             height: px2rem(18px);
             margin: px2rem(16px) 0 0 px2rem(15px);
+            color: $white-color;
         }
         .header-right{
             display: flex;
