@@ -61,17 +61,17 @@
                             {{$t('message.btn.regist')}}
                         </router-link>
                     </li>
-                    <!-- <li v-if="isLogin">
-                        <router-link to="/regist">
+                    <li v-if="isLogin">
+                        <router-link to="/order">
                             订单
                         </router-link>
                     </li>
                     <li v-if="isLogin">
-                        <router-link to="/regist">
+                        <router-link to="/assets/balance">
                             我的资产
                         </router-link>
                     </li>
-                    <li v-if="isLogin">
+                    <!-- <li v-if="isLogin">
                         <router-link to="/regist">
                             个人中心
                         </router-link>
