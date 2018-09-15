@@ -24,7 +24,7 @@
                         <transition name="swiper-fade">
                             <div class="swiper-tab" v-for="(swiper,i) in activities" :key="i" v-if="activeIndex == i">
                                 {{swiper.index}}
-                                <a class = "swiper-item" v-for="(item, index) in swiper" :key="index" :href="item.url" target="_blank" :style="{'background-image': 'url('+ item.bgUrl +')'}" :class="{'hidden': !item}">
+                                <a class = "swiper-item" v-for="(item, index) in swiper" :key="index" :href="item.url" target="_blank" :style="{'background-image': item.bgUrl ? 'url('+ item.bgUrl +')' : ''}" :class="{'hidden': !item}">
                                     <h2>{{item.title}}</h2>
                                     <p>{{item.content}}</p>
                                 </a>
