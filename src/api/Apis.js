@@ -46,5 +46,9 @@ module.exports = {
     sendVerificationEmail: {
         url: '/api/user/sendverification',
         method: 'get'
+    },
+    getAllBalance: {
+        url:'/api/balances',
+        method: 'post'
     }
 }

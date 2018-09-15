@@ -12,7 +12,7 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: {
             '/': {
-                target: 'https://m.bitmax-sandbox.io',
+                target: 'https://bitmax-sandbox.io',
                 changeOrigin: true,
                 secure: true
             }

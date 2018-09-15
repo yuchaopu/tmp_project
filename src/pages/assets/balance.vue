@@ -69,7 +69,18 @@ export default {
         'v-footer': footer,
         'v-fixedTools': fixedTools,
         'v-tab': AssetsTab
-    }
+    },
+    mounted() {
+        HTTP.getAllBalance().then(res => {
+            debugger;
+            // this.showBalance = res.data;
+            // this.showBalance.forEach(function (item, index, array) {
+            //     if (item.btcValue == undefined) {
+            //     item.btcValue = '--';
+            //     }
+            // });
+        })
+    }    
 }
 </script>
 
