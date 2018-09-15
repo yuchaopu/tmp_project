@@ -2,7 +2,7 @@
     <div class="recharge-page">
         <v-header class="header"></v-header>
         <div class="recharge-page-content">
-            <div class="recharge-page-content-title"><i class="coin-icon"></i><span>ETH</span></div>
+            <div class="recharge-page-content-title"><span>ETH</span></div>
             <div class="recharge-page-content-top">
                 <div class="recharge-page-content-top-title"><span>ETH</span> 充币地址</div>
                 <input type="text" class="recharge-page-content-top-input" readonly value="0ssfabcs7234006533ns7s89sff00sf7f8v9v8s">
@@ -53,13 +53,6 @@ export default {
             @include font-dpr(18px);
             display: flex;
             align-items: center;
-            .coin-icon{
-                width: px2rem(30px);
-                height: px2rem(30px);
-                display: block;
-                margin-right: px2rem(16px);
-                background-color: #ccc;
-            }
         }
         &-top{
             padding: 0 px2rem(20px) px2rem(32px) px2rem(20px);
@@ -68,7 +61,7 @@ export default {
             @include ta_c;
             &-title{
                 margin: px2rem(24px) 0;
-                color: #333;
+                color: $c-333;
             }
             &-input{
                 display: block;
@@ -101,7 +94,7 @@ export default {
         &-qrcode{
             @include ta_c;
             @include font-dpr(14px);
-            color: #333;
+            color: $c-333;
             padding: px2rem(32px) 0 px2rem(70px) 0;
             img{
                 width: px2rem(120px);

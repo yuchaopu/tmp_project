@@ -1,28 +1,28 @@
 <template>
-    <div class="recharge-page">
+    <div class="withdraw-page">
         <v-header class="header"></v-header>
-        <v-tab class="recharge-page-tab"></v-tab>
-        <div class="recharge-page-content">
-            <div class="recharge-page-content-title">选择币种</div>
-            <div class="recharge-page-content-list">
+        <v-tab class="withdraw-page-tab"></v-tab>
+        <div class="withdraw-page-content">
+            <div class="withdraw-page-content-title">选择币种</div>
+            <div class="withdraw-page-content-list">
                 <ul>
                     <li>
                         <i class="coin-icon"></i>
-                        <router-link to="/assets/rechargeDetail"  class="coin-name">
+                        <router-link to="/assets/withdrawDetail"  class="coin-name">
                             <p>ETH</p>
                             <icon-svg class="icon-xiala" icon-class="xiala" />
                         </router-link>
                     </li>
                     <li>
                         <i class="coin-icon"></i>
-                        <router-link to="/assets/rechargeDetail"  class="coin-name">
+                        <router-link to="/assets/withdrawDetail"  class="coin-name">
                             <p>ETH</p>
                             <icon-svg class="icon-xiala" icon-class="xiala" />
                         </router-link>
                     </li>
                     <li>
                         <i class="coin-icon"></i>
-                        <router-link to="/assets/rechargeDetail"  class="coin-name">
+                        <router-link to="/assets/withdrawDetail"  class="coin-name">
                             <p>ETH</p>
                             <icon-svg class="icon-xiala" icon-class="xiala" />
                         </router-link>
@@ -55,7 +55,7 @@ export default {
 <style lang="scss" scoped>
     @import '../../style/base';
     @import '../../style/commom';
-.recharge-page{
+.withdraw-page{
     color: $black-color;
     &-tab{
         margin-top: px2rem(50px);
