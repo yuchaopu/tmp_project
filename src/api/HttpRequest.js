@@ -31,6 +31,10 @@ instance.interceptors.request.use(config => {
     return config;
 })
 
+
+instance.interceptors.response.use(res=>{
+    return res;
+})
 for (let [k, v] of Object.entries(apis)) {
     HTTP[k] = (data, params) => {
         return new Promise((resolve, reject) => {

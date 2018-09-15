@@ -33,16 +33,16 @@
             <div class="balance-page-list-btn">
                 <icon-svg class="icon-select" icon-class="weixuanzhong" /><icon-svg class="icon-select" icon-class="xuanzhong" />隐藏小额资产
             </div>
-            <div class="balance-page-list-item">
+            <div class="balance-page-list-item" v-for="(item, index) in showBalance" :key="index">
                 <div class="balance-page-list-item-name">
-                    <span>EOS</span> · <span>Ethereum</span>
+                    <span>{{item.assetCode}}</span> · <span>{{item.assetName}}</span>
                 </div>
                 <div class="balance-page-list-item-hold">
-                    <p class="value">0.123456789</p>
-                    <p class="exchange">≈ <span>0.0000</span> <span>BTC</span></p>
+                    <p class="value">{{item.totalAmount}}</p>
+                    <p class="exchange">≈ <span>{{item.btcValue}}</span> <span>BTC</span></p>
                     <div class="balance">
-                        <p><span class="title">可用余额：</span><span>7,891.12345678</span></p>
-                        <p><span class="title">冻结：</span><span>7,891.12345678</span></p>
+                        <p><span class="title">可用余额：</span><span>{{item.availableAmount}}</span></p>
+                        <p><span class="title">冻结：</span><span>{{item.inOrderAmount}}</span></p>
                     </div>
                 </div>
                 <div class="balance-page-list-item-control">
@@ -70,15 +70,33 @@ export default {
         'v-fixedTools': fixedTools,
         'v-tab': AssetsTab
     },
+    data() {
+        return {
+            showBalance: [],
+            lang: localStorage.getItem('lang'),
+            type: 0
+        }
+    },
+    beforeRouteUpdate(to, from, next) {
+        this.type = to.params.type || 0;
+        this.showBalance = [];
+        // this.showBalanceData()
+        next();
+    },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+        vm.type = to.params.type || 0;
+        });
+    },
     mounted() {
         HTTP.getAllBalance().then(res => {
+            this.showBalance = res.data.data;
+            this.showBalance.forEach(function (item, index, array) {
+                if (item.btcValue == undefined) {
+                item.btcValue = '--';
+                }
+            });
             debugger;
-            // this.showBalance = res.data;
-            // this.showBalance.forEach(function (item, index, array) {
-            //     if (item.btcValue == undefined) {
-            //     item.btcValue = '--';
-            //     }
-            // });
         })
     }    
 }
