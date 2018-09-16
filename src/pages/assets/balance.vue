@@ -96,7 +96,6 @@ export default {
                 item.btcValue = '--';
                 }
             });
-            debugger;
         })
     }    
 }
