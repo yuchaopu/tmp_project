@@ -10,6 +10,39 @@
                     <span class="record-page-content-tab-item"><icon-svg class="icon-select" icon-class="xuanzhong" />提币记录</span>
                 </div>
             </div>
+            <div class="record-page-content-main">
+                <div>
+                    <ul>
+                        <li class="record-page-content-main-item">
+                            <div>
+                                <p><span>BTC</span>   <span>40,234.12345678</span></p>
+                                <span class="record-page-content-main-item-time">08/18/18 23:00:27</span>
+                            </div>
+                            <span class="success">
+                                充币成功
+                            </span>
+                        </li>
+                        <li class="record-page-content-main-item">
+                            <div>
+                                <p><span>BTC</span>   <span>40,234.12345678</span></p>
+                                <span class="record-page-content-main-item-time">08/18/18 23:00:27</span>
+                            </div>
+                            <span class="fail">
+                                充币失败
+                            </span>
+                        </li>
+                        <li class="record-page-content-main-item">
+                            <div>
+                                <p><span>BTC</span>   <span>40,234.12345678</span></p>
+                                <span class="record-page-content-main-item-time">08/18/18 23:00:27</span>
+                            </div>
+                            <span class="wait">
+                                等待处理
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <v-footer></v-footer>
         <v-fixedTools></v-fixedTools>
@@ -43,7 +76,7 @@ export default {
     }
     &-content{
         background-color: $white-color;
-        margin-bottom: px2rem(70px);
+        // margin-bottom: px2rem(70px);
         &-tab{
             padding: 0 px2rem(16px);
             box-shadow: 0 px2rem(2px) px2rem(10px) 0 rgba(153,153,153,0.20);
@@ -66,6 +99,33 @@ export default {
                 }
                 &-current{
                     color: $base-color;
+                }
+            }
+        }
+        &-main{
+            &-item{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: px2rem(10px) px2rem(16px);
+                color: $black-color;
+                border-bottom: 1px solid #F0F0F2;
+                p{
+                    @include font-dpr(14px);
+                    line-height: px2rem(20px);
+                }
+                &-time{
+                    @include font-dpr(10px);
+                    color: $grey-color;
+                }
+                .success{
+                    color: #34A753;
+                }
+                .fail{
+                    color: #F05253;
+                }
+                .wait{
+                    color: #F5A623;
                 }
             }
         }
