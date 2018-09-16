@@ -19,6 +19,7 @@ import Recharge from '@/pages/assets/recharge'
 import RechargeDetail from '@/pages/assets/rechargeDetail'
 import Withdraw from '@/pages/assets/withdraw'
 import WithdrawDetail from '@/pages/assets/withdrawDetail'
+import Record from '@/pages/assets/record'
 
 Vue.use(Router)
 
@@ -117,6 +118,11 @@ const mainRouter =  new Router({
             path: '/assets/withdrawDetail',
             name: 'WithdrawDetail',
             component: WithdrawDetail
+        },
+        {
+            path: '/assets/record',
+            name: 'Record',
+            component: Record
         },
         {
             path: '/demopage',

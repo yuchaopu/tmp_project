@@ -2,7 +2,7 @@
     <div class="withdraw-page">
         <v-header class="header"></v-header>
         <v-tab class="withdraw-page-tab"></v-tab>
-        <div class="withdraw-page-content">
+        <div class="withdraw-page-content" v-if="false">
             <div class="withdraw-page-content-title">选择币种</div>
             <div class="withdraw-page-content-list">
                 <ul>
@@ -29,6 +29,12 @@
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class="withdraw-page-verifyContent">
+            <icon-svg class="icon-jinggao" icon-class="jinggao" />
+            <p>提币操作需要谷歌验证，请前往 bitmax.io 完成谷歌验证</p>
+            <p>提币操作需要先提交身份认证第一步信息，请前往 bitmax.io 完成身份验证</p>
+            <p>提币操作需要谷歌验证及身份认证第一步信息请前往 bitmax.io 完成验证</p>
         </div>
         <v-footer></v-footer>
         <v-fixedTools></v-fixedTools>
@@ -97,6 +103,17 @@ export default {
                     }
                 }
             }
+        }
+    }
+    &-verifyContent{
+        @include ta_c;
+        @include font-dpr(14px);
+        padding: px2rem(56px) px2rem(34px) px2rem(100px);
+        .icon-jinggao{
+            width: px2rem(52px);
+            height: px2rem(52px);
+            line-height: px2rem(24px);
+            margin-bottom: px2rem(56px);
         }
     }
 }
